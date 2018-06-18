@@ -30,6 +30,7 @@ function rootpage(req) {
             https://invi.sible.link/api/v1/google/kzbrg
              ** ** ** ** ** ** ** ** ** ** ** ** ** ** */
 
+            debugger;
             var products = _.compact(_.uniq(_.map(j.json, 'product')));
             var tested = _.uniq(_.map(j.json, 'href'));
             var ret = _.reduce(j.json, function(memo, entry) {
@@ -65,7 +66,6 @@ function rootpage(req) {
                     _.find(ret, {href: s}).nothing = true;
 
             }); 
-
 
             return { 'text': 
                 pug.compileFile(
