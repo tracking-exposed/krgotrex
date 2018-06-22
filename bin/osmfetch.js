@@ -4,6 +4,7 @@ var Promise = require('bluebird');
 var moment = require('moment');
 var request = Promise.promisifyAll(require('request'));
 var various = require('../../../lib/various');
+var csv = require('../../../lib/csv');
 var debug = require('debug')('osmfetch');
 var nconf = require('nconf');
 var path = require('path');
@@ -28,7 +29,6 @@ debug("Building destination path, %s and %d", nconf.get('dest'), iteration);
 var iterapath = path.join(nconf.get('dest'), _.toString(iteration));
 var output = path.join(iterapath, 'osm-output.xml');
 var selected = path.join(iterapath, 'selected-shops.json');
-var csv = path.join(iterapath, 'produces.csv');
 
 debug("checking if destination %s exists", iterapath);
 return fs
@@ -39,11 +39,10 @@ return fs
     })
     .catch(function(error) {
         if(force) {
-            debug("%s exists, but 'force' is true: delete %s %s %s", iterapath, output, selected, csv);
+            debug("%s exists, but 'force' is true: delete %s %s", iterapath, output, selected);
             return Promise.all([
                 fs.unlinkAsync(output),
-                fs.unlinkAsync(selected),
-                fs.unlinkAsync(csv)
+                fs.unlinkAsync(selected)
             ])
             .catch(function() { });
         } else {
@@ -145,7 +144,41 @@ return fs
         return fs
             .writeFileAsync(selected, JSON.stringify(sites, undefined, 2))
     })
+    .map(function(site) {
+        debugger;
+        var formatted = {
+            href: site.site,
+            lastSurfId: undefined,
+            lastCheck: undefined,
+            campaign: nconf.get('campaign'),
+            id: various.hash({
+                campaign: nconf.get('campaign'),
+                href: site.site
+            }),
+            latitude: site.lat,
+            longitude: site.lon,
+            iteration: iteration,
+            frequency: nconf.get('frequency')
+        };
+
+        if(site.name)
+            formatted.name = site.name;
+        if(site.kind)
+            formatted.kind = site.kind;
+        if(site.address)
+            formatted.address = site.address;
+
+        return csv.register(formatted);
+
+    }, {concurrency: 1})
+    // Remind, csv.register save to 'sites' collection, and is hardcoded
+    .then(_.compact)
+    .then(_.size)
+    .then(function(saved) {
+        debug("Saved in database %d new sites, checked with frequency of %d", saved, nconf.get('frequency'));
+    })
     .catch(function(error) {
+        debug("Erorr: %s", error);
         debugger;
     });
 
