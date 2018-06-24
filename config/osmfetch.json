@@ -1,0 +1,7 @@
+{
+    "force": true,
+    "dest": "osm",
+    "frequency": 5,
+    "mongodb": "mongodb://localhost/ivl",
+    "campaign": "krgotrex"
+}
