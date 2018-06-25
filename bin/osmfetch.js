@@ -145,15 +145,13 @@ return fs
             .writeFileAsync(selected, JSON.stringify(sites, undefined, 2))
     })
     .map(function(site) {
-        debugger;
+
         var formatted = {
             href: site.site,
-            lastSurfId: undefined,
-            lastCheck: undefined,
             campaign: nconf.get('campaign'),
             id: various.hash({
-                campaign: nconf.get('campaign'),
-                href: site.site
+                href: site.site,
+                campaign: nconf.get('campaign')
             }),
             latitude: site.lat,
             longitude: site.lon,
