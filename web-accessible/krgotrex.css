@@ -1,15 +1,15 @@
 .core {
   text-align: center;
-  left-padding: 5%;
-  right-padding: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 table {
   margin-left: auto;
   margin-right: auto;
 }
 .header {
-  top-padding: 5%;
-  bottom-padding: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   background-color: #d9c1f9;
   color: #fff;
 }
@@ -29,7 +29,7 @@ h4 {
 }
 .entries .notes {
   overflow: none;
-  text-style: underline;
+  text-decoration: underline;
   text-align: left;
 }
 .productBlock {
@@ -67,5 +67,5 @@ h4 {
 
 /* new */
 #mapid {
-    height: 480px;
+  height: 480px;
 }
