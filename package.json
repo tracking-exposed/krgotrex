@@ -1,0 +1,23 @@
+{
+  "name": "krgotrex",
+  "version": "0.0.1",
+  "description": "Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) for additional information.",
+  "main": "sample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tracking-exposed/krgotrex.git"
+  },
+  "keywords": [],
+  "author": "Tracking Exposed",
+  "license": "CC-BY",
+  "bugs": {
+    "url": "https://github.com/tracking-exposed/krgotrex/issues"
+  },
+  "homepage": "https://github.com/tracking-exposed/krgotrex#readme",
+  "dependencies": {
+    "foundation-sites": "^6.5.0-rc.1"
+  }
+}
