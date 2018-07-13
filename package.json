@@ -4,20 +4,29 @@
   "description": "Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) for additional information.",
   "main": "sample.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/tracking-exposed/krgotrex.git"
   },
-  "keywords": [],
+  "keywords": ["tracking", "überwachung", "google campus"],
   "author": "Tracking Exposed",
   "license": "CC-BY",
   "bugs": {
     "url": "https://github.com/tracking-exposed/krgotrex/issues"
   },
   "homepage": "https://github.com/tracking-exposed/krgotrex#readme",
+  "browserslist": "> 5% in DE",
   "dependencies": {
-    "foundation-sites": "^6.5.0-rc.1"
+    "autoprefixer": "^8.6.5",
+    "connect": "^3.3.4",
+    "foundation-sites": "^6.4.3",
+    "node-sass": "^4.9.2",
+    "node-sass-middleware": "^0.9.8",
+    "path": "^0.12.7",
+    "postcss-middleware": "^1.1.4",
+    "serve-static": "^1.8.1"
   }
 }
