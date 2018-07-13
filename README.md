@@ -12,7 +12,7 @@ Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) fo
 
 ### Front-end development
 
-1. [Fork this repo](https://help.github.com/articles/fork-a-repo/)
+1. Fork this repo. [Here is a How-to](https://help.github.com/articles/fork-a-repo/)
 2. `cd` into the project
 3. `npm install`
 4. `npm start`
