@@ -1,3 +1,5 @@
+# Kreuzberg Google Tracking Exposed
+
 Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) for additional information.
 
 ## a campaing for a cleaner web ecosystem
@@ -8,4 +10,11 @@ Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) fo
 
 ## CONTRIBUTION
 
-If you believe you can do a better web interaction, you can submit your page. HTML or [PUG](https://pugjs.org/api/getting-started.html) are both ok. You can use as reference the curent one: https://github.com/tracking-exposed/krgotrex/blob/master/page/content.pug and the js/css are here https://github.com/tracking-exposed/krgotrex/tree/master/web-accessible 
+### Front-end development
+
+1. [Fork this repo](https://help.github.com/articles/fork-a-repo/)
+2. `cd` into the project
+3. `npm install`
+4. `npm start`
+
+Whenever you do *style* change you'll have to manually reload the page.
