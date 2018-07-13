@@ -1,16 +1,16 @@
-var connect = require('connect');
-var sassMiddleware = require('node-sass-middleware');
-var postcssMiddleware = require('postcss-middleware');
-var autoprefixer = require('autoprefixer');
-var path = require('path');
+const connect = require('connect');
+const sassMiddleware = require('node-sass-middleware');
+const postcssMiddleware = require('postcss-middleware');
+const autoprefixer = require('autoprefixer');
+const path = require('path');
 
-var srcPath = __dirname + '/page/styles';
-var destPath = __dirname + '/page';
+const srcPath = __dirname + '/page/styles';
+const destPath = __dirname + '/page';
 
-var serveStatic = require('serve-static')
-var http = require('http');
-var port = process.env.PORT || 8000;
-var app = connect();
+const serveStatic = require('serve-static')
+const http = require('http');
+const port = process.env.PORT || 8000;
+const app = connect();
 
 app
 .use('/', sassMiddleware({
@@ -35,6 +35,6 @@ app
 );
 
 http.createServer(app).listen(port);
-console.log('Server listening on port ' + port);
+console.log(`Server is running. Go to http://localhost:${port}`);
 console.log('srcPath is ' + srcPath);
 console.log('destPath is ' + destPath);

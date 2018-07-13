@@ -17,4 +17,4 @@ Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) fo
 3. `npm install`
 4. `npm start`
 
-Whenever you do *style* change you'll have to manually reload the page.
+Whenever you do *style* changes you'll have to manually reload the page.

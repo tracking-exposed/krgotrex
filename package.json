@@ -11,7 +11,11 @@
     "type": "git",
     "url": "git://github.com/tracking-exposed/krgotrex.git"
   },
-  "keywords": ["tracking", "überwachung", "google campus"],
+  "keywords": [
+    "tracking",
+    "überwachung",
+    "google campus"
+  ],
   "author": "Tracking Exposed",
   "license": "CC-BY",
   "bugs": {
@@ -26,6 +30,7 @@
   "dependencies": {
     "autoprefixer": "^8.6.5",
     "connect": "^3.3.4",
+    "express": "^4.16.3",
     "foundation-sites": "^6.4.3",
     "node-sass": "^4.9.2",
     "node-sass-middleware": "^0.9.8",
