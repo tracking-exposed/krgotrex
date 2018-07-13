@@ -2,10 +2,9 @@
   "name": "krgotrex",
   "version": "0.0.1",
   "description": "Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) for additional information.",
-  "main": "sample.js",
+  "main": "./page/js/main.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "DEBUG=krgotrex:* node ./page/bin/www"
   },
   "repository": {
     "type": "git",
@@ -24,18 +23,15 @@
   "homepage": "https://github.com/tracking-exposed/krgotrex#readme",
   "browserslist": [
     "> 5%",
-    "last 10 versions",
+    "last 2 versions",
     "IE 10"
   ],
   "dependencies": {
-    "autoprefixer": "^8.6.5",
-    "connect": "^3.3.4",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
     "express": "^4.16.3",
     "foundation-sites": "^6.4.3",
-    "node-sass": "^4.9.2",
-    "node-sass-middleware": "^0.9.8",
-    "path": "^0.12.7",
-    "postcss-middleware": "^1.1.4",
-    "serve-static": "^1.8.1"
+    "morgan": "~1.9.0",
+    "node-sass-middleware": "0.11.0"
   }
 }
