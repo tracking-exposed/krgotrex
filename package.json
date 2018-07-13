@@ -18,7 +18,11 @@
     "url": "https://github.com/tracking-exposed/krgotrex/issues"
   },
   "homepage": "https://github.com/tracking-exposed/krgotrex#readme",
-  "browserslist": "> 5% in DE",
+  "browserslist": [
+    "> 5%",
+    "last 10 versions",
+    "IE 10"
+  ],
   "dependencies": {
     "autoprefixer": "^8.6.5",
     "connect": "^3.3.4",
