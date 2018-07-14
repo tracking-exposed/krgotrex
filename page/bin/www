@@ -87,7 +87,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log(`Server is running. ✅ Browse to http://localhost:${addr.port}
-☝🏼  Reload the page to see changes in JS or SCSS files
-`);
+  console.log(`Server is running. ✅ Browse to http://localhost:${addr.port} \n\n☝🏼  Reload the page to see changes in JS or SCSS files \n`);
 }

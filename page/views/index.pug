@@ -1,0 +1,18 @@
+extends page
+
+include mixins/_siteCheckForm
+
+block content 
+  main
+    section#hero
+      .row.align-center
+        .small-12.column.text-center.hero-content
+          p Google is almost everywhere.
+            br
+            | It knows our interests.
+            br
+            |It collects our browsing behaviour.
+            br
+            |It spies on users.
+          h2 Do you have a website?
+          +siteCheckForm()

@@ -1,0 +1,22 @@
+doctype html
+html(lang='de')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    meta(
+      name='viewport',
+      content='width=device-width, initial-scale=1')
+    title=`${title}${siteName ? ' | '+siteName : ''}`
+    link(rel='stylesheet', href='style.css')
+  body
+    block header
+      header
+        .row.align-center
+          .small-12.column
+            h1#header-logo #{title}
+    block content
+    block footer
+      footer
+        .row.align-right
+          .column.text-right Spread the word
+    script(data-main='js/main', src='js/require.js')

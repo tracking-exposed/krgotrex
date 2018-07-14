@@ -1,11 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const sitesController = require('../js/controllers/sites.controller');
+const { catchErrors } = require('../js/errorHandler');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', {
-    title: 'Kreuzberg Google Tracking Exposed'
-  });
-});
+router.get('/', catchErrors(sitesController.homePage));
+
+/* GET users listing. */
+router.get('/sites', catchErrors(sitesController.getWebsites));
 
 module.exports = router;

@@ -1,0 +1,15 @@
+mixin siteCheckForm(site = {})
+  form(
+    action=``
+    method="POST"
+    class=""
+    enctype="multipart/form-data")
+
+    label(for="site") Enter your website here:
+    input(type="text" name="site" placeholder="http://www.my-site.de")
+
+    input(
+      type="submit"
+      value="Seite überprüfen"
+      id="hero-cta"
+      class="button")

@@ -1,0 +1,11 @@
+extends page
+
+block content
+  .row.align-center
+    .small-12.column
+      if sites
+        ul
+          for site in sites
+            li= site.name
+      else
+        p Foo
