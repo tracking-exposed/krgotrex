@@ -2,9 +2,9 @@
   "name": "krgotrex",
   "version": "0.0.1",
   "description": "Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) for additional information.",
-  "main": "./page/js/main.js",
+  "main": "./js/main.js",
   "scripts": {
-    "start": "DEBUG=krgotrex:* node ./page/bin/www"
+    "start": "DEBUG=krgotrex:* node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "express": "^4.16.3",
     "foundation-sites": "^6.4.3",
     "morgan": "~1.9.0",
-    "node-sass-middleware": "0.11.0"
+    "node-sass-middleware": "0.11.0",
+    "requirejs": "^2.3.5"
   }
 }
