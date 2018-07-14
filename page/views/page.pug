@@ -12,9 +12,15 @@ html(lang='de')
     block header
       header
         .row.align-center
-          .small-12.column
-            h1#header-logo #{title}
+          .small-10.medium-8.large-6.column
+            h1#header-logo
+              a.nav__link.header-logo__link(href="/") #{title}
+          .small-2.medium-4.large-6.column
+            a.nav__link.header-link(href="/sites") Sites
+
+
     block content
+
     block footer
       footer
         .row.align-right
