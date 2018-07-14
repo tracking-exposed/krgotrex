@@ -10,9 +10,9 @@ Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) fo
 
 ## CONTRIBUTION
 
-### Front-end development
+### Front-end
 
-We use [Foundation for Sites](https://foundation.zurb.com/sites/docs/index.html) as responsive framework. All **editable** files are **SCSS** files. So do not edit CSS files directly.
+#### Local development
 
 1. Fork this repo. [Here is a How-to](https://help.github.com/articles/fork-a-repo/)
 2. In your bash console, `cd` into the project's `/page` directory like so `cd PATH_TO_YOUR_CODE_PROJECTS/krgotrex/page`
@@ -20,7 +20,14 @@ We use [Foundation for Sites](https://foundation.zurb.com/sites/docs/index.html)
 4. Run local development server with `npm start`
 
 Now you can add/edit SCSS or JS files. When adding new files please keep the existing folder structure.
-When adding new style partials please name them with leading underscores and group them in folders that represent the corresponding components. For example:
+
+#### Responsive Framework
+
+We use [Foundation for Sites](https://foundation.zurb.com/sites/docs/index.html) as responsive framework. All **editable** files are **SCSS** files. So do not edit CSS files directly.
+
+The `_settings.scss` file in the `/styles` directory sets default values for the stylesheets. So most of the global style assignment values are defined in here. Please feel free to modify this file and the changes will be applied globally across the site.
+
+If you add a new style partial please name them with leading underscores and group them in folders that represent the corresponding components. For example:
 
 ```
   page
