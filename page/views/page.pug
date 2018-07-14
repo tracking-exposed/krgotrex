@@ -10,13 +10,13 @@ html(lang='de')
     link(rel='stylesheet', href='style.css')
   body
     block header
-      header
-        .row.align-center
+      header#main-header
+        nav.row.align-center
           .small-10.medium-8.large-6.column
             h1#header-logo
-              a.nav__link.header-logo__link(href="/") #{title}
+              a.header-logo__link(href="/") #{shortTitle}
           .small-2.medium-4.large-6.column
-            a.nav__link.header-link(href="/sites") Sites
+            a.header-link(href="/sites") Sites
 
 
     block content

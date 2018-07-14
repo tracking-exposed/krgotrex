@@ -10,6 +10,7 @@ const app = express();
 
 // App wide variables
 app.locals.title = 'Kreuzberg Google Tracking Exposed';
+app.locals.shortTitle = 'KrGoTrEx';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); // this is the folder where we keep our html files
