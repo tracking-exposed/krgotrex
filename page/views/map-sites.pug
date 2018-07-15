@@ -1,8 +1,5 @@
 block map-sites
   section#map-sites
-    .row.align-center
-      main.map.small-12.large-7.column
-        include map
-      if sites
-        aside.sites.small-12.large-5.column
-          include sites
+    include map
+    if sites
+      include sites

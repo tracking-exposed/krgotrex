@@ -1,6 +1,14 @@
-.sites {
-  padding-top: 24px;
-  margin-bottom: $global-margin * 2;
+#sites {
+  background-color: $mediumturquoise-color;
+
+  @include breakpoint(large) {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 33%;
+  }
 
   .site {
     &-titles {
@@ -16,9 +24,14 @@
 
     &-results {
       &-list {
-        max-height: 95%;
-        overflow: scroll;
         padding-bottom: $global-padding * 2.5;
+        padding-left: $global-padding;
+        padding-right: $global-padding;
+
+        @include breakpoint(large) {
+          max-height: 90%;
+          overflow: scroll;
+        }
       }
 
       &-item {

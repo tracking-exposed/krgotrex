@@ -1,18 +1,10 @@
 #map-sites {
   background-color: rgba($darkturquoise-color, 0.8);
+  height: 100vh;
+  position: relative;
+  z-index: 1;
 
   @include breakpoint(large) {
-    background-image:
-      linear-gradient(
-        to right,
-        rgba($darkturquoise-color, 0.8),
-        rgba($darkturquoise-color, 0.8) 56%,
-        $mediumturquoise-color 56%,
-        $mediumturquoise-color
-      );
-  }
-
-  #map, #sites {
-    height: 100vh;
+    height: 95vh;
   }
 }

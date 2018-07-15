@@ -49,4 +49,26 @@ $(function() {
       }
     }
   });
+
+});
+
+/**
+ * Leaflet Map
+ */
+// const mymap = L.map('leaflet-map').setView([51.505, -0.09], 13);
+// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//   maxZoom: 18,
+//   style: 'mapbox://styles/mapbox/dark-v9',
+//   id: 'mapbox.streets',
+//   accessToken: 'pk.eyJ1IjoiZ3Jvc2NoZW5yb21hbiIsImEiOiJjampuYjZvMDUxOHRpM3FvMWZ6cTRreGVjIn0.EpyQov5DhmqQmrskmic2uQ'
+// }).addTo(mymap);
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Jvc2NoZW5yb21hbiIsImEiOiJjampuYjZvMDUxOHRpM3FvMWZ6cTRreGVjIn0.EpyQov5DhmqQmrskmic2uQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    zoom: 13,
+    center: [4.899, 52.372],
+    scrollZoom: false
 });
