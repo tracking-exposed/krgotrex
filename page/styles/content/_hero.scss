@@ -11,6 +11,7 @@
 
   &__title {
     font-weight: $global-weight-bold;
+    color: $success-color;
   }
 
   &__text {
@@ -39,6 +40,11 @@
     }
     p {
       margin-top: $global-margin;
+      line-height: 1.5;
+
+      @include breakpoint(medium) {
+        font-size: $global-font-size + 25%;
+      }
     }
   }
 }

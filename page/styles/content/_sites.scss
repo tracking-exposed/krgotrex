@@ -1,0 +1,55 @@
+.sites {
+  padding-top: 24px;
+  margin-bottom: $global-margin * 2;
+
+  .site {
+    &-titles {
+      padding-top: $global-padding;
+      padding-bottom: $global-padding;
+      box-shadow: 0 2px 3px rgba($black, 0.6);
+
+      h6 {
+        font-weight: $global-weight-bold;
+        text-transform: uppercase;
+      }
+    }
+
+    &-results {
+      &-list {
+        max-height: 95%;
+        overflow: scroll;
+        padding-bottom: $global-padding * 2.5;
+      }
+
+      &-item {
+        padding-top: $global-padding / 2;
+        padding-bottom: $global-padding / 2;
+
+        &:not(:last-child) {
+          border-bottom: $code-border;
+        }
+      }
+    }
+
+    &-details {
+      strong {
+        font-style: normal;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+
+      &__address {
+        letter-spacing: 1px;
+      }
+    }
+
+    &-googles {
+      margin-left: 0;
+      text-align: left;
+
+      .success {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

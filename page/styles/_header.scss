@@ -26,6 +26,10 @@ header {
 
       &-link {
         text-transform: uppercase;
+        
+        &:not(.header-logo) {
+          letter-spacing: 2px;
+        }
       }
     }
   }

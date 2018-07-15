@@ -1,5 +1,11 @@
-button {
+button,
+.button {
   text-transform: uppercase;
+  font-weight: $global-weight-bold;
+
+  &.success {
+    color: $mediumturquoise-color;
+  }
 
   &:hover {
     color: $white;

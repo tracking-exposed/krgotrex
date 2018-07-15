@@ -11,6 +11,34 @@ $turquoise-color: get-color(turquoise);
 $mediumturquoise-color: get-color(mediumturquoise);
 $darkturquoise-color: get-color(darkturquoise);
 
+.primary {
+  color: $primary-color;
+}
+.secondary {
+  color: $secondary-color;
+}
+.success {
+  color: $success-color;
+}
+.warning {
+  color: $warning-color;
+}
+.alert {
+  color: $alert-color;
+}
+.lightturquoise {
+  color: $lightturquoise-color;
+}
+.turquoise {
+  color: $turquoise-color;
+}
+.mediumturquoise {
+  color: $mediumturquoise-color;
+}
+.darkturquoise {
+  color: $darkturquoise-color;
+}
+
 label {
   color: $body-font-color;
 }

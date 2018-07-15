@@ -1,34 +1,5 @@
 block map
-  section#map-sites
+  #map
     .row.align-center
-      main#map.small-12.large-7.column
-        | Foo
-      aside#sites.small-12.large-5.column
-        if sites
-          .row.site-titles
-            .small-6.column.text-right
-              h6 Website tested
-            .small-6.column
-              h6 Google traces found
-          ul.row.align-middle.site-results-list
-            for site in sites
-              li.small-12.column.site-results-item
-                .row.align-middle
-                  .small-6.column.site-details.text-right
-                    address
-                      strong= site.name
-                      br
-                      .site-details__address= site.address
-                  .small-6.column
-                    - const result = results.find(r => r.id === site.lastResultId)
-                    ul.site-googles
-                      each val, index in result.googles
-                        li.row.alert
-                          small-8.large-10.column= index
-                          .small-4.large-2.column= val
-                      else
-                        li.row
-                          .column
-                            b.success Google free!
-        else
-          p Foo
+      .small-12.column
+        #leaflet-map
