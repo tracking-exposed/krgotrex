@@ -2,6 +2,8 @@
   "name": "krgotrex",
   "version": "0.0.1",
   "description": "Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) for additional information.",
+  "author": "Tracking Exposed",
+  "license": "CC-BY",
   "main": "./js/main.js",
   "scripts": {
     "start": "DEBUG=krgotrex:* node ./bin/www"
@@ -17,8 +19,6 @@
     "berlin",
     "kreuzberg"
   ],
-  "author": "Tracking Exposed",
-  "license": "CC-BY",
   "bugs": {
     "url": "https://github.com/tracking-exposed/krgotrex/issues"
   },
@@ -28,6 +28,13 @@
     "last 2 versions",
     "IE 10"
   ],
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "jquery": true
+    }
+  },
   "dependencies": {
     "express": "^4.16.3",
     "foundation-sites": "^6.4.3",

@@ -2,11 +2,7 @@
 
 body {
   background-image: url('assets/img/lashes-dark.png');
-}
-
-section {
-  padding-top: $global-padding * 2;
-  padding-bottom: $global-padding * 2;
+  background-attachment: fixed;
 }
 
 // Colors
