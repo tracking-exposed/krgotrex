@@ -13,7 +13,9 @@
   "keywords": [
     "tracking",
     "überwachung",
-    "google campus"
+    "google campus",
+    "berlin",
+    "kreuzberg"
   ],
   "author": "Tracking Exposed",
   "license": "CC-BY",
@@ -27,8 +29,6 @@
     "IE 10"
   ],
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
     "express": "^4.16.3",
     "foundation-sites": "^6.4.3",
     "morgan": "~1.9.0",

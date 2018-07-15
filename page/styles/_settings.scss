@@ -69,18 +69,22 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #827BA4,
+  primary: #1779ba,
   secondary: #504B64,
-  success: #698167,
+  success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
+  lightturquoise: #bdc6cf,
+  turquoise: #2e2d35,
+  mediumturquoise: #222129,
+  darkturquoise: #131218,
 );
-$light-gray: #bdc6cf;
-$medium-gray: #2e2d35;
-$dark-gray: #222129;
-$black: #131218;
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
 $white: #fefefe;
-$body-background: $black;
+$body-background: get-color(darkturquoise);
 $body-font-color: $light-gray;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
@@ -89,7 +93,7 @@ $global-padding: 1rem;
 $global-position: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 0;
+$global-radius: 3px;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
@@ -168,7 +172,7 @@ $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
 $anchor-color: $white;
-$anchor-color-hover: $primary-color;
+$anchor-color-hover: get-color(lightturquoise);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
@@ -284,7 +288,7 @@ $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
-$button-color: $white;
+$button-color: $light-gray;
 $button-color-alt: $black;
 $button-radius: $global-radius;
 $button-hollow-border-width: 1px;

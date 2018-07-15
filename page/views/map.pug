@@ -1,0 +1,14 @@
+block map
+  section#map.row.align-center
+    main.small-12.large-6.column
+      | Foo
+    aside.small-12.large-6.column
+      if sites
+        ul.row.align-middle
+          for site in sites
+            li.small-6.column
+              .site-name= site.name
+              .site-address= site.address
+            
+      else
+        p Foo

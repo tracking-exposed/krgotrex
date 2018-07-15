@@ -1,4 +1,7 @@
 footer {
+  background-color: $darkturquoise-color;
   padding-top: $global-padding / 2;
   padding-bottom: $global-padding / 2;
+  position: relative;
+  bottom: 0;
 }

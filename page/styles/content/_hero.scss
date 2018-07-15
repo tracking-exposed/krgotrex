@@ -1,0 +1,41 @@
+#hero {
+  background-color: rgba($primary-color, 0.25);
+  height: 95vh;
+}
+
+.hero-content {
+  height: 100%;
+
+  &__title {
+    font-weight: $global-weight-bold;
+  }
+
+  &__text {
+    justify-content: center;
+    padding-top: $global-padding;
+    padding-bottom: $global-padding;
+    text-align: center;
+
+    @include breakpoint(medium) {
+      padding-top: $global-padding * 1.5;
+      padding-bottom: $global-padding * 1.5;
+    }
+
+    @include breakpoint(large) {
+      padding-top: $global-padding * 2;
+      padding-bottom: $global-padding * 2;
+    }
+
+    h2 {
+      @include breakpoint(medium) {
+        line-height: 1.25;
+      }
+      @include breakpoint(large) {
+        font-weight: $global-weight-bold;
+      }
+    }
+    p {
+      margin-top: $global-margin;
+    }
+  }
+}

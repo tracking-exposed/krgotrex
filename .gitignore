@@ -1,7 +1,8 @@
-# Exlude
+# Exclude
 
 .npm
 node_modules
+page/node_modules
 package-lock.json
 page/package-lock.json
 .vscode

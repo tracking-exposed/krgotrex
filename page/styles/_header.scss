@@ -1,17 +1,32 @@
 header {
-  background-color: $dark-gray;
-  height: $headerHeight;
+  background-color: $darkturquoise-color;
   padding-top: $global-padding / 2;
   padding-bottom: $global-padding / 2;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+
+  @include breakpoint(medium) {
+    padding-top: $global-padding / 2;
+    padding-bottom: $global-padding / 2;
+  }
 }
 
 #main-header {
-  #header-logo {
-    font-size: 130%;
-    text-transform: uppercase;
+  nav {
+    align-items: baseline;
+    text-align: center;
+
+    @include breakpoint(medium) {
+      align-items: center;
+      text-align: left;
+    }
+
+    .header {
+      &-logo {
+        font-size: 130%;
+      }
+
+      &-link {
+        text-transform: uppercase;
+      }
+    }
   }
 }

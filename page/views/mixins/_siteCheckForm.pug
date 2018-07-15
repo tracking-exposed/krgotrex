@@ -2,14 +2,22 @@ mixin siteCheckForm(site = {})
   form(
     action=``
     method="POST"
-    class=""
-    enctype="multipart/form-data")
-
-    label(for="site") Enter your website here:
-    input(type="text" name="site" placeholder="http://www.my-site.de")
-
-    input(
-      type="submit"
-      value="Seite überprüfen"
-      id="hero-cta"
-      class="button")
+    class="row align-center form-check-site"
+    enctype="multipart/form-data"
+  )
+    fieldset(class="column")
+      h3 Check if your website is infiltrated by Google
+      .input-group
+        span.input-group-label http://
+        input(
+          type="text"
+          name="site"
+          class="input-group-field"
+          placeholder="www.my-site.de"
+        )
+        .input-group-button
+          button(
+            type="submit"
+            id="hero-cta"
+            class="button"
+          ) Check website

@@ -1,4 +1,5 @@
 const https = require('https');
+const Site = require('../../models/site');
 const analyzedSitesUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/sites/krgotrex';
 
 let services = {};
@@ -10,7 +11,7 @@ let services = {};
  */
 services.getAnalyzedSites = new Promise((resolve, reject) => {
   https.get(analyzedSitesUrl, (response) => {
-    let sites = {};
+    let sites = [];
     // Get the data as utf8 strings.
     // If an encoding is not set, Buffer objects will be received.
     response.setEncoding('utf8');

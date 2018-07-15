@@ -1,0 +1,33 @@
+.form-check-site {
+  h3 {
+    margin-bottom: $global-margin;
+    font-weight: $global-weight-bold;
+  }
+
+  .input-group {
+    &-field {
+      height: 48px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+
+      @include breakpoint(medium) {
+        height: 52px;
+      }
+
+      @include breakpoint(large) {
+        height: 56px;
+      }
+    }
+
+    &-button {
+      button {
+        @include breakpoint(small only) {
+          max-width: 115px;
+          word-wrap: break-word;
+          word-break: break-word;
+          white-space: pre-wrap;
+        }
+      }
+    }
+  }
+}
