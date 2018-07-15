@@ -23,7 +23,7 @@ block map
                     - const result = results.find(r => r.id === site.lastResultId)
                     ul.site-googles
                       each val, index in result.googles
-                        li.row
+                        li.row.alert
                           small-8.large-10.column= index
                           .small-4.large-2.column= val
                       else

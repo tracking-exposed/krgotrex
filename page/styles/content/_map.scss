@@ -68,6 +68,10 @@
         margin-left: 0;
         text-align: left;
 
+        .alert {
+          color: $alert-color;
+        }
+
         .success {
           color: $success-color;
           text-transform: uppercase;
