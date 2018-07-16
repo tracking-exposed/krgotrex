@@ -2,6 +2,10 @@
   height: 100%;
   width: 100%;
 
+  @include breakpoint(medium down) {
+    height: 100vh;
+  }
+
   @include breakpoint(large) {
     position: absolute;
     top: 0;

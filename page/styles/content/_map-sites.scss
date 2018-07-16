@@ -4,6 +4,11 @@
   position: relative;
   z-index: 1;
 
+  @include breakpoint(medium down) {
+    min-height: 100vh;
+    height: auto;
+  }
+
   @include breakpoint(large) {
     height: 95vh;
   }
