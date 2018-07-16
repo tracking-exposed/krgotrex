@@ -9,11 +9,3 @@ exports.homePage = async (req, res, next) => {
     results
   })
 };
-
-// exports.analyzedSites = async (req, res) => {
-//   const sites = await dataService.getAnalyzedSites;
-//   res.render('map', {
-//     sites,
-//     siteName: siteNames.analyzedSites
-//   });
-// };

@@ -9,4 +9,11 @@
     bottom: 0;
     left: 0;
   }
+
+  .mapboxgl-marker {
+    fill: $primary-color;
+    display: block;
+    border: none;
+    cursor: pointer;
+  }
 }

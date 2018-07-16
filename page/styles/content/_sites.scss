@@ -12,9 +12,10 @@
 
   .site {
     &-titles {
+      box-shadow: 0 2px 3px rgba($black, 0.6);
       padding-top: $global-padding;
       padding-bottom: $global-padding;
-      box-shadow: 0 2px 3px rgba($black, 0.6);
+      position: relative;
 
       h6 {
         font-weight: $global-weight-bold;

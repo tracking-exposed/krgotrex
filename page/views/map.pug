@@ -1,2 +1,52 @@
 block map
   #map
+  script.
+    /**
+    * Leaflet Mapbox
+    */
+    const center = [13.429, 52.494]; // Umspannwerk Kreuzberg
+    let geojson = {
+      "type": "SitesCollection",
+      "sites": []
+    };
+    const s = !{JSON.stringify(sites)};
+
+    s.forEach(site => {
+      const siteMarker = {
+        "type": "Site",
+        "properties": {
+          "message": site.name
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            site.longitude,
+            site.latitude
+          ]
+        }
+      }
+      geojson.sites = [
+        ...geojson.sites,
+        siteMarker
+      ]
+    });
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Jvc2NoZW5yb21hbiIsImEiOiJjampuYjZvMDUxOHRpM3FvMWZ6cTRreGVjIn0.EpyQov5DhmqQmrskmic2uQ';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v9',
+        zoom: 15,
+        center,
+        scrollZoom: false,
+        NavigationControl: false
+    });
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+
+    // add markers to map
+    geojson.sites.forEach((marker) => {
+      // add marker to map
+      new mapboxgl.Marker()
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+    });
