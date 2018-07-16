@@ -42,6 +42,7 @@ block map
     });
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+    map.dragPan.disable();
 
     // add markers to map
     geojson.sites.forEach((marker) => {
