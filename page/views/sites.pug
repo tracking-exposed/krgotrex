@@ -5,9 +5,9 @@ block sites
         h6 Websites tested
       .small-6.column
         h6 Google traces found
-    ul.row.align-middle.site-results-list
+    ul.row.align-center.align-middle.site-results-list
       for site in sites
-        li.small-12.column.site-results-item
+        li.small-12.medium-8.large-12.column.site-results-item
           .row.align-middle
             .small-6.column.site-details.text-right
               address
@@ -18,7 +18,7 @@ block sites
               - const result = results.find(r => r.id === site.lastResultId)
               ul.site-googles
                 each val, index in result.googles
-                  li.row.alert
+                  li.row.align-middle.alert
                     small-8.large-10.column= index
                     .small-4.large-2.column= val
                 else
