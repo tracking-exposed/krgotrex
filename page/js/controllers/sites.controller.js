@@ -7,5 +7,5 @@ exports.homePage = async (req, res, next) => {
   res.render('page', {
     sites,
     results
-  })
+  });
 };

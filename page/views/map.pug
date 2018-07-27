@@ -4,35 +4,11 @@ block map
     /**
     * Leaflet Mapbox
     */
-    const center = [13.429, 52.494]; // Umspannwerk Kreuzberg
-    let geojson = {
-      "type": "SitesCollection",
-      "sites": []
-    };
-    const s = !{JSON.stringify(sites)};
-
-    s.forEach(site => {
-      const siteMarker = {
-        "type": "Site",
-        "properties": {
-          "message": site.name
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            site.longitude,
-            site.latitude
-          ]
-        }
-      }
-      geojson.sites = [
-        ...geojson.sites,
-        siteMarker
-      ]
-    });
-
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Jvc2NoZW5yb21hbiIsImEiOiJjampuYjZvMDUxOHRpM3FvMWZ6cTRreGVjIn0.EpyQov5DhmqQmrskmic2uQ';
-    const map = new mapboxgl.Map({
+
+    // Create map
+    const center = [13.429, 52.494]; // Umspannwerk Kreuzberg
+    let map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/dark-v9',
         zoom: 16,
@@ -42,12 +18,61 @@ block map
     });
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-    map.dragPan.disable();
+    map.scrollZoom.disable();
 
-    // add markers to map
-    geojson.sites.forEach((marker) => {
-      // add marker to map
-      new mapboxgl.Marker()
-        .setLngLat(marker.geometry.coordinates)
-        .addTo(map);
-    });
+    // Create markers and geodata
+    const siteData = !{JSON.stringify(sites)};
+    const geojson = {
+      "type": "FeatureCollection",
+      "features": siteData.map(site => {
+        // Prepare marker
+        return {
+          "type": "Feature",
+          "properties": {
+            "title": site.name,
+            "description": `
+              <a href="${site.href}" title="${site.name}" target="_blank">
+                <h3>${site.name}</h3>
+              </a>
+              <p>${site.address || ''}</p>
+            `
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              site.longitude,
+              site.latitude
+            ]
+          }
+        }
+      })
+    };
+
+    // Assemble map
+    map.on('load', () => {
+      // Define layer with geo data
+      map.addLayer({
+        "id": "markers",
+        "type": "symbol",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": geojson
+          },
+        }
+      });
+
+      // Add Markers with Popups to map
+      // @link https://www.mapbox.com/help/custom-markers-gl-js/#attach-popups-to-markers
+      geojson.features.forEach((feature) => {
+        new mapboxgl.Marker({
+          color: "#1779ba" // primary color from Foundation settings
+        })
+          .setLngLat(feature.geometry.coordinates)
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(feature.properties.description)
+          )
+          .addTo(map);
+      });
+    }); // /on.load()

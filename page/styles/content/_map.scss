@@ -14,10 +14,28 @@
     left: 0;
   }
 
-  .mapboxgl-marker {
-    fill: $primary-color;
-    display: block;
-    border: none;
-    cursor: pointer;
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
+
+  .mapboxgl-popup-content {
+    color: $secondary-color;
+
+    a {
+      color: $primary-color;
+
+      &:hover {
+        color: scale-color($primary-color, $lightness: -15%);
+      }
+    }
+
+    .mapboxgl-popup-close-button {
+      padding: 4px;
+
+      &:hover {
+        background-color: $lightturquoise-color;
+        color: $secondary-color;
+      }
+    }
   }
 }
