@@ -21,6 +21,10 @@
   .mapboxgl-popup-content {
     color: $secondary-color;
 
+    h3 {
+      line-height: 1.2;
+    }
+
     a {
       color: $primary-color;
 

@@ -1,9 +1,6 @@
 "use strict";
 
-
 $(function() {
-  console.log('init https://kreuzberg.google.tracking.exposed/api/v1/sites/krgotrex');
-
   // URL updates and the element focus is maintained
   // originally found via in Update 3 on http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links
 
