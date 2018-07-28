@@ -6,18 +6,18 @@ mixin siteCheckForm(site = {})
     enctype="multipart/form-data"
   )
     fieldset(class="column")
-      h3 #{i18n.__("form.siteCheck.title")}
+      h3 #{i18n.__("formSiteCheckTitle")}
       .input-group
-        span.input-group-label #{i18n.__("form.siteCheck.label")}
+        span.input-group-label #{i18n.__("formSiteCheckLabel")}
         input(
           type="text"
           name="site"
           class="input-group-field"
-          placeholder="www.my-site.de"
+          placeholder!=i18n.__('formSiteCheckPlaceholder')
         )
         .input-group-button
           button(
             type="submit"
             id="hero-cta"
             class="button"
-          ) Check website
+          ) #{i18n.__("formSiteCheckButtonText")}

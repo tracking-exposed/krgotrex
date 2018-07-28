@@ -26,7 +26,12 @@ header {
 
       &-link {
         text-transform: uppercase;
-        
+        padding-left: $global-padding / 2;
+
+        &:not(:last-child) {
+          padding-right: $global-padding / 2;
+        }
+
         &:not(.header-logo) {
           letter-spacing: 2px;
         }

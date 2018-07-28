@@ -1,8 +1,17 @@
 {
   "headerLinksMap": "Karte",
 
-  "heroLead": "Du willst Google in Kreuzberg loswerden? <em>Klar!</em><br><span class='success'>Aber was ist mit Deiner Webseite?",
+  "heroLeadParagraph": "Willst Du Google aus Kreuzberg loswerden? <em>Klar!</em><br><span class='success'>Aber was ist mit Deiner Webseite?",
+  "heroSubParagraph": "Google Tracker und Algorithmen <em>infiltrieren</em> alle Webseiten, die Du je besucht hast.<br> Also solltest Du diese vielleicht auch loswerden.",
 
   "formSiteCheckTitle": "Überprüfe, ob Deine Seite von Google benutzt wird",
-  "formSiteCheckLabel": "http://"
+  "formSiteCheckLabel": "http://",
+  "formSiteCheckPlaceholder": "www.meine-seite.de",
+  "formSiteCheckButtonText": "Überprüfen",
+
+  "sitesListSitenameTitle": "Getestete Seiten",
+  "sitesListResultsTitle": "Gefundene Google Spuren",
+  "sitesListResultGoogleFree": "Google-frei",
+
+  "footerClaim": "Sag es weiter!"
 }
