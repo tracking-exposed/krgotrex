@@ -42,6 +42,16 @@ header {
           text-transform: uppercase;
           padding-right: $global-padding;
         }
+
+        &-lang {
+          color: $lightturquoise-color;
+
+          &:hover,
+          &.active {
+            color: $anchor-color;
+            text-shadow: 1px 0 0 currentColor; // Fake bold font weight
+          }
+        }
       }
     }
   }

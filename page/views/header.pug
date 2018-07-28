@@ -1,9 +1,10 @@
 header#main-header
   nav.row.align-center
     .small-12.medium-8.large-6.column
-      a.header-logo.header-link(href="/")
-        abbr(title=title) #{shortTitle}
+      a.header-logo.header-link(
+        href="/",
+        title=title) #{shortTitle}
     .small-12.medium-4.large-6.column.text-right
       a.header-link.priority(href="#map-sites") #{i18n.__("headerLinksMap")}
-      a.header-link(href="/de") Deutsch
-      a.header-link(href="/en") English
+      a#header-link-de.header-link.header-link-lang(href="/de") Deutsch
+      a#header-link-en.header-link.header-link-lang(href="/en") English

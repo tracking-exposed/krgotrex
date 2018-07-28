@@ -46,5 +46,19 @@ $(function() {
       }
     }
   });
+
+  function getCookieValue(a) {
+      let b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+      return b ? b.pop() : '';
+  }
+
+  function setActiveLinkClass() {
+    const locale = getCookieValue('i18n');
+    if (locale) {
+      $(`#header-link-${locale}`).addClass('active');
+    }
+  };
+  setActiveLinkClass();
+
 });
 
