@@ -29,7 +29,6 @@ $(function() {
         var $target = $(hash), target = this.hash;
         if (target) {
           $(this).click(function (event) {
-            console.log(event);
             event.preventDefault();
             $('html, body').animate({scrollTop: $target.offset().top}, 1000, function () {
               location.hash = target; 
