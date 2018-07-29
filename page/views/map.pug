@@ -22,44 +22,37 @@ block map
 
     // Create markers and geodata
     const siteData = !{JSON.stringify(sites)};
+    const features = siteData.map(site => {
+      return {
+        "type": "Feature",
+        "properties": {
+          "title": site.name,
+          "description": `
+            <a href="${site.href}" title="${site.name}" target="_blank">
+              <h3>${site.name}</h3>
+            </a>
+            <p>${site.address || ''}</p>
+          `
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ site.longitude, site.latitude]
+        }
+      }
+    });
     const geojson = {
       "type": "FeatureCollection",
-      "features": siteData.map(site => {
-        // Prepare marker
-        return {
-          "type": "Feature",
-          "properties": {
-            "title": site.name,
-            "description": `
-              <a href="${site.href}" title="${site.name}" target="_blank">
-                <h3>${site.name}</h3>
-              </a>
-              <p>${site.address || ''}</p>
-            `
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              site.longitude,
-              site.latitude
-            ]
-          }
-        }
-      })
+      "features": features
     };
 
-    // Assemble map
+    // Assemble map and add layer with markers
     map.on('load', () => {
-      // Define layer with geo data
       map.addLayer({
         "id": "markers",
         "type": "symbol",
         "source": {
           "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": geojson
-          },
+          "data": geojson
         }
       });
 
