@@ -24,27 +24,38 @@ header {
         font-size: 130%;
       }
 
+      &-menu {
+        justify-content: flex-start;
+
+        @include breakpoint(medium) {
+          justify-content: flex-end;
+        }
+      }
+
       &-link {
-        padding-left: $global-padding / 2;
-
-        &:nth-child(2) {
-          padding-left: $global-padding;
-        }
-
-        &:not(:last-child) {
-          padding-right: $global-padding / 2;
-        }
-
         &.priority {
-          border-right: $code-border;
-          border-right-color: currentColor;
           letter-spacing: 2px;
+          text-align: right;
           text-transform: uppercase;
-          padding-right: $global-padding;
+
+          @include breakpoint(medium) {
+            border-right: $code-border;
+            border-right-color: currentColor;
+            text-align: center;
+          }
+
+          @include breakpoint(large) {
+            text-align: right;
+          }
         }
 
         &-lang {
           color: $lightturquoise-color;
+          text-align: left;
+
+          @include breakpoint(medium) {
+            text-align: right;
+          }
 
           &:hover,
           &.active {
