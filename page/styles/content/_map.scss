@@ -15,11 +15,12 @@
   }
 
   .mapboxgl-popup {
-    max-width: 200px;
+    max-width: 250px;
   }
 
   .mapboxgl-popup-content {
     color: $secondary-color;
+    hyphens: auto;
 
     h3 {
       line-height: 1.2;
