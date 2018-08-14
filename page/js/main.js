@@ -1,9 +1,6 @@
 "use strict";
 
-
 $(function() {
-  console.log('init https://kreuzberg.google.tracking.exposed/api/v1/sites/krgotrex');
-
   // URL updates and the element focus is maintained
   // originally found via in Update 3 on http://www.learningjquery.com/2007/10/improved-animated-scrolling-script-for-same-page-links
 
@@ -32,7 +29,6 @@ $(function() {
         var $target = $(hash), target = this.hash;
         if (target) {
           $(this).click(function (event) {
-            console.log(event);
             event.preventDefault();
             $('html, body').animate({scrollTop: $target.offset().top}, 1000, function () {
               location.hash = target; 
@@ -49,5 +45,19 @@ $(function() {
       }
     }
   });
+
+  function getCookieValue(a) {
+      let b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+      return b ? b.pop() : '';
+  }
+
+  function setActiveLinkClass() {
+    const locale = getCookieValue('i18n');
+    if (locale) {
+      $(`#header-link-${locale}`).addClass('active');
+    }
+  };
+  setActiveLinkClass();
+
 });
 

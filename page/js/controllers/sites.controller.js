@@ -6,6 +6,7 @@ exports.homePage = async (req, res, next) => {
 
   res.render('page', {
     sites,
-    results
-  })
+    results,
+    i18n: res
+  });
 };

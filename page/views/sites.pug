@@ -1,10 +1,10 @@
 block sites
   aside#sites
-    .row.site-titles
+    .row.align-middle.site-titles
       .small-6.column.text-right
-        h6 Websites tested
+        h6 #{i18n.__("sitesListSitenameTitle")}
       .small-6.column
-        h6 Google traces found
+        h6 #{i18n.__("sitesListResultsTitle")}
     ul.row.align-center.align-middle.site-results-list
       for site in sites
         li.small-12.medium-8.large-12.column.site-results-item
@@ -24,4 +24,4 @@ block sites
                 else
                   li.row
                     .column
-                      b.success Google free!
+                      b.success #{i18n.__("sitesListResultGoogleFree")}

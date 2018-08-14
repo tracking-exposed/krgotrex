@@ -24,11 +24,44 @@ header {
         font-size: 130%;
       }
 
+      &-menu {
+        justify-content: flex-start;
+
+        @include breakpoint(medium) {
+          justify-content: flex-end;
+        }
+      }
+
       &-link {
-        text-transform: uppercase;
-        
-        &:not(.header-logo) {
+        &.priority {
           letter-spacing: 2px;
+          text-align: right;
+          text-transform: uppercase;
+
+          @include breakpoint(medium) {
+            border-right: $code-border;
+            border-right-color: currentColor;
+            text-align: center;
+          }
+
+          @include breakpoint(large) {
+            text-align: right;
+          }
+        }
+
+        &-lang {
+          color: $lightturquoise-color;
+          text-align: left;
+
+          @include breakpoint(medium) {
+            text-align: right;
+          }
+
+          &:hover,
+          &.active {
+            color: $anchor-color;
+            text-shadow: 1px 0 0 currentColor; // Fake bold font weight
+          }
         }
       }
     }

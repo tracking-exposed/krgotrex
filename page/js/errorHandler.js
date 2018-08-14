@@ -18,7 +18,7 @@ exports.catchErrors = (fn) => {
   If we hit a route that is not found, we mark it as 404 and pass it along to the next error handler to display
 */
 exports.notFound = (req, res, next) => {
-  const err = new Error('Nichts gefunden');
+  const err = new Error('Nothing found');
   err['status'] = 404;
   next(err);
 };

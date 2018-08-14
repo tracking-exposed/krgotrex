@@ -6,18 +6,18 @@ mixin siteCheckForm(site = {})
     enctype="multipart/form-data"
   )
     fieldset(class="column")
-      h3 Check if your website is infiltrated by Google
+      h3 #{i18n.__("formSiteCheckTitle")}
       .input-group
-        span.input-group-label http://
+        span.input-group-label #{i18n.__("formSiteCheckLabel")}
         input(
           type="text"
           name="site"
           class="input-group-field"
-          placeholder="www.my-site.de"
+          placeholder!=i18n.__('formSiteCheckPlaceholder')
         )
         .input-group-button
           button(
             type="submit"
             id="hero-cta"
-            class="button success"
-          ) Check website
+            class="button"
+          ) #{i18n.__("formSiteCheckButtonText")}
