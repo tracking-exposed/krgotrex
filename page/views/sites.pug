@@ -7,21 +7,22 @@ block sites
         h6 #{i18n.__("sitesListResultsTitle")}
     ul.row.align-center.align-middle.site-results-list
       for site in sites
-        li.small-12.medium-8.large-12.column.site-results-item
-          .row.align-middle
-            .small-6.column.site-details.text-right
-              address
-                strong= site.name
-                br
-                .site-details__address= site.address
-            .small-6.column
-              - const result = results.find(r => r.id === site.lastResultId)
-              ul.site-googles
-                each val, index in result.googles
-                  li.row.align-middle.alert
-                    small-8.large-10.column= index
-                    .small-4.large-2.column= val
-                else
-                  li.row
-                    .column
-                      b.success #{i18n.__("sitesListResultGoogleFree")}
+        - const result = results.find(r => r.id === site.lastResultId) 
+        if result
+          li.small-12.medium-8.large-12.column.site-results-item
+            .row.align-middle
+              .small-6.column.site-details.text-right
+                address
+                  strong= site.name
+                  br
+                  .site-details__address= site.address
+              .small-6.column
+                ul.site-googles
+                  each val, index in result.googles
+                    li.row.align-middle.alert
+                      small-8.large-10.column= index
+                      .small-4.large-2.column= val
+                  else
+                    li.row
+                      .column
+                        b.success #{i18n.__("sitesListResultGoogleFree")}
