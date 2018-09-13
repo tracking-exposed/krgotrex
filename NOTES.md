@@ -7,37 +7,41 @@
 
 this command take a number as option, 0 > iteration < 49
 
-    DEBUG=*,-lib:mongo:read bin/osmfetch.js --iteration 5
+    invi.sible.link/campaigns/krgotrex DEBUG=*,-lib:mongo:read bin/osmfetch.js --iteration 5
 
-    20041 ۞  ~/Dev/invi.sible.link/campaigns/krgotrex DEBUG=*,-lib:mongo:read bin/osmfetch.js --iteration 5
-      osmfetch Building destination path, osm and 5 +0ms
-      osmfetch checking if destination osm/5 exists +2ms
-      osmfetch creating osm/5 +4ms
-      osmfetch Reading locationmap config/fetchmap.json +3ms
-      lib:various Retrieved 49 objects from config/fetchmap.json +14ms
-      osmfetch Getting URL: https://api.openstreetmap.org/api/0.6/map?bbox=13.428,52.495,13.43,52.497 +0ms
-      osmfetch Saving 117597 XML from OSM in osm/5/osm-output.xml +461ms
-      osmfetch Retireved 464 nodes +49ms
-      osmfetch looking in 41 notes with tag +2ms
-      osmfetch -> Adding https://www.getraenke-hoffmann.de/ | Getränke Hoffmann | null | beverages +1ms
-      osmfetch -> Adding http://meute.blogsport.de/ | Meuterei | Reichenberger Straße | pub +1ms
-      osmfetch -> Adding http://filmkunstcafe.blogspot.de | Filmkunstbar Fitzcarraldo | Reichenberger Straße | video +0ms
-      osmfetch Failure! +0ms
-      osmfetch -> Adding http://boulderklubkreuzberg.de | Boulderklub Kreuzberg | Ohlauer Straße | null +0ms
-      osmfetch -> Adding https://www.backbordvegan.com/ | Backword | Reichenberger Straße | fast_food +0ms
-      osmfetch Saving 5 sites on osm/5/selected-shops.json +1ms
-      lib:csv register in `sites` of https://www.getraenke-hoffmann.de/ +2ms
-      lib:csv register in `sites` of https://www.backbordvegan.com/ +32ms
-      lib:csv register in `sites` of http://boulderklubkreuzberg.de +4ms
-      lib:csv register in `sites` of http://filmkunstcafe.blogspot.de +4ms
-      lib:csv register in `sites` of http://meute.blogsport.de/ +6ms
-      osmfetch Saved in database 5 new sites, checked with frequency of 5 +6ms
+it returns:
+
+    osmfetch Building destination path, osm and 5 +0ms
+    osmfetch checking if destination osm/5 exists +2ms
+    osmfetch creating osm/5 +4ms
+    osmfetch Reading locationmap config/fetchmap.json +3ms
+    lib:various Retrieved 49 objects from config/fetchmap.json +14ms
+    osmfetch Getting URL: https://api.openstreetmap.org/api/0.6/map?bbox=13.428,52.495,13.43,52.497 +0ms
+    osmfetch Saving 117597 XML from OSM in osm/5/osm-output.xml +461ms
+    osmfetch Retireved 464 nodes +49ms
+    osmfetch looking in 41 notes with tag +2ms
+    osmfetch -> Adding https://www.getraenke-hoffmann.de/ | Getränke Hoffmann | null | beverages +1ms
+    osmfetch -> Adding http://meute.blogsport.de/ | Meuterei | Reichenberger Straße | pub +1ms
+    osmfetch -> Adding http://filmkunstcafe.blogspot.de | Filmkunstbar Fitzcarraldo | Reichenberger Straße | video +0ms
+    osmfetch Failure! +0ms
+    osmfetch -> Adding http://boulderklubkreuzberg.de | Boulderklub Kreuzberg | Ohlauer Straße | null +0ms
+    osmfetch -> Adding https://www.backbordvegan.com/ | Backword | Reichenberger Straße | fast_food +0ms
+    osmfetch Saving 5 sites on osm/5/selected-shops.json +1ms
+    lib:csv register in `sites` of https://www.getraenke-hoffmann.de/ +2ms
+    lib:csv register in `sites` of https://www.backbordvegan.com/ +32ms
+    lib:csv register in `sites` of http://boulderklubkreuzberg.de +4ms
+    lib:csv register in `sites` of http://filmkunstcafe.blogspot.de +4ms
+    lib:csv register in `sites` of http://meute.blogsport.de/ +6ms
+    osmfetch Saved in database 5 new sites, checked with frequency of 5 +6ms
 
 # website analysis
 
 When the sites are registered in `sites` collection, the invi.sible.link command can process them:
 
-	20046 ۞  ~/Dev/invi.sible.link DEBUG=* bin/queueOPush.js --campaign krgotrex
+	invi.sible.link DEBUG=*,-lib:mongo:read bin/queueOPush.js --campaign krgotrex
+
+It returns:
+
 	  bin:queueOPush Welcome to the queue opportunistic pusher +0ms
 	  bin:queueOPush - campaign is set as krgotrex +2ms
 	  bin:queueOPush First step: looking in `sites` table +0ms
