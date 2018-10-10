@@ -1,0 +1,20 @@
+-- 
+Hello everybody,
+
+persons from the antigentrification-scene in Kreuzberg want to work together with activists from the critical Programming-scene in doing awareness-work about the connections between gentrification, start-up-culture and "digital colonising" (exploitation of userdata). The occasion is Googles plan of establishing a campus for start-ups at ohlauer Straße, in the middle of a residential area.
+
+During the recent protests the question of how Google and the other tech-giants of digital capitalism get their hands on the data on which their power rests, has not yet been adressed: they provide free services and applications, with which they gather userdata and create userprofiles. Preferences and activities of the users are integrated in those, to be used for marketing, product development and for political influence.
+
+On a meeting we want to make ourselves aware of some of the Structures of this surveillance-capitalism, get to know some forms of safety against digital exploitation and think about how to inform our friends, flatmates and neighbors.
+
+In the long run we plan a campaign to document data-exploitation in our neighborhood. With awareness-trainings and support for the usage of alternative products to those of Google & Co, we want to counter it. This way, we want to complement the activities for strengthening the local community with know-how and programs for technological self-determination - and you can help us.
+-- 
+Hallo allerseits,
+
+Personen aus der stadtpolitischen Szene in Kreuzberg und Aktivisten aus der kritischen Programmier-Szene wollen bei der Aufklärungsarbeit über den Zusammenhang von Gentrifizierung, Start-up-Kultur und "digitaler Kolonisierung" (Ausbeutung von Nutzer*innen-Daten) zusammenarbeiten. Anlass ist die Absicht von Google, einen Campus für Start-ups an der Ohlauer Straße, mitten in einem Wohngebiet zu eröffnen.
+
+Bei den bisherigen Protesten ging es kaum um die Frage, wie Google und andere tech-giganten des digitalen Kapitalismus eigentlich an die Daten herankommen, auf denen ihre Macht gründet: Sie stellen gratis Dienste und Programme bereit, über die sie leicht Daten sammeln und Nutzer*innen-Profile anlegen können. In diesen werden deren Vorlieben und Aktivitäten zusammengefasst, und u.a. zu Marketingzwecken, zur Produktentwicklung, und für die politische Einflussnahme verwendet.
+
+Auf einem gemeinsamen Treffen wollen wir uns über einige Strukturen dieses Überwachungs-Kapitalismus bewusst werden, Formen zum Schutz vor digitaler Ausbeutung kennenlernen und überlegen, wie wir unsere Freunde, Mitbewohner*innen und Nachbar*innen im Kiez aufklären können.
+
+Längerfristig planen wir eine Kampagne, in welcher die Datenausbeutung im Kiez dokumentiert werden kann. Mithilfe von Awareness-Trainings und der Unterstützung bei der Nutzung von Alternativprodukten zu Google & Co wollen wir versuchen, ihr auch praktisch zu begegnen. Damit soll die Arbeit für ein starkes Gemeinwesen im Kiez durch Know-how und Programme für die technologische Selbstbestimmung ergänzt werden - und ihr könnt uns dabei helfen.
