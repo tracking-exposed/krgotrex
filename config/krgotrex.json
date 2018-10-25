@@ -1,4 +1,7 @@
 {
     "port": "7020",
-    "interface": "127.0.0.1"
+    "interface": "127.0.0.1",
+
+    "maxSeconds": 30,
+    "root": "phantomsites"
 }
