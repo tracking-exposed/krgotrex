@@ -1,0 +1,21 @@
+{
+  "headerLinksMap": "Map",
+
+  "heroLeadParagraph": "Do you want to get rid of Google in Kreuzberg?   <em>Sure!</em><br><span class='success'>But what about your website?",
+  "heroSubParagraph": "Google's trackers and algorithms <em>infiltrated</em> all the websites you have ever visited.<br> So maybe you should get rid of them as well.",
+
+  "formSiteCheckTitle": "Check if your website is infiltrated by Google",
+  "formSiteCheckLabel": "http://",
+  "formSiteCheckPlaceholder": "www.my-site.com",
+  "formSiteCheckButtonText": "Check",
+
+  "sitesListSitenameTitle": "Websites tested",
+  "sitesListResultsTitle": "Google traces found",
+  "sitesListResultGoogleFree": "Google free",
+
+  "footerClaim": "Spread the word!",
+
+  "introTextFirst": "Google is massively spying on every user of the internet, recording their behaviours, habits and preferences, to better profile them and make them click on advertisement. It relatively easy to imagine how they do this, without being a computer expert, when people voluntarily use Google products (search, maps, gmail, android). Yet a lot happens in ways that are harder to see: Google extends its network of surveillance by collecting data through <b>other people's websites!</b> Often, for the sake of simplicity, or because they just got used to it, designers of websites include ‟free” technology from Google (analytics, javascript of even benign fonts!) within the sites they develop, turning potentially <b>your website</b> into spyware that will track users and report their activities to Google. Sounds like a scam, doesn't it?",
+  "introTextSecond": "This website helps expose this scheme for extorting/tapping data from the users of anyone and everyone's website. By making this tracking visible we hope that many will realize that they are involuntarily part of enabling the dominance of this dangerous data-colonial empire, and somehow unknowingly ‟selling” their own users and visitors to Google, instead of building a trust-relationship to them. We therefore aim to promote and enable the use of alternatives to Google's services, as to empower everyone within our communities to build a safer web experience for everyone, free of commercial tracking and profiling."
+
+}

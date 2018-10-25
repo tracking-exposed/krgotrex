@@ -30,7 +30,7 @@ The `_settings.scss` file in the `/styles` directory sets default values for the
 If you add a new style partial please name them with leading underscores and group them in folders that represent the corresponding components. For example:
 
 ```
-  page
+  site
   |
   ├── styles
   │   ├── _settings.scss
@@ -51,6 +51,6 @@ If you add a new style partial please name them with leading underscores and gro
   .   .
 ```
 
-**Remember to import new `.scss` files in the `_style.scss` file which is the main output file that is getting compiled to the `style.css` file in the `/page` directory.
+**Remember to import new `.scss` files in the `_style.scss` file which is the main output file that is getting compiled to the `style.css` file in the `/site` directory.
 
 Whenever you change a `.js` or `.scss` file the server will detect those changes but you'll have to manually reload the page.

@@ -1,4 +1,4 @@
-#!/usr/bin/env nodejs
+#!/usr/bin/env node
 var _ = require('lodash');
 var Promise = require('bluebird');
 var moment = require('moment');
@@ -120,7 +120,7 @@ return fs
                 var name = fuzzy('name', t);
 
                 if(!website) {
-                    debug("Failure!");
+                    debug("❌ Failure with %j", t);
                     return memo;
                 }
 

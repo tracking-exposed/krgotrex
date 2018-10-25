@@ -2,7 +2,12 @@
 
 .npm
 node_modules
-page/node_modules
 package-lock.json
 page/package-lock.json
 .vscode
+osm/*
+
+web-accessible/css/
+web-accessible/js/
+web-accessible/lib/
+web-accessible/plugin/

@@ -4,8 +4,9 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('page:server');
+var app = require('../site/app');
+var express = require('express');
+var debug = require('debug')('krgotrex:server');
 var http = require('http');
 
 /**
@@ -87,5 +88,7 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  process.chdir('site');
   console.log(`Server is running. ✅ Browse to http://localhost:${addr.port} \n\n☝🏼  Reload the page to see changes in JS or SCSS files \n`);
+  app.use('/p', express.static('../web-accessible'));
 }

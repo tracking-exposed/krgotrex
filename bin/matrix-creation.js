@@ -2,20 +2,23 @@
 var _ = require('lodash');
 var fs = require('fs');
 var parser = require('xml2json');
+var debug = require('debug')('matrix-creation');
 
 /* The core is here 52.49414, 13.42903 */
+//  left, bottom, right, top
+
+// these measuremet are kept as integer, the SQUARE has 
+// a distance of 0.002, it means "2" and then divided by 1k
 var rootOfEvil = {
     "x": 52494,
     "y": 13429
 };
-// these measuremet are kept as integer, the SQUARE has 
-// a distance of 0.002, it means "2" and then divided by 1k
 
 var matrix = [];
 var begin = 7;
 
-console.log("This script produce the content used in `config/fetchmap.json`");
 function caster(input) {
+
     var ret = input - _.round((begin / 2), 0)
     return ret;
 };
@@ -30,20 +33,19 @@ _.times(begin, function(x) {
         var block = {
             distance: distance,
             square: [ cx, cy ],
-            left: (rootOfEvil.y + (4 * cy) - 1) / 1000,
-            bottom: (rootOfEvil.x + (4 * cx) - 1) / 1000,
-            right: (rootOfEvil.y + (4 * cy) + 1) / 1000,
-            top: (rootOfEvil.x + (4 * cx) + 1) / 1000 
+            left: (rootOfEvil.y + (2 * cy) - 1) / 1000,
+            bottom: (rootOfEvil.x + (2 * cx) - 1) / 1000,
+            right: (rootOfEvil.y + (2 * cy) + 1) / 1000,
+            top: (rootOfEvil.x + (2 * cx) + 1) / 1000 
         };
         matrix.push(block);
     });
 });
 
 var sequence = _.map(_.orderBy(matrix, 'distance'), function(entry, i) {
-    /* this was `day`, in theory, to foresee how daily the coverage increase
-     * but in practice, it can also not be daily */
-    entry.instance = i +1;
+    entry.day = i +1;
     return entry;
 });
+
 
 console.log(JSON.stringify(_.orderBy(matrix, 'distance'), undefined, 2));
