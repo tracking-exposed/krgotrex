@@ -69,5 +69,17 @@ $(function() {
   };
   setActiveLinkClass();
 
+    /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
+  $("a[data-route]").on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      $(".component").hide();
+      console.log("yayu");
+      const routeId = `#component-${$(this).attr('data-route')}`;
+      $(routeId).show();
+      // TODO highlight on tab
+  });
+
 });
 
