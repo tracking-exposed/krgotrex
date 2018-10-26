@@ -1,6 +1,5 @@
 const express = require('express'),
       session = require('express-session'),
-      cookieParser = require('cookie-parser'),
       logger = require('morgan'),
       sassMiddleware = require('node-sass-middleware'),
       path = require('path'),
@@ -21,7 +20,6 @@ const supportedLanguages = ['de', 'en'];
 const defaultLocale = 'de';
 const defaultPage = 'map';
 
-app.use(cookieParser("i18n_locale"));
 app.use(
   session({
     secret: "i18n_locale",
@@ -30,10 +28,6 @@ app.use(
     cookie: { maxAge: 60000 }
   })
 );
-
-// App wide variables
-app.locals.title = 'Kreuzberg Google Tracking Exposed';
-app.locals.shortTitle = 'Kr.Go.Tr.Ex';
 
 app.use(logger('dev'));
 app.use(express.json());

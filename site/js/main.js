@@ -66,7 +66,12 @@ $(function() {
 
     const locale = firstUrlPart && firstUrlPart.match(/de|en/) ? firstUrlPart : 'de';
     const page = secondUrlPart && secondUrlPart.match(/about|replacement|map|check/) ? secondUrlPart : 'about';
-    history.pushState({}, `Welcome to Kreuzberg Google Tracking Exposed`, `${locale}/${page}`);
+    history.pushState({}, `Welcome to Kreuzberg Google Tracking Exposed`, `/${locale}/${page}`);
+    $('body').ready(() => {
+      $('#loader').hide();
+      $(getElementToShow(page)).show();
+    });
+
 
     if (locale) {
       $(`#header-link-${locale}`).addClass('active');
@@ -82,12 +87,15 @@ $(function() {
       $(".component").hide();
       console.log("yayu");
       const routeId = $(this).attr('data-route');
-      const elementId = `#component-${routeId}`;
-      $(elementId).show();
+      $(getElementToShow(routeId)).show();
 
       history.pushState({}, `Welcome to ${routeId}`, routeId);
       // TODO highlight on tab
   });
 
+  function getElementToShow(routeId) {
+    if (!routeId) return;
+    return `#component-${routeId}`;
+  }
 });
 

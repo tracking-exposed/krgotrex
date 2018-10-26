@@ -33,21 +33,6 @@ header {
       }
 
       &-link {
-        &.priority {
-          letter-spacing: 2px;
-          text-align: right;
-          text-transform: uppercase;
-
-          @include breakpoint(medium) {
-            border-right: $code-border;
-            border-right-color: currentColor;
-            text-align: center;
-          }
-
-          @include breakpoint(large) {
-            text-align: right;
-          }
-        }
 
         &-lang {
           color: $lightturquoise-color;
