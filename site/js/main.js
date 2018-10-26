@@ -76,8 +76,11 @@ $(function() {
 
       $(".component").hide();
       console.log("yayu");
-      const routeId = `#component-${$(this).attr('data-route')}`;
+      const routeId = $(this).attr('data-route')`;
+      const elementId = `#component-${routeId}`;
       $(routeId).show();
+
+      history.pushState({}, `Welcome to ${routeId}`, routeId);
       // TODO highlight on tab
   });
 
