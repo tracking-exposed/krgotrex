@@ -5,10 +5,10 @@ const express = require('express'),
       sassMiddleware = require('node-sass-middleware'),
       path = require('path'),
       i18n = require("i18n"),
-      _ = require('lodash');      
+      _ = require('lodash');
 
 // Routes
-      siteController = require('./js/controllers/sites.controllers.js'),
+    const sitesController = require('./js/controllers/sites.controllers.js'),
       app = express();
 
 // Internationalisation
@@ -68,7 +68,7 @@ app.get('/', (req, res) => {
 
 app.get('/:lang/:page/:option?', (req, res) => {
   
-    if(supportedLocales.indexOf(req.params.lang) === -1) {
+    if(supportedLanguages.indexOf(req.params.lang) === -1) {
         return sitesController['error']('de');
     }
 

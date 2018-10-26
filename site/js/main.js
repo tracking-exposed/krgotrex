@@ -46,6 +46,9 @@ $(function() {
     }
   });
 
+  /**
+   * TODO: Get rid of the cookie method and let's use url param instead
+   */
   function getCookieValue(a) {
       let b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
       return b ? b.pop() : '';
