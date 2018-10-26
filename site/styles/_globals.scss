@@ -43,6 +43,10 @@ label {
   color: $body-font-color;
 }
 
+section {
+  display: none;
+}
+
 // Behaviour
 a {
   transition: color .2s ease-in-out;

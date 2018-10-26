@@ -61,7 +61,12 @@ $(function() {
     }
 
     let path = window.document.location.pathname;
-    const locale = path.split('/')[1];
+    const firstUrlPart = path.split('/')[1],
+      secondUrlPart = path.split('/')[2];
+
+    const locale = firstUrlPart && firstUrlPart.match(/de|en/) ? firstUrlPart : 'de';
+    const page = secondUrlPart && secondUrlPart.match(/about|replacement|map|check/) ? secondUrlPart : 'about';
+    history.pushState({}, `Welcome to Kreuzberg Google Tracking Exposed`, `${locale}/${page}`);
 
     if (locale) {
       $(`#header-link-${locale}`).addClass('active');
@@ -76,9 +81,9 @@ $(function() {
 
       $(".component").hide();
       console.log("yayu");
-      const routeId = $(this).attr('data-route')`;
+      const routeId = $(this).attr('data-route');
       const elementId = `#component-${routeId}`;
-      $(routeId).show();
+      $(elementId).show();
 
       history.pushState({}, `Welcome to ${routeId}`, routeId);
       // TODO highlight on tab
