@@ -61,8 +61,7 @@ $(function() {
     }
 
     let path = window.document.location.pathname;
-    const locale = path.split('/');
-    console.log(locale);
+    const locale = path.split('/')[1];
 
     if (locale) {
       $(`#header-link-${locale}`).addClass('active');

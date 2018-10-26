@@ -50,26 +50,25 @@ app.use(sassMiddleware({
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 
-app.get('/[en|de]/:page/:option?', (req, res) => {
-    i18n.configure({
-      locales: supportedLanguages,
-      defaultLocale,
-      directory: __dirname + '/locales',
-      register: global
-    });
-
-    // default: using 'accept-language' header to guess language settings
-    app.use(i18n.init);
-
-    if (supportedLanguages.indexOf(req.params.lang) === -1) {
-        return controller.renderLocalizedPage(res, i18n, defaultLocale, defaultPage);
-    }
-
-    return controller.renderLocalizedPage(res, i18n, req.params.lang, req.params.page, req.params.option);
+i18n.configure({
+  locales: supportedLanguages,
+  defaultLocale,
+  directory: __dirname + '/locales',
+  register: global
 });
+// default: using 'accept-language' header to guess language settings
+app.use(i18n.init);
 
+app.get('/:lang/:page/:option?', (req, res) => {
+  const l = supportedLanguages.indexOf(req.params.lang) === -1 ? defaultLocale : req.params.lang;
+  return controller.renderLocalizedPage(res, i18n, l, req.params.page, req.params.option);
+});
+app.get('/:lang/', (req, res) => {
+  const l = supportedLanguages.indexOf(req.params.lang) === -1 ? defaultLocale : req.params.lang;
+  return controller.renderLocalizedPage(res, i18n, l, defaultPage, null);
+});
 app.get('/', (req, res) => {
-   return controller.renderLocalizedPage(res, defaultLocale, defaultPage, null);
+  return controller.renderLocalizedPage(res, i18n, defaultLocale, defaultPage, null);
 });
 
 module.exports = app;
