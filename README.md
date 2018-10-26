@@ -15,7 +15,7 @@ Please refer to the [wiki](https://github.com/tracking-exposed/krgotrex/wiki) fo
 #### Local development
 
 1. Fork this repo. [Here is a How-to](https://help.github.com/articles/fork-a-repo/)
-2. In your bash console, `cd` into the project's `/page` directory like so `cd PATH_TO_YOUR_CODE_PROJECTS/krgotrex/page`
+2. In your bash console, `cd` into the project `krgotrex`
 3. Install dependencies with `npm install`
 4. Run local development server with `npm start`
 
