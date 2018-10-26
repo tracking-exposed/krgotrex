@@ -7,6 +7,7 @@ page/package-lock.json
 .vscode
 osm/*
 
+site/assets/*.css*
 web-accessible/css/
 web-accessible/js/
 web-accessible/lib/

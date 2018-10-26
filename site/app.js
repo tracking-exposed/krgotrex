@@ -39,20 +39,18 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'styles'),
+  src:  path.join(__dirname, 'styles'),
   dest: path.join(__dirname, 'assets'),
   debug: true,
-  indentedSyntax: false, // true = .sass and false = .scss,
+  prefix: '/assets',
   outputStyle: 'compressed',
   sourceMap: true
 }));
-console.log(path.join(__dirname, 'styles'));
-console.log(path.join(__dirname, 'assets'));
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 
-app.get('/:lang/:page/:option?', (req, res) => {
+app.get('/[en|de]/:page/:option?', (req, res) => {
     i18n.configure({
       locales: supportedLanguages,
       defaultLocale,
