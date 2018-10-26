@@ -5,6 +5,7 @@ const express = require('express'),
       sassMiddleware = require('node-sass-middleware'),
       path = require('path'),
       i18n = require("i18n"),
+      _ = require('lodash');      
 
 // Routes
       routes = require('./routes/index'),
@@ -17,13 +18,16 @@ const express = require('express'),
 // https://markocen.github.io/blog/i18n-for-node-application.html
 // with this fix:
 // https://github.com/mashpie/i18n-node/issues/238#issuecomment-220769255
+const supportedLanguages = ['de', 'en'];
+const defaultLocale = 'de';
 i18n.configure({
-  locales:['de', 'en'],
-  defaultLocale: 'de',
+  locales: supportedLanguages,
+  defaultLocale,
   directory: __dirname + '/locales',
   // sets a custom cookie name to parse locale settings from
   cookie: 'i18n'
 });
+const defaultPage = 'map';
 
 app.use(cookieParser("i18n_locale"));
 app.use(
@@ -59,16 +63,24 @@ app.use(sassMiddleware({
 
 app.use(express.static(path.join(__dirname)));
 
-app.use('/', routes);
-
-app.get('/de', (req, res) => {
-    res.cookie('i18n', 'de');
-    res.redirect('/')
+app.get('/', (req, res) => {
+   return routes[defaultPage](defaultLocale);
 });
 
-app.get('/en', (req, res) => {
-    res.cookie('i18n', 'en');
-    res.redirect('/')
+app.get('/:lang/:page/:option?', (req, res) => {
+  
+    if(supportedLocales.indexOf(req.params.lang) === -1) {
+        return routes['error']('de');
+    }
+
+    const func = _.get(routes, req.params.page);
+
+    if(_.isUndefined(func)) {
+        return routes['error'](req.params.lang);
+    } else {
+        return func(req.params.lang, req.params.option);
+    }
+
 });
 
 module.exports = app;
