@@ -8,8 +8,7 @@ const express = require('express'),
       _ = require('lodash');      
 
 // Routes
-      routes = require('./routes/index'),
-      dataService = require('./js/services/data.service'),
+      siteController = require('./js/controllers/sites.controllers.js'),
       app = express();
 
 // Internationalisation
@@ -64,23 +63,24 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
-   return routes[defaultPage](defaultLocale);
+   return sitesController[defaultPage](defaultLocale);
 });
 
 app.get('/:lang/:page/:option?', (req, res) => {
   
     if(supportedLocales.indexOf(req.params.lang) === -1) {
-        return routes['error']('de');
+        return sitesController['error']('de');
     }
 
-    const func = _.get(routes, req.params.page);
+    const func = _.get(sitesController, req.params.page);
 
     if(_.isUndefined(func)) {
-        return routes['error'](req.params.lang);
+        return sitesController['error'](req.params.lang);
     } else {
         return func(req.params.lang, req.params.option);
     }
 
 });
+
 
 module.exports = app;
