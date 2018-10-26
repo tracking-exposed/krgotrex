@@ -63,7 +63,6 @@ app.get('/:lang/:page/:option?', (req, res) => {
     // default: using 'accept-language' header to guess language settings
     app.use(i18n.init);
 
-    debugger;
     if (supportedLanguages.indexOf(req.params.lang) === -1) {
         return controller.renderLocalizedPage(res, i18n, defaultLocale, defaultPage);
     }
