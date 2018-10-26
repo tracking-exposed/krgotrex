@@ -46,10 +46,11 @@ app.use(sassMiddleware({
   outputStyle: 'compressed',
   sourceMap: true
 }));
-console.log( path.join(__dirname, 'styles'));
+console.log(path.join(__dirname, 'styles'));
 console.log(path.join(__dirname, 'assets'));
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
 
 app.get('/:lang/:page/:option?', (req, res) => {
     i18n.configure({

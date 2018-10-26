@@ -7,7 +7,7 @@ const renderLocalizedPage = async (res, i18n, language, page, option) => {
   const sites = await dataService.getAnalyzedSites;
   const results = await dataService.getExposureResults;
 
-  console.log('i18n: ', i18n, 'language: ', language, 'page: ', page, 'option: ', option);
+  // console.log('i18n: ', i18n, 'language: ', language, 'page: ', page, 'option: ', option);
 
   i18n.setLocale(language);
   const viewPath = path.join(__dirname, '..', '..', 'views', 'webapp.pug');
