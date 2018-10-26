@@ -1,0 +1,29 @@
+doctype html
+html(lang='de')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    meta(
+      name='viewport'
+      content='width=device-width, initial-scale=1')
+    title=`${title}${siteName ? ' | '+siteName : ''}`
+    // Stylesheets
+    link(
+      href='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css'
+      rel='stylesheet')
+    link(rel='stylesheet', href='style.css')
+
+    // Scripts
+    script(src='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js')
+  body
+    include header
+
+    //- include map-sites
+    //- include checkYourSite
+    //- include propaganda
+    //- include replacements
+
+    include footer
+    // Scripts
+    script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+    script(data-main='js/main', src='js/require.js')
