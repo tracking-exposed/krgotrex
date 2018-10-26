@@ -55,7 +55,15 @@ $(function() {
   }
 
   function setActiveLinkClass() {
-    const locale = getCookieValue('i18n');
+    if (!window) {
+      console.log('No window (yet) in setActiveClass()');
+      return;
+    }
+
+    let path = window.document.location.pathname;
+    const locale = path.split('/');
+    console.log(locale);
+
     if (locale) {
       $(`#header-link-${locale}`).addClass('active');
     }

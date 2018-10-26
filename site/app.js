@@ -8,7 +8,7 @@ const express = require('express'),
       _ = require('lodash');
 
 // Routes
-    const sitesController = require('./js/controllers/sites.controllers.js'),
+    const controller = require('./js/controllers/index'),
       app = express();
 
 // Internationalisation
@@ -19,13 +19,6 @@ const express = require('express'),
 // https://github.com/mashpie/i18n-node/issues/238#issuecomment-220769255
 const supportedLanguages = ['de', 'en'];
 const defaultLocale = 'de';
-i18n.configure({
-  locales: supportedLanguages,
-  defaultLocale,
-  directory: __dirname + '/locales',
-  // sets a custom cookie name to parse locale settings from
-  cookie: 'i18n'
-});
 const defaultPage = 'map';
 
 app.use(cookieParser("i18n_locale"));
@@ -37,9 +30,6 @@ app.use(
     cookie: { maxAge: 60000 }
   })
 );
-
-// default: using 'accept-language' header to guess language settings
-app.use(i18n.init);
 
 // App wide variables
 app.locals.title = 'Kreuzberg Google Tracking Exposed';
@@ -62,25 +52,27 @@ app.use(sassMiddleware({
 
 app.use(express.static(path.join(__dirname)));
 
-app.get('/', (req, res) => {
-   return sitesController[defaultPage](defaultLocale);
-});
-
 app.get('/:lang/:page/:option?', (req, res) => {
-  
-    if(supportedLanguages.indexOf(req.params.lang) === -1) {
-        return sitesController['error']('de');
+    i18n.configure({
+      locales: supportedLanguages,
+      defaultLocale,
+      directory: __dirname + '/locales',
+      register: global
+    });
+
+    // default: using 'accept-language' header to guess language settings
+    app.use(i18n.init);
+
+    debugger;
+    if (supportedLanguages.indexOf(req.params.lang) === -1) {
+        return controller.renderLocalizedPage(res, i18n, defaultLocale, defaultPage);
     }
 
-    const func = _.get(sitesController, req.params.page);
-
-    if(_.isUndefined(func)) {
-        return sitesController['error'](req.params.lang);
-    } else {
-        return func(req.params.lang, req.params.option);
-    }
-
+    return controller.renderLocalizedPage(res, i18n, req.params.lang, req.params.page, req.params.option);
 });
 
+app.get('/', (req, res) => {
+   return controller.renderLocalizedPage(res, defaultLocale, defaultPage, null);
+});
 
 module.exports = app;

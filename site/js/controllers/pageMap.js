@@ -1,6 +1,6 @@
 const dataService = require('../services/data.service');
 
-exports.module = function(language) {
+exports.module = async function(language) {
 
   const sites = await dataService.getAnalyzedSites;
   const results = await dataService.getExposureResults;
