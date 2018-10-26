@@ -49,7 +49,7 @@ app.use(sassMiddleware({
 console.log( path.join(__dirname, 'styles'));
 console.log(path.join(__dirname, 'assets'));
 
-app.use(express.static(path.join(__dirname)));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/:lang/:page/:option?', (req, res) => {
     i18n.configure({
