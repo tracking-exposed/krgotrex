@@ -1,0 +1,15 @@
+{
+    "wikipages": [
+        { "product": "Fonts", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Fonts" },
+        { "product": "ADS", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_ADS" },
+        { "product": "Analytics", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Analytics" },
+        { "product": "Translate", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Translate" },
+        { "product": "Captcha", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Captcha" },
+        { "product": "Video", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Video" },
+        { "product": "Maps", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Maps" },
+        { "product": "AMP", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_AMP" },
+        { "product": "BlogSpot", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_BlogSpot" },
+        { "product": "CDN", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_CDN" },
+        { "product": "Login", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Login" }
+    ]
+}
