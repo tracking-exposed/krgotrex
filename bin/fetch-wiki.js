@@ -12,10 +12,10 @@ nconf.file({file: 'config/replacements.json'});
 
 function convertToPUGSection(d) {
 
-    var formatted = `section#${d.product}\n\th2 ${d.product}\n\t.intro ${d.intro}\n\t.problem ${d.problem}\n\t`;
+    var formatted = `section#${d.product}\n\th2 ${d.product}\n\t.intro ${d.intro}\n\t.problem ${d.problem}\n`;
 
     var solutions = _.map(d.replacements, function(r) {
-        return `.name ${r.name}\n\ta(href="${r.link}") ${r.link}\n\t.desc ${d.desc}\n\t`;
+        return `\n\t.name ${r.name}\n\ta(href="${r.link}") ${r.link}\n\t.desc ${r.desc}\n\t`;
     });
 
     return formatted + _.join(solutions, '\n');
