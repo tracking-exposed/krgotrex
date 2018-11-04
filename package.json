@@ -44,9 +44,11 @@
     "jsdom": "^13.0.0",
     "lodash": "^4.17.11",
     "morgan": "~1.9.0",
-    "node-sass-middleware": "0.11.0",
-    "pug": "^2.0.3",
     "reveal.js": "^3.7.0",
     "xml2json": "^0.11.2"
+  },
+  "devDependencies": {
+    "node-sass-middleware": "0.11.0",
+    "pug": "^2.0.3"
   }
 }
