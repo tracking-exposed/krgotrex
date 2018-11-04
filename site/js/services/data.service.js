@@ -7,14 +7,14 @@ const ExposureResult = require('../../models/exposureResult');
 const analyzedSitesUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/sites/krgotrex';
 const exposureResultsUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/results/krgotrex';
 
-let services = {};
+let dataService = {};
 
 /**
  * Retrieve list of analyzed websites
  * 
  * @returns {Promise} Promise of Site array
  */
-services.getAnalyzedSites = new Promise((resolve, reject) => {
+dataService.getAnalyzedSites = new Promise((resolve, reject) => {
   https.get(analyzedSitesUrl, (response) => {
     let sites = [];
     // Get the data as utf8 strings.
@@ -49,7 +49,7 @@ services.getAnalyzedSites = new Promise((resolve, reject) => {
  * 
  * @returns {Promise} Promise of ExposureResults array
  */
-services.getExposureResults = new Promise((resolve, reject) => {
+dataService.getExposureResults = new Promise((resolve, reject) => {
   https.get(exposureResultsUrl, (response) => {
     let results = [];
     // Get the data as utf8 strings.
@@ -79,4 +79,4 @@ services.getExposureResults = new Promise((resolve, reject) => {
   });
 });
 
-module.exports = services;
+module.exports = dataService;
