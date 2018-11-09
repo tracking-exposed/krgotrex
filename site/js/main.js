@@ -15,6 +15,10 @@ function getSingleSite(siteName) {
       } else {
         resolve(response);
       }
+    })
+    .fail((jqXHR, textStatus, errorThrown) => {
+      const reason = `getJSON request failed in getSingleSite()! \nDetails: ${textStatus} \n${errorThrown} \n${JSON.stringify(jqXHR)}`;
+      reject(reason);
     });
   });
 }
@@ -22,22 +26,35 @@ function getSingleSite(siteName) {
 /**
  * C H E C K  Y O U R  S I T E
  */
-async function checkSite(e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  const inputVal = $('#form-check-site-input').val();
+async function checkSite(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  const inputVal = event.target[1].value;
   // Display loading indicator
   $('#check-site-loader').show();
   try {
-    const site = await getSingleSite(inputVal);
-    console.log(site);
+    const regex = new RegExp(/^https?:\/\/|\s/, 'gi');
+    const trimmedVal = inputVal.replace(regex, ''); // Remove 'http(s)://' as well as white space
+    const site = await getSingleSite(trimmedVal);
     $('#check-site-result').append(`<pre>${JSON.stringify(site, undefined, 2)}</pre>`);
     $('#check-site-loader').hide();
   } catch (error) {
-    console.error('main.js: Site could not be checked. ', error);
+    $('#check-site-loader').hide();
+    console.error('main.js: Site could not be checked. Reason: ', error);
   }
 }
+
+
+function searchSite(event) {
+  if (!event) return;
+
+  event.preventDefault();
+  console.log(event);
+  // const resultSite = sitesArray.search(e.target.value) > -1;
+  // console.log(resultSite);
+  // return resultSite;
+}
+
 
 $(function() {
 
@@ -88,9 +105,4 @@ $(function() {
     return `#component-${routeId}`;
   }
 
-  $('#form-check-site').on('submit', function (event) {
-    console.log('click');
-    checkSite(event)
-  });
 });
-
