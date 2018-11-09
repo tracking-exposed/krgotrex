@@ -8,33 +8,60 @@ section.component#component-map
     const mapCenter = [13.429, 52.494]; // Umspannwerk Kreuzberg
     const siteData = !{JSON.stringify(sites)};
     const features = siteData.map(site => {
+        //- "properties": {
+        //-   "title": site.name,
+        //-   "description": `
+        //-     <a href="${site.href}" title="${site.name}" target="_blank">
+        //-       <h3>${site.name}</h3>
+        //-     </a>
+        //-     <p>${site.address || ''}</p>
+        //-   `
+        //- },
       return {
         "type": "Feature",
-        "properties": {
-          "title": site.name,
-          "description": `
-            <a href="${site.href}" title="${site.name}" target="_blank">
-              <h3>${site.name}</h3>
-            </a>
-            <p>${site.address || ''}</p>
-          `
-        },
         "geometry": {
           "type": "Point",
-          "coordinates": [ site.longitude, site.latitude]
+          "coordinates": [ Number(site.longitude), Number(site.latitude) ]
         }
       }
     });
+
+    const image = new ol.style.Circle({
+      radius: 5,
+      fill: null,
+      stroke: new ol.style.Stroke({color: "red", width: 1})
+    });
+
+    const styles = {
+      "Point": new ol.style.Style({
+        "image": image
+      })
+    }
+    const styleFunction = function(feature) {
+      return styles[feature.getGeometry().getType()];
+    };
+
     const geojsonObject = {
       "type": "FeatureCollection",
       "features": features
     };
+
+    const vectorSource = new ol.source.Vector({
+      features: (new ol.format.GeoJSON()).readFeatures(geojsonObject)
+    });
+
+    const vectorLayer = new ol.layer.Vector({
+      source: vectorSource,
+      style: styleFunction
+    });
+
     const map = new ol.Map({
-      target: 'map',
+      target: "map",
       layers: [
         new ol.layer.Tile({
           source: new ol.source.OSM()
-        })
+        }),
+        vectorLayer
       ],
       view: new ol.View({
         center: ol.proj.fromLonLat(mapCenter),
