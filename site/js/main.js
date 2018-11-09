@@ -1,17 +1,5 @@
 "use strict";
 
-// const indexedSites = lunr(() => {
-//   this.field('address');
-//   this.field('href');
-//   this.field('name');
-
-//   sites.foreach((site) => {
-//     this.add(site);
-//     console.log('lunr loop: ', this);
-//   });
-// });
-
-
 $(function() {
 
   function setActiveLinkClass() {
