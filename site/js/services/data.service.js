@@ -4,8 +4,8 @@ const https = require('https');
 const Site = require('../../models/site');
 const ExposureResult = require('../../models/exposureResult');
 
-const analyzedSitesUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/sites/krgotrex';
-const exposureResultsUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/results/krgotrex';
+const analyzedSitesUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/sites/krgotrex',
+      exposureResultsUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/results/krgotrex';
 
 let dataService = {};
 

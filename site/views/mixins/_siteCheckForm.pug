@@ -1,23 +1,26 @@
 mixin siteCheckForm(site = {})
   form(
-    action=``
-    method="POST"
-    class="row align-center form-check-site"
-    enctype="multipart/form-data"
+    action=""
+    method=""
+    class="row align-center"
+    id="form-check-site"
+    novalidate
   )
-    fieldset(class="column")
-      h3 #{i18n.__("formSiteCheckTitle")}
-      .input-group
-        span.input-group-label #{i18n.__("formSiteCheckLabel")}
-        input(
-          type="text"
-          name="site"
-          class="input-group-field"
-          placeholder!=i18n.__('formSiteCheckPlaceholder')
-        )
-        .input-group-button
-          button(
-            type="submit"
-            id="hero-cta"
-            class="button"
-          ) #{i18n.__("formSiteCheckButtonText")}
+  fieldset(class="column")
+    h3 #{i18n.__("formSiteCheckTitle")}
+    .input-group
+      input(
+        id="form-check-site-input"
+        type="url"
+        name="site"
+        class="input-group-field"
+        placeholder!=i18n.__('formSiteCheckPlaceholder')
+        tabindex="1"
+        autofocus
+      )
+      .input-group-button
+        button(
+          type="submit"
+          id="hero-cta"
+          class="button"
+        ) #{i18n.__("formSiteCheckButtonText")}
