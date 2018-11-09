@@ -10,18 +10,8 @@ block sites
           id="search-sites-input"
           type="text"
           placeholder!=i18n.__('formSearchSitesPlaceholder')
+          onkeyup="searchSite(event)"
         )
-        script.
-          const searchInput = document.getElementById('search-sites-input'),
-                sitesArray = !{JSON.stringify(sites)};
-
-          if (searchInput) {
-            searchInput.addEventListener('keyup', (e) => {
-              const resultSite = sitesArray.search(e.target.value) > -1;
-              console.log(resultSite);
-              return resultSite;
-            });
-          }
     ul.row.align-center.align-middle.site-results-list
       for site in sites
         // Map each site with its corresponding results
