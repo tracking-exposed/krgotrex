@@ -55,7 +55,6 @@ function searchSite(event) {
   // return resultSite;
 }
 
-
 $(function() {
 
   function setActiveLinkClass() {
