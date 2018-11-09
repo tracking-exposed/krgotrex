@@ -1,3 +1,4 @@
+include mixins/_sitesSearchForm
 block sites
   aside#sites
     .row.align-middle.site-titles
@@ -5,6 +6,8 @@ block sites
         h6 #{i18n.__("sitesListSitenameTitle")}
       .small-6.column
         h6 #{i18n.__("sitesListResultsTitle")}
+      .small-12.column
+        +sitesSearchForm(sites)
     ul.row.align-center.align-middle.site-results-list
       for site in sites
         // Map each site with its corresponding results
