@@ -11,22 +11,11 @@
     width: 33%;
   }
 
-  .form-search-sites {
+  #search-sites-input {
     margin-top: $global-margin / 2;
-
-    .input-group {
-      &-field {
-        background-color: $darkturquoise-color;
-        border: none;
-        color: $medium-gray;
-      }
-      &-button {
-        button {
-          background-color: $dark-gray;
-        }
-      }
-    }
-
+    background-color: $darkturquoise-color;
+    border: none;
+    color: $medium-gray;
   }
 
   .site {

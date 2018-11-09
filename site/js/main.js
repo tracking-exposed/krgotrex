@@ -1,5 +1,17 @@
 "use strict";
 
+// const indexedSites = lunr(() => {
+//   this.field('address');
+//   this.field('href');
+//   this.field('name');
+
+//   sites.foreach((site) => {
+//     this.add(site);
+//     console.log('lunr loop: ', this);
+//   });
+// });
+
+
 $(function() {
 
   function setActiveLinkClass() {
@@ -27,7 +39,10 @@ $(function() {
   };
   setActiveLinkClass();
 
-    /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
+  /**
+   *  M E N U
+   */
+  /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
   $("a[data-route]").on('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -45,5 +60,7 @@ $(function() {
     if (!routeId) return;
     return `#component-${routeId}`;
   }
+
+
 });
 
