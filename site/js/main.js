@@ -1,16 +1,5 @@
 "use strict";
 
-// const indexedSites = lunr(() => {
-//   this.field('address');
-//   this.field('href');
-//   this.field('name');
-
-//   sites.foreach((site) => {
-//     this.add(site);
-//     console.log('lunr loop: ', this);
-//   });
-// });
-
 // Providers
 const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/site/',
       singleCheckSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/monosite/';
@@ -29,7 +18,6 @@ function getSingleSite(siteName) {
     });
   });
 }
-
 
 /**
  * C H E C K  Y O U R  S I T E
