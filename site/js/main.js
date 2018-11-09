@@ -6,7 +6,7 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
 
 function getSingleSite(siteName) {
   return new Promise((resolve, reject) => {
-    if (!siteName) reject();
+    if (!siteName) reject('No site name provided');
     $.getJSON(singleCachedSiteUrl + siteName, (response) => {
       if (!response.when) {
         $.getJSON(singleCheckSiteUrl + siteName, (response) => {
