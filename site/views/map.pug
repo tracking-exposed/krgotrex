@@ -68,3 +68,14 @@ section.component#component-map
         zoom: 17,
       })
     });
+
+    /**
+     * Hack to force rendering of map tiles
+     */
+    const waitForMap = setInterval(function() {
+      if ($('.ol-viewport').length) {
+          console.log("Exists!");
+          window.dispatchEvent(new Event('resize'));
+          clearInterval(waitForMap);
+      }
+    }, 100);
