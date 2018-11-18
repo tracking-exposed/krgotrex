@@ -82,7 +82,7 @@ $(function() {
       secondUrlPart = path.split('/')[2];
 
     const locale = firstUrlPart && firstUrlPart.match(/de|en/) ? firstUrlPart : 'de';
-    const page = secondUrlPart && secondUrlPart.match(/about|replacement|map|check/) ? secondUrlPart : 'about';
+    const page = secondUrlPart && secondUrlPart.match(/kreuzberg|campaign|about|replacement|map|check/) ? secondUrlPart : 'campaign';
     history.pushState({}, `Welcome to Kreuzberg Google Tracking Exposed`, `/${locale}/${page}`);
     $('body').ready(() => {
       $('#loader').hide();
@@ -105,8 +105,8 @@ $(function() {
       e.stopPropagation();
 
       $(".component").hide();
-      console.log("yayu");
       const routeId = $(this).attr('data-route');
+      console.log("Managing click to", routeId);
       $(getElementToShow(routeId)).show();
 
       history.pushState({}, `Welcome to ${routeId}`, routeId);

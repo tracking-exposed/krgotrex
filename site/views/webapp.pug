@@ -23,16 +23,17 @@ html(lang='de')
     script(data-main='/js/main', src='/js/require.js')
     script(src='/js/lunr.js')
 
-
   body
     include header
     include tabs
 
     main
-      #loader Loading...
+      #loader Loading…
       include map-sites
-      include checkYourSite
-      include about 
+      include check
+      include campaign
+      include kreuzberg
       include replacements
+      include about
 
     include footer
