@@ -5,12 +5,12 @@
   "heroSubParagraph": "Google's trackers and algorithms <em>infiltrated</em> all the websites you have ever visited.<br> So maybe you should get rid of them as well.",
 
   "formSiteCheckTitle": "Check if your website is infiltrated by Google",
-  "formSiteCheckLabel": "http://",
   "formSiteCheckPlaceholder": "www.my-site.com",
   "formSiteCheckButtonText": "Check",
 
   "sitesListSitenameTitle": "Websites tested",
   "sitesListResultsTitle": "Google traces found",
+  "formSearchSitesPlaceholder": "Search…",
   "sitesListResultGoogleFree": "Google free",
 
   "footerClaim": "Spread the word!",

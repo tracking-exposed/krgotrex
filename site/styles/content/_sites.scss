@@ -11,11 +11,17 @@
     width: 33%;
   }
 
+  #search-sites-input {
+    margin-top: $global-margin / 2;
+    background-color: $darkturquoise-color;
+    border: none;
+    color: $medium-gray;
+  }
+
   .site {
     &-titles {
       box-shadow: 0 2px 3px rgba($black, 0.6);
       padding-top: $global-padding;
-      padding-bottom: $global-padding;
       position: relative;
 
       h6 {

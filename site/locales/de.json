@@ -5,12 +5,12 @@
   "heroSubParagraph": "Google Tracker und Algorithmen <em>infiltrieren</em> alle Webseiten, die Du je besucht hast.<br> Also solltest Du diese vielleicht auch loswerden.",
 
   "formSiteCheckTitle": "Überprüfe, ob Deine Seite von Google infiltriert ist",
-  "formSiteCheckLabel": "http://",
   "formSiteCheckPlaceholder": "www.meine-seite.de",
   "formSiteCheckButtonText": "Überprüfen",
 
   "sitesListSitenameTitle": "Getestete Seiten",
   "sitesListResultsTitle": "Gefundene Google Spuren",
+  "formSearchSitesPlaceholder": "Durchsuchen…",
   "sitesListResultGoogleFree": "Google-frei",
 
   "footerClaim": "Sag es weiter!",

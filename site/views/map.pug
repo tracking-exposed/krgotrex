@@ -1,71 +1,84 @@
 section.component#component-map
-  #map
+  #map.map
   script.
     /**
-    * Leaflet Mapbox
+    * Leaflet Map
     */
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Jvc2NoZW5yb21hbiIsImEiOiJjampuYjZvMDUxOHRpM3FvMWZ6cTRreGVjIn0.EpyQov5DhmqQmrskmic2uQ';
-
-    // Create map
-    const center = [13.429, 52.494]; // Umspannwerk Kreuzberg
-    let map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v9',
-        zoom: 16,
-        center,
-        scrollZoom: false,
-        NavigationControl: false
-    });
-    // Add zoom and rotation controls to the map.
-    map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-    map.scrollZoom.disable();
-
     // Create markers and geodata
+    const mapCenter = [13.429, 52.494]; // Umspannwerk Kreuzberg
     const siteData = !{JSON.stringify(sites)};
     const features = siteData.map(site => {
+        //- "properties": {
+        //-   "title": site.name,
+        //-   "description": `
+        //-     <a href="${site.href}" title="${site.name}" target="_blank">
+        //-       <h3>${site.name}</h3>
+        //-     </a>
+        //-     <p>${site.address || ''}</p>
+        //-   `
+        //- },
       return {
         "type": "Feature",
-        "properties": {
-          "title": site.name,
-          "description": `
-            <a href="${site.href}" title="${site.name}" target="_blank">
-              <h3>${site.name}</h3>
-            </a>
-            <p>${site.address || ''}</p>
-          `
-        },
         "geometry": {
           "type": "Point",
-          "coordinates": [ site.longitude, site.latitude]
+          "coordinates": [ Number(site.longitude), Number(site.latitude) ]
         }
       }
     });
-    const geojson = {
+
+    const image = new ol.style.Icon({
+      anchor: [0.5, 1],
+      src: '/assets/img/fist-pin.png'
+    });
+
+    const styles = {
+      "Point": new ol.style.Style({
+        "image": image
+      })
+    }
+    const styleFunction = function(feature) {
+      return styles[feature.getGeometry().getType()];
+    };
+
+    const geojsonObject = {
       "type": "FeatureCollection",
       "features": features
     };
 
-    // Assemble map and add layer with markers
-    map.on('load', () => {
-      map.addLayer({
-        "id": "markers",
-        "type": "symbol",
-        "source": {
-          "type": "geojson",
-          "data": geojson
-        }
-      });
+    const vectorSource = new ol.source.Vector({
+      features: (new ol.format.GeoJSON()).readFeatures(geojsonObject, {
+        featureProjection: "EPSG:3857"
+      })
+    });
 
-      // Add Markers with Popups to map
-      // @link https://www.mapbox.com/help/custom-markers-gl-js/#attach-popups-to-markers
-      geojson.features.forEach((feature) => {
-        new mapboxgl.Marker({
-          color: "#1779ba" // primary color from Foundation settings
-        })
-          .setLngLat(feature.geometry.coordinates)
-          .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(feature.properties.description)
-          )
-          .addTo(map);
-      });
-    }); // /on.load()
+
+    //- vectorSource.addFeature(new ol.Feature(new ol.style.Circle([5e6, 7e6], 1e6)));
+
+    const vectorLayer = new ol.layer.Vector({
+      source: vectorSource,
+      style: styleFunction
+    });
+
+    const map = new ol.Map({
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        }),
+        vectorLayer
+      ],
+      target: "map",
+      view: new ol.View({
+        center: ol.proj.fromLonLat(mapCenter),
+        zoom: 17,
+      })
+    });
+
+    /**
+     * Hack to force rendering of map tiles
+     */
+    const waitForMap = setInterval(function() {
+      if ($('.ol-viewport').length) {
+          window.dispatchEvent(new Event('resize'));
+          clearInterval(waitForMap);
+      }
+    }, 100);
