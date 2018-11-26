@@ -51,3 +51,10 @@ section {
 a {
   transition: color .2s ease-in-out;
 }
+
+.propaganda {
+  h3 {
+      // this is not ok, but as long as the style is not made...
+     color: #8fd216;
+  }
+}
