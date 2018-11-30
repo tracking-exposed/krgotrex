@@ -93,8 +93,15 @@ $(function() {
     const firstUrlPart = path.split('/')[1],
       secondUrlPart = path.split('/')[2];
 
-    const locale = firstUrlPart && firstUrlPart.match(/de|en/) ? firstUrlPart : 'de';
-    const page = secondUrlPart && secondUrlPart.match(/about|replacement|map|check/) ? secondUrlPart : 'about';
+    /* TODO put the regexp in a variable, or this list might give problem in maintanence */
+    let page = (secondUrlPart && secondUrlPart.match(/kreuzberg|campaign|about|replacement|map|check/)) ? secondUrlPart : 'campaign';
+
+    /* in case someone call for /check or /campaign, it is considered but the language would be forced default below */
+    if(!secondUrlPart && firstUrlPart)
+        page = firstUrlPart.match(/kreuzberg|campaign|about|replacement|map|check/) ? firstUrlPart : 'campaign';
+ 
+    const locale = (firstUrlPart && firstUrlPart.match(/de|en/)) ? firstUrlPart : 'de';
+
     history.pushState({}, `Welcome to Kreuzberg Google Tracking Exposed`, `/${locale}/${page}`);
     $('body').ready(() => {
       $('#loader').hide();
@@ -108,14 +115,17 @@ $(function() {
   };
   setActiveLinkClass();
 
-    /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
+  /**
+   *  M E N U
+   */
+  /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
   $("a[data-route]").on('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
 
       $(".component").hide();
-      console.log("yayu");
       const routeId = $(this).attr('data-route');
+      console.log("Managing click to", routeId);
       $(getElementToShow(routeId)).show();
 
       history.pushState({}, `Welcome to ${routeId}`, routeId);
@@ -126,5 +136,5 @@ $(function() {
     if (!routeId) return;
     return `#component-${routeId}`;
   }
-});
 
+});

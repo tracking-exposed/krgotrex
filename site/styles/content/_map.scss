@@ -1,46 +1,31 @@
-#map {
-  height: 100%;
-  width: 100%;
+#component-map {
+  position: relative;
+}
 
-  @include breakpoint(medium down) {
-    height: 100vh;
+#map {
+  width: 100%;
+  width: 100vw;
+  height: 67%;
+  height: 67vh;
+  max-height: 300px;
+
+  @include breakpoint(medium) {
+    height: 75%;
+    height: 75vh;
+    max-height: 500px;
   }
 
   @include breakpoint(large) {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    width: 67%;
+    min-height: 600px;
+    max-height: unset;
   }
 
-  .mapboxgl-popup {
-    max-width: 250px;
-  }
+  a {
+    color: $primary-color;
 
-  .mapboxgl-popup-content {
-    color: $secondary-color;
-    hyphens: auto;
-
-    h3 {
-      line-height: 1.2;
-    }
-
-    a {
-      color: $primary-color;
-
-      &:hover {
-        color: scale-color($primary-color, $lightness: -15%);
-      }
-    }
-
-    .mapboxgl-popup-close-button {
-      padding: 2px 5px;
-
-      &:hover {
-        background-color: $lightturquoise-color;
-        color: $secondary-color;
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

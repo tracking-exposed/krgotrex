@@ -12,7 +12,7 @@ nconf.file({file: 'config/replacements.json'});
 
 function convertToPUGSection(d) {
 
-    var formatted = `section#${d.product}\n\th2 ${d.product}\n\t.intro ${d.intro}\n\t.problem ${d.problem}\n`;
+    var formatted = `#${d.product}\n\th2 ${d.product}\n\t.intro ${d.intro}\n\t.problem ${d.problem}\n`;
 
     var solutions = _.map(d.replacements, function(r) {
         return `\n\t.name ${r.name}\n\ta(href="${r.link}") ${r.link}\n\t.desc ${r.desc}\n\t`;
@@ -70,7 +70,7 @@ return Promises
     .map(function(contents) {
 
         debug("%s", JSON.stringify(contents, undefined, 2));
-        var path ="generated/" + contents.product +'.pug';
+        var path ="generated/site/views" + contents.product +'.pug';
 
         return fs
             .writeFileAsync(path, convertToPUGSection(contents) )
