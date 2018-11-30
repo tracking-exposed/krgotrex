@@ -49,24 +49,53 @@ async function checkSite(event) {
     const regex = new RegExp(/^https?:\/\/|\s/, 'gi'),
       trimmedVal = inputVal.replace(regex, ''); // Remove 'http(s)://' as well as white space
     const response = await getSingleSite(trimmedVal);
+
+    // Convert the Google results into a list
     let result = {};
-    if (response.summary.googles) {
+    function convertObj2Html(obj) {
+      let htmlList = "";
+      for (let key in obj) {
+        if( obj.hasOwnProperty(key) ) {
+          htmlList += `<li class="small-8 large-10 column">${key}: ${obj[key]}</li>`;
+        }
+      }
+      return htmlList;
+    }
+    if (response.summary) {
       result = {
         page: response.page,
-        googles: Object.keys(response.summary.googles).map(key => `<li class="small-8 large-10 column">${key}</li>`) + 
-          Object.values(response.summary.googles).map(value => `<li class="small-4 large-2 column">${value}</li>`)
-      };
-      console.log(result);
+      }
+
+      if (response.summary.googles) {
+        result = {
+          ...result,
+          content: `
+            <ul class="row site-googles">
+              ${convertObj2Html(response.summary.googles)}
+            </ul>
+          `
+        };
+      } else {
+        result = {
+          ...result,
+          content: 'Sauber! Keine Tracker gefunden.'
+        }
+      }
     }
     $('#check-site-loader').hide();
     $('#check-site-result').append(`
       <h2>${result.page}</h2>
-      <ul class="site-googles">${result.googles}</ul>
+      ${result.content}
     `);
     disableFormCheckSite(false);
   } catch (error) {
     $('#check-site-loader').hide();
     disableFormCheckSite(false);
+    $('#check-site-result').append(`
+      <h2>Oops!</h2>
+      <p>Etwas ist schief gelaufen.</p>
+    `);
+
     console.error('main.js: Site could not be checked. Reason: ', error);
   }
 }
