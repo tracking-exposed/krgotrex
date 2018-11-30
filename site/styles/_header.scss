@@ -26,12 +26,15 @@ header {
     &-link:not(.header-logo) {
       color: $lightturquoise-color;
 
+      &::after {
+        background-color: $anchor-color;
+      }
+
       &:hover,
       &:focus,
       &:active,
       &.active {
         color: $anchor-color;
-        text-shadow: 1px 0 0 currentColor; // Fake bold font weight
       }
     }
   }
