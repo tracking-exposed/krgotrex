@@ -9,7 +9,7 @@ section.component#component-map
     const siteData = !{JSON.stringify(sites)};
     const results = !{JSON.stringify(results)};
     const features = siteData.map(site => {
-      const isContaminated = results.find((result) => {
+      const isInfiltrated = results.find((result) => {
         return result.id === site.lastResultId && Object.keys(result.googles).length > 0;
       });
 
@@ -24,7 +24,7 @@ section.component#component-map
           "description": site.address,
           "icon": new ol.style.Icon({
             anchor: [0.5, 1],
-            src: isContaminated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',
+            src: isInfiltrated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',
             scale: 0.75
           })
         }
