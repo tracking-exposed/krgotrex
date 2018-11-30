@@ -1,20 +1,16 @@
 {
-  "headerLinksMap": "Karte",
-
-  "heroLeadParagraph": "Willst Du Google aus Kreuzberg loswerden? <em>Klar!</em><br><span class='success'>Aber was ist mit Deiner Webseite?",
-  "heroSubParagraph": "Google Tracker und Algorithmen <em>infiltrieren</em> alle Webseiten, die Du je besucht hast.<br> Also solltest Du diese vielleicht auch loswerden.",
-
-  "formSiteCheckTitle": "Überprüfe, ob Deine Seite von Google infiltriert ist",
-  "formSiteCheckLabel": "http://",
-  "formSiteCheckPlaceholder": "www.meine-seite.de",
-  "formSiteCheckButtonText": "Überprüfen",
-
-  "sitesListSitenameTitle": "Getestete Seiten",
-  "sitesListResultsTitle": "Gefundene Google Spuren",
-  "sitesListResultGoogleFree": "Google-frei",
-
-  "footerClaim": "Sag es weiter!",
-
-  "introTextFirst": "Google is massively spying on every user of the internet, recording their behaviours, habits and preferences, to better profile them and make them click on advertisement. It relatively easy to imagine how they do this, without being a computer expert, when people voluntarily use Google products (search, maps, gmail, android). Yet a lot happens in ways that are harder to see: Google extends its network of surveillance by collecting data through <b>other people's websites!</b> Often, for the sake of simplicity, or because they just got used to it, designers of websites include ‟free” technology from Google (analytics, javascript of even benign fonts!) within the sites they develop, turning potentially <b>your website</b> into spyware that will track users and report their activities to Google. Sounds like a scam, doesn't it?",
-  "introTextSecond": "This website helps expose this scheme for extorting/tapping data from the users of anyone and everyone's website. By making this tracking visible we hope that many will realize that they are involuntarily part of enabling the dominance of this dangerous data-colonial empire, and somehow unknowingly ‟selling” their own users and visitors to Google, instead of building a trust-relationship to them. We therefore aim to promote and enable the use of alternatives to Google's services, as to empower everyone within our communities to build a safer web experience for everyone, free of commercial tracking and profiling."
+	"headerLinksMap": "Karte",
+	"heroLeadParagraph": "Willst Du Google aus Kreuzberg loswerden? <em>Klar!</em><br><span class='success'>Aber was ist mit Deiner Webseite?",
+	"heroSubParagraph": "Google Tracker und Algorithmen <em>infiltrieren</em> alle Webseiten, die Du je besucht hast.<br> Also solltest Du diese vielleicht auch loswerden.",
+	"formSiteCheckTitle": "Überprüfe, ob Deine Seite von Google infiltriert ist",
+	"formSiteCheckPlaceholder": "www.meine-seite.de",
+	"formSiteCheckButtonText": "Überprüfen",
+	"sitesListSitenameTitle": "Getestete Seiten",
+	"sitesListResultsTitle": "Gefundene Google Spuren",
+	"formSearchSitesPlaceholder": "Durchsuchen…",
+	"sitesListResultGoogleFree": "Google-frei",
+	"footerClaim": "Sag es weiter!",
+	"introTextFirst": "Google is massively spying on every user of the internet, recording their behaviours, habits and preferences, to better profile them and make them click on advertisement. It relatively easy to imagine how they do this, without being a computer expert, when people voluntarily use Google products (search, maps, gmail, android). Yet a lot happens in ways that are harder to see: Google extends its network of surveillance by collecting data through <b>other people's websites!</b> Often, for the sake of simplicity, or because they just got used to it, designers of websites include ‟free” technology from Google (analytics, javascript of even benign fonts!) within the sites they develop, turning potentially <b>your website</b> into spyware that will track users and report their activities to Google. Sounds like a scam, doesn't it?",
+	"introTextSecond": "This website helps expose this scheme for extorting/tapping data from the users of anyone and everyone's website. By making this tracking visible we hope that many will realize that they are involuntarily part of enabling the dominance of this dangerous data-colonial empire, and somehow unknowingly ‟selling” their own users and visitors to Google, instead of building a trust-relationship to them. We therefore aim to promote and enable the use of alternatives to Google's services, as to empower everyone within our communities to build a safer web experience for everyone, free of commercial tracking and profiling.",
+	"formSiteCheckLabel": "formSiteCheckLabel"
 }
