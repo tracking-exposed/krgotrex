@@ -7,7 +7,7 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
 let siteToCheck = '';
 
 async function getSingleSite(siteName) {
-  if (!siteName || (siteName && siteToCheck.length && siteToCheck === siteName)) {
+  if (!siteName) {
     return;
   }
   return await new Promise((resolve, reject) => {
@@ -45,6 +45,10 @@ async function checkSite(event) {
   $('#check-site-result').empty();
   $('#check-site-loader').show();
   disableFormCheckSite();
+  // Determine language for setting error messages
+  const docLocation = document.location.toString(),
+    isGermanLang = docLocation.indexOf('/de/') > 0;
+
   try {
     const regex = new RegExp(/^https?:\/\/|\s/, 'gi'),
       trimmedVal = inputVal.replace(regex, ''); // Remove 'http(s)://' as well as white space
@@ -54,9 +58,10 @@ async function checkSite(event) {
     let result = {};
     function convertObj2Html(obj) {
       let htmlList = "";
+
       for (let key in obj) {
         if( obj.hasOwnProperty(key) ) {
-          htmlList += `<li class="small-8 large-10 column">${key}: ${obj[key]}</li>`;
+          htmlList += `<li class="small-8 large-10 column alert">☢️ ${key}: ${obj[key]}</li>`;
         }
       }
       return htmlList;
@@ -66,7 +71,7 @@ async function checkSite(event) {
         page: response.page,
       }
 
-      if (response.summary.googles) {
+      if (Object.keys(response.summary.googles).length > 0) {
         result = {
           ...result,
           content: `
@@ -78,8 +83,21 @@ async function checkSite(event) {
       } else {
         result = {
           ...result,
-          content: 'Sauber! Keine Tracker gefunden.'
+          content: `<b class="success">${
+            isGermanLang
+            ? 'Sauber! Diese Seite ist frei von Google Trackern.'
+            : 'Clean! This site is free from Google trackers.'
+          } 🎉</b>`
         }
+      }
+    } else {
+      result = {
+        page: inputVal,
+        content: `<span class="warning">⚠️ ${
+            isGermanLang
+            ? 'Ups! Die Suche ging schief. Bitte überprüfe Deine Internetverbindung.'
+            : 'Oops! The search failed. Please check your internet connection.'
+          }</span>`
       }
     }
     $('#check-site-loader').hide();
@@ -91,10 +109,11 @@ async function checkSite(event) {
   } catch (error) {
     $('#check-site-loader').hide();
     disableFormCheckSite(false);
-    $('#check-site-result').append(`
-      <h2>Oops!</h2>
-      <p>Etwas ist schief gelaufen.</p>
-    `);
+    $('#check-site-result').append(`⚠️ ${
+      isGermanLang
+      ? '<h2>Ups!</h2><br><p>Etwas ist schief gelaufen. Bitte versuch es später erneut.</p>'
+      : '<h2>Oops!</h2><br><p>Something went wrong. Please try again later.</p>'
+    }`);
 
     console.error('main.js: Site could not be checked. Reason: ', error);
   }
