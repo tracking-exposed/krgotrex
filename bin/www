@@ -14,6 +14,7 @@ var http = require('http');
  */
 
 var port = normalizePort(process.env.PORT || '3000');
+var interface = process.env.interface || "127.0.0.1";
 app.set('port', port);
 
 /**
@@ -26,7 +27,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, interface);
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -89,6 +90,6 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 //  process.chdir('site');
-  console.log(`Server is running. ✅ Browse to http://localhost:${addr.port} \n\n☝🏼  Reload the page to see changes in JS or SCSS files \n`);
+  console.log(`Server is running. ✅ Browse to http://${interface}:${addr.port} \n\n☝🏼  Reload the page to see changes in JS or SCSS files \n`);
 //  app.use('/p', express.static('../web-accessible'));
 }

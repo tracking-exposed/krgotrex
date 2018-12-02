@@ -123,7 +123,7 @@ function searchSite(event) {
   if (!event) return;
 
   event.preventDefault();
-  console.log(event);
+  console.log("searching for", event.target.value);
   // const resultSite = sitesArray.search(e.target.value) > -1;
   // console.log(resultSite);
   // return resultSite;
@@ -142,15 +142,15 @@ $(function() {
       secondUrlPart = path.split('/')[2];
 
     /* TODO put the regexp in a variable, or this list might give problem in maintanence */
-    let page = (secondUrlPart && secondUrlPart.match(/kreuzberg|campaign|about|replacement|map|check/)) ? secondUrlPart : 'campaign';
+    let page = (secondUrlPart && secondUrlPart.match(/kreuzberg|campaign|about|replacements|map|check/)) ? secondUrlPart : 'campaign';
 
     /* in case someone call for /check or /campaign, it is considered but the language would be forced default below */
     if(!secondUrlPart && firstUrlPart)
-        page = firstUrlPart.match(/kreuzberg|campaign|about|replacement|map|check/) ? firstUrlPart : 'campaign';
+        page = firstUrlPart.match(/kreuzberg|campaign|about|replacements|map|check/) ? firstUrlPart : 'campaign';
  
     const locale = (firstUrlPart && firstUrlPart.match(/de|en/)) ? firstUrlPart : 'de';
 
-    history.pushState({}, `Welcome to Kreuzberg Google Tracking Exposed`, `/${locale}/${page}`);
+    history.pushState({}, `Kreuzberg Google Tracking Exposed`, `/${locale}/${page}`);
     $('body').ready(() => {
       $('#loader').hide();
       $(getElementToShow(page)).show();

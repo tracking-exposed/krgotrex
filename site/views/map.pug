@@ -80,6 +80,7 @@ section.component#component-map
     const waitForMap = setInterval(function() {
       if ($('.ol-viewport').length) {
           window.dispatchEvent(new Event('resize'));
+          console.log("hack resize trigger now");
           clearInterval(waitForMap);
       }
     }, 100);
