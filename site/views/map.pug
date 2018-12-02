@@ -9,10 +9,6 @@ section.component#component-map
     const sites = !{JSON.stringify(sites)};
     const results = !{JSON.stringify(results)};
     const features = sites.map(site => {
-      const tags = site.kind
-        ? site.kind.split(';')
-        : null;
-      console.log('+++ tags: ', tags);
       const isInfiltrated = results.find((result) => {
         return result.id === site.lastResultId && Object.keys(result.googles).length > 0;
       });
@@ -27,7 +23,7 @@ section.component#component-map
           "name": site.name,
           "address": site.address,
           "url": site.href,
-          "tags": tags,
+          "tags": site.tags,
           "icon": new ol.style.Icon({
             anchor: [0.5, 1],
             src: isInfiltrated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',

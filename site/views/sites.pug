@@ -22,15 +22,14 @@ block sites
                 .small-6.column.site-details.text-right
                   address
                     strong= site.name
-                    -if (site.address)
+                    if (site.address)
                       br
                       span.site-details__address= site.address
-                  if (site.kind)
-                    - const tags = site.kind.split(';')
-                      .row
-                        .column
-                            for tag in tags
-                              span.tag= tag
+                  if (site.tags)
+                    .row
+                      .column
+                        for tag in site.tags
+                          span.tag= tag
                 .small-6.column
                   ul.site-googles
                     each val, index in result.googles

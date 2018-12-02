@@ -32,7 +32,7 @@ dataService.getAnalyzedSites = new Promise((resolve, reject) => {
       const sitesJson = JSON.parse(body);
       sitesJson.forEach(site => {
         const s = new Site(site);
-        sites.push(site);
+        sites.push(s);
       });
 
       resolve(sites);
