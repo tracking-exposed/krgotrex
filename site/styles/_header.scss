@@ -10,45 +10,47 @@ header {
 }
 
 #main-header {
-  nav {
-    align-items: baseline;
-    text-align: center;
+  align-items: baseline;
+  text-align: center;
+
+  @include breakpoint(medium) {
+    align-items: center;
+    text-align: left;
+  }
+
+  .header {
+    &-logo {
+      font-size: 130%;
+    }
+
+    &-link:not(.header-logo) {
+      color: $lightturquoise-color;
+
+      &::after {
+        background-color: $anchor-color;
+      }
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        color: $anchor-color;
+      }
+    }
+  }
+
+  .menu-main,
+  .menu-lang {
+    justify-content: flex-start;
 
     @include breakpoint(medium) {
-      align-items: center;
-      text-align: left;
+      justify-content: flex-end;
     }
+  }
 
-    .header {
-      &-logo {
-        font-size: 130%;
-      }
-
-      &-menu {
-        justify-content: flex-start;
-
-        @include breakpoint(medium) {
-          justify-content: flex-end;
-        }
-      }
-
-      &-link {
-
-        &-lang {
-          color: $lightturquoise-color;
-          text-align: left;
-
-          @include breakpoint(medium) {
-            text-align: right;
-          }
-
-          &:hover,
-          &.active {
-            color: $anchor-color;
-            text-shadow: 1px 0 0 currentColor; // Fake bold font weight
-          }
-        }
-      }
-    }
+  .menu-main {
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }

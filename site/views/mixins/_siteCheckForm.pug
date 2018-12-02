@@ -1,9 +1,9 @@
 mixin siteCheckForm(site = {})
   form(
-    action=""
-    class="row align-center"
-    id="form-check-site"
     onsubmit="checkSite(event)"
+    action=""
+    id="form-check-site"
+    class="row align-center"
   )
     fieldset(class="column")
       h3 #{i18n.__("formSiteCheckTitle")}
@@ -23,3 +23,8 @@ mixin siteCheckForm(site = {})
             id="form-check-site-btn"
             class="button"
           ) #{i18n.__("formSiteCheckButtonText")}
+  .row.align-center
+    .column
+      #check-site-loader
+        p SEARCHING...
+      #check-site-result

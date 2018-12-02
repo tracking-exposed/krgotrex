@@ -7,7 +7,7 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
 let siteToCheck = '';
 
 async function getSingleSite(siteName) {
-  if (!siteName || (siteName && siteToCheck.length && siteToCheck === siteName)) {
+  if (!siteName) {
     return;
   }
   return await new Promise((resolve, reject) => {
@@ -45,16 +45,76 @@ async function checkSite(event) {
   $('#check-site-result').empty();
   $('#check-site-loader').show();
   disableFormCheckSite();
+  // Determine language for setting error messages
+  const docLocation = document.location.toString(),
+    isGermanLang = docLocation.indexOf('/de/') > 0;
+
   try {
-    const regex = new RegExp(/^https?:\/\/|\s/, 'gi');
-    const trimmedVal = inputVal.replace(regex, ''); // Remove 'http(s)://' as well as white space
-    const site = await getSingleSite(trimmedVal);
+    const regex = new RegExp(/^https?:\/\/|\s/, 'gi'),
+      trimmedVal = inputVal.replace(regex, ''); // Remove 'http(s)://' as well as white space
+    const response = await getSingleSite(trimmedVal);
+
+    // Convert the Google results into a list
+    let result = {};
+    function convertObj2Html(obj) {
+      let htmlList = "";
+
+      for (let key in obj) {
+        if( obj.hasOwnProperty(key) ) {
+          htmlList += `<li class="small-8 large-10 column alert">☢️ ${key}: ${obj[key]}</li>`;
+        }
+      }
+      return htmlList;
+    }
+    if (response.summary) {
+      result = {
+        page: response.page,
+      }
+
+      if (Object.keys(response.summary.googles).length > 0) {
+        result = {
+          ...result,
+          content: `
+            <ul class="row site-googles">
+              ${convertObj2Html(response.summary.googles)}
+            </ul>
+          `
+        };
+      } else {
+        result = {
+          ...result,
+          content: `<b class="success">${
+            isGermanLang
+            ? 'Sauber! Diese Seite ist frei von Google Trackern.'
+            : 'Clean! This site is free from Google trackers.'
+          } 🎉</b>`
+        }
+      }
+    } else {
+      result = {
+        page: inputVal,
+        content: `<span class="warning">⚠️ ${
+            isGermanLang
+            ? 'Ups! Die Suche ging schief. Bitte überprüfe Deine Internetverbindung.'
+            : 'Oops! The search failed. Please check your internet connection.'
+          }</span>`
+      }
+    }
     $('#check-site-loader').hide();
-    $('#check-site-result').append(`<pre>${JSON.stringify(site, undefined, 2)}</pre>`);
+    $('#check-site-result').append(`
+      <h2>${result.page}</h2>
+      ${result.content}
+    `);
     disableFormCheckSite(false);
   } catch (error) {
     $('#check-site-loader').hide();
     disableFormCheckSite(false);
+    $('#check-site-result').append(`⚠️ ${
+      isGermanLang
+      ? '<h2>Ups!</h2><br><p>Etwas ist schief gelaufen. Bitte versuch es später erneut.</p>'
+      : '<h2>Oops!</h2><br><p>Something went wrong. Please try again later.</p>'
+    }`);
+
     console.error('main.js: Site could not be checked. Reason: ', error);
   }
 }

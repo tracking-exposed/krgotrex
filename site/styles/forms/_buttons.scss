@@ -10,4 +10,11 @@ button,
   &:hover {
     color: $white;
   }
+
+  &:disabled,
+  &[disabled]
+  &:disabled:hover,
+  &[disabled]:hover {
+    background-color: $medium-gray;
+  }
 }

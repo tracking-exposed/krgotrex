@@ -1,22 +1,40 @@
-.form-check-site {
+#form-check-site {
   h3 {
     margin-bottom: $global-margin;
     font-weight: $global-weight-bold;
   }
 
   .input-group {
+    margin-top: $global-margin;
+    margin-bottom: $global-margin;
+
     &-field {
       height: 48px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+    }
 
-      @include breakpoint(medium) {
+    @include breakpoint(medium) {
+      margin-top: $global-margin * 2;
+
+      &-field {
         height: 52px;
       }
+    }
 
-      @include breakpoint(large) {
+    @include breakpoint(large) {
+      margin-top: $global-margin * 3;
+      margin-bottom: $global-margin * 2;
+
+      &-field {
         height: 56px;
       }
+    }
+
+    &-field:disabled,
+    &-field[disabled] {
+      background-color: $light-gray;
+      color: $dark-gray;
     }
 
     &-button {
@@ -29,5 +47,13 @@
         }
       }
     }
+  }
+}
+
+#check-site-result {
+  margin-bottom: $global-margin;
+
+  @include breakpoint(large) {
+    margin-bottom: $global-margin * 2;
   }
 }

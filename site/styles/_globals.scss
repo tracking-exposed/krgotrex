@@ -11,6 +11,9 @@ $turquoise-color: get-color(turquoise);
 $mediumturquoise-color: get-color(mediumturquoise);
 $darkturquoise-color: get-color(darkturquoise);
 
+// Animations
+$easing: ease-out;
+
 .primary {
   color: $primary-color;
 }
@@ -45,11 +48,47 @@ label {
 
 section {
   display: none;
+  padding-top: $global-padding;
+  padding-bottom: $global-padding;
+
+  @include breakpoint(medium) {
+    padding-top: $global-padding * 2;
+    padding-bottom: $global-padding * 2;
+  }
+
+  @include breakpoint(large) {
+    padding-top: $global-padding * 3;
+    padding-bottom: $global-padding * 3;
+  }
 }
 
 // Behaviour
 a {
-  transition: color .2s ease-in-out;
+  display: inline-block;
+  position: relative;
+  transition: color .2s $easing;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom right;
+    transition: transform .2s $easing;
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    &::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
 }
 
 .propaganda {
