@@ -98,3 +98,19 @@ a {
      color: #8fd216;
   }
 }
+
+.tag {
+  background: $darkturquoise-color;
+  border-radius: 500px;
+  color: $medium-gray;
+  display: inline-block;
+  font-size: 60%;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  word-break: keep-all;
+  white-space: nowrap;
+
+  & ~ & {
+    margin-left: 4px;
+  }
+}

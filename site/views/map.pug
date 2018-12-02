@@ -6,9 +6,13 @@ section.component#component-map
     */
     // Create markers and geodata
     const mapCenter = [13.429, 52.494]; // Umspannwerk Kreuzberg
-    const siteData = !{JSON.stringify(sites)};
+    const sites = !{JSON.stringify(sites)};
     const results = !{JSON.stringify(results)};
-    const features = siteData.map(site => {
+    const features = sites.map(site => {
+      const tags = site.kind
+        ? site.kind.split(';')
+        : null;
+      console.log('+++ tags: ', tags);
       const isInfiltrated = results.find((result) => {
         return result.id === site.lastResultId && Object.keys(result.googles).length > 0;
       });
@@ -20,8 +24,10 @@ section.component#component-map
           "coordinates": [ Number(site.longitude), Number(site.latitude) ]
         },
         "properties": {
-          "title": site.name,
-          "description": site.address,
+          "name": site.name,
+          "address": site.address,
+          "url": site.href,
+          "tags": tags,
           "icon": new ol.style.Icon({
             anchor: [0.5, 1],
             src: isInfiltrated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',
@@ -80,8 +86,7 @@ section.component#component-map
      */
     const waitForMap = setInterval(function() {
       if ($('div.ol-viewport').length) {
-          window.dispatchEvent(new Event('resize'));
-          console.log("hack resize trigger now");
-          clearInterval(waitForMap);
+        window.dispatchEvent(new Event('resize'));
+        clearInterval(waitForMap);
       }
     }, 100);

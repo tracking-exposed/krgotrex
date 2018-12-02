@@ -1,5 +1,5 @@
 block sites
-  aside#sites
+  #sites
     .row.align-middle.site-titles
       .small-6.column.text-right
         h6 #{i18n.__("sitesListSitenameTitle")}
@@ -7,10 +7,10 @@ block sites
         h6 #{i18n.__("sitesListResultsTitle")}
       .small-12.column
         input(
+          onkeyup="filterSites(event)"
           id="search-sites-input"
           type="text"
           placeholder!=i18n.__('formSearchSitesPlaceholder')
-          onkeyup="searchSite(event)"
         )
     ul.row.align-center.align-middle.site-results-list
       for site in sites
@@ -22,8 +22,15 @@ block sites
                 .small-6.column.site-details.text-right
                   address
                     strong= site.name
-                    br
-                    .site-details__address= site.address
+                    -if (site.address)
+                      br
+                      span.site-details__address= site.address
+                  if (site.kind)
+                    - const tags = site.kind.split(';')
+                      .row
+                        .column
+                            for tag in tags
+                              span.tag= tag
                 .small-6.column
                   ul.site-googles
                     each val, index in result.googles
