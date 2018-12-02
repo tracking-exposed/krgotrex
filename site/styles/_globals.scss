@@ -1,15 +1,16 @@
 // Global styles that are NOT already defined in the _settings.scss file go here
 
-body {
-  background-color: $darkturquoise-color;
-  background-attachment: fixed;
-}
 
 // Colors
 $lightturquoise-color: get-color(lightturquoise);
 $turquoise-color: get-color(turquoise);
 $mediumturquoise-color: get-color(mediumturquoise);
 $darkturquoise-color: get-color(darkturquoise);
+
+body {
+  background-color: $darkturquoise-color;
+  background-attachment: fixed;
+}
 
 // Animations
 $easing: ease-out;
