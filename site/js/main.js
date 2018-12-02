@@ -184,5 +184,31 @@ $(function() {
     if (!routeId) return;
     return `#component-${routeId}`;
   }
-
 });
+
+/********************************************
+ * Prepare filter index for instant feedback
+ ********************************************/
+const documents = [];
+for (let site in siteData) {
+  const result = resultData.find(r => r.id === site.lastResultId);
+  documents.push(result);
+}
+
+  documents.forEach((doc) => {
+    this.add(doc)
+  }, this)
+
+/**
+ * Filters site results
+ * @param {event} event Keyboard key being released
+ */
+function filterSites(event) {
+  if (!event) return;
+  event.preventDefault();
+  console.log(event);
+
+  const resultSite = documents.filter((doc) => event.target[0].value);
+  console.log(resultSite);
+  return resultSite;
+}
