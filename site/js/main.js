@@ -4,7 +4,14 @@
 const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/site/',
       singleCheckSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/monosite/';
 
-let siteToCheck = '';
+// vars
+let matchedElements,
+    listContainer = document.getElementById('sites-results-list'),
+    siteToCheck = '';
+const htmlListElements = Array.from(listContainer.children),
+    $searchField = $('#search-sites-input');
+
+$searchField.val(''); // Empty search field initally
 
 async function getSingleSite(siteName) {
   if (!siteName) {
@@ -30,9 +37,9 @@ async function getSingleSite(siteName) {
 
 /**
  * C H E C K  Y O U R  S I T E
- */
+ ******************************/
 
-// helpers
+// helper fn
 function disableFormCheckSite(disable = true) {
   $('#form-check-site-input').prop("disabled", disable);
   $('#form-check-site-btn').prop("disabled", disable);
@@ -119,15 +126,54 @@ async function checkSite(event) {
   }
 }
 
-function searchSite(event) {
-  if (!event) return;
+/*******************************
+ *                             *
+ *   F I L T E R   S I T E S   *
+ *                             *
+ *******************************/
 
+/**
+ * Filters site results
+ * @param {event} event Keyboard key being released
+ */
+$searchField.on('keyup', debounce((event) => {
+  if (!event) return;
   event.preventDefault();
-  console.log("searching for", event.target.value);
-  // const resultSite = sitesArray.search(e.target.value) > -1;
-  // console.log(resultSite);
-  // return resultSite;
+
+  matchedElements = [];
+
+  const inputVal = event.target.value,
+    regex = new RegExp(inputVal, 'gi');
+
+  listContainer.innerHTML = '';
+
+  htmlListElements.forEach((listElement) => {
+    const listElementContent = listElement.children[0].children[0].children[0];
+    if (listElementContent.innerText.search(regex) > -1) {
+      matchedElements = [
+        ...matchedElements,
+        listElement
+      ];
+      listContainer.appendChild(listElement);
+    }
+  });
+}));
+
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  threshold = threshold || 100;
+  return function debounced() {
+    clearTimeout( timeout );
+    var args = arguments;
+    var _this = this;
+    function delayed() {
+      fn.apply( _this, args );
+    }
+    timeout = setTimeout( delayed, threshold );
+  };
 }
+
 
 $(function() {
 
@@ -165,7 +211,7 @@ $(function() {
 
   /**
    *  M E N U
-   */
+   ************/
   /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
   $("a[data-route]").on('click', function(e) {
       e.preventDefault();
@@ -186,29 +232,3 @@ $(function() {
   }
 });
 
-/********************************************
- * Prepare filter index for instant feedback
- ********************************************/
-const documents = [];
-for (let site in siteData) {
-  const result = resultData.find(r => r.id === site.lastResultId);
-  documents.push(result);
-}
-
-  documents.forEach((doc) => {
-    this.add(doc)
-  }, this)
-
-/**
- * Filters site results
- * @param {event} event Keyboard key being released
- */
-function filterSites(event) {
-  if (!event) return;
-  event.preventDefault();
-  console.log(event);
-
-  const resultSite = documents.filter((doc) => event.target[0].value);
-  console.log(resultSite);
-  return resultSite;
-}

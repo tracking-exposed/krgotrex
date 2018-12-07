@@ -7,12 +7,11 @@ block sites
         h6 #{i18n.__("sitesListResultsTitle")}
       .small-12.column
         input(
-          onkeyup="filterSites(event)"
           id="search-sites-input"
           type="text"
           placeholder!=i18n.__('formSearchSitesPlaceholder')
         )
-    ul.row.align-center.align-middle.site-results-list
+    ul.row.align-center.align-middle.site-results-list#sites-results-list
       for site in sites
         // Map each site with its corresponding results
         - const result = results.find(r => r.id === site.lastResultId)
