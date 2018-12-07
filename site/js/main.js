@@ -5,7 +5,7 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
       singleCheckSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/monosite/';
 
 // vars
-let matchedElements,
+let matchedElements = [],
     listContainer = document.getElementById('sites-results-list'),
     siteToCheck = '';
 const htmlListElements = Array.from(listContainer.children),
@@ -138,16 +138,17 @@ $searchField.on('keyup', debounce((event) => {
   if (!event) return;
   event.preventDefault();
 
-  matchedElements = [];
-
-  const inputVal = event.target.value,
-    regex = new RegExp(inputVal, 'gi');
+  const inputVal = event.target.value.trim(),
+        regex = new RegExp(inputVal, 'gi');
 
   listContainer.innerHTML = '';
+  const elementsToFilter = matchedElements.length
+    ? matchedElements
+    : htmlListElements;
 
-  htmlListElements.forEach((listElement) => {
-    const listElementContent = listElement.children[0].children[0].children[0];
-    if (listElementContent.innerText.search(regex) > -1) {
+  elementsToFilter.forEach((listElement) => {
+    const siteNameOrAddress = listElement.children[0].children[0].children[0];
+    if (siteNameOrAddress.innerText.search(regex) > -1) {
       matchedElements = [
         ...matchedElements,
         listElement
