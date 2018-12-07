@@ -36,8 +36,8 @@ async function getSingleSite(siteName) {
 }
 
 /**
- * C H E C K  Y O U R  S I T E
- ******************************/
+ * C H E C K   Y O U R   S I T E
+ ********************************/
 
 // helper fn
 function disableFormCheckSite(disable = true) {
@@ -126,11 +126,9 @@ async function checkSite(event) {
   }
 }
 
-/*******************************
- *                             *
- *   F I L T E R   S I T E S   *
- *                             *
- *******************************/
+/*
+ * F I L T E R   S I T E S
+ ****************************/
 
 /**
  * Filters site results
@@ -210,7 +208,7 @@ $(function() {
   setActiveLinkClass();
 
   /**
-   *  M E N U
+   *   M E N U
    ************/
   /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
   $("a[data-route]").on('click', function(e) {
