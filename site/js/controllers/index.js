@@ -10,7 +10,10 @@ const renderLocalizedPage = async (res, i18n, language, page, option) => {
   i18n.setLocale(language);
   const viewPath = path.join(__dirname, '..', '..', 'views', 'webapp.pug');
   debugger;
-  const computedWebAppHTML = pug.compileFile(viewPath, { pretty: true, debug: false})({
+  const computedWebAppHTML = pug.compileFile(viewPath, {
+    pretty: true,
+    debug: false
+  })({
     sites,
     results,
     i18n,
