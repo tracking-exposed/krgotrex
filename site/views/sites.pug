@@ -1,5 +1,5 @@
 block sites
-  aside#sites
+  #sites
     .row.align-middle.site-titles
       .small-6.column.text-right
         h6 #{i18n.__("sitesListSitenameTitle")}
@@ -10,9 +10,8 @@ block sites
           id="search-sites-input"
           type="text"
           placeholder!=i18n.__('formSearchSitesPlaceholder')
-          onkeyup="searchSite(event)"
         )
-    ul.row.align-center.align-middle.site-results-list
+    ul.row.align-center.align-middle.site-results-list#sites-results-list
       for site in sites
         // Map each site with its corresponding results
         - const result = results.find(r => r.id === site.lastResultId)
@@ -22,8 +21,14 @@ block sites
                 .small-6.column.site-details.text-right
                   address
                     strong= site.name
-                    br
-                    .site-details__address= site.address
+                    if (site.address)
+                      br
+                      span.site-details__address= site.address
+                  if (site.tags)
+                    .row
+                      .column
+                        for tag in site.tags
+                          span.tag= tag
                 .small-6.column
                   ul.site-googles
                     each val, index in result.googles

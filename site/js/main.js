@@ -4,7 +4,14 @@
 const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/site/',
       singleCheckSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/monosite/';
 
-let siteToCheck = '';
+// vars
+let matchedElements = [],
+    listContainer = document.getElementById('sites-results-list'),
+    siteToCheck = '';
+const htmlListElements = Array.from(listContainer.children),
+    $searchField = $('#search-sites-input');
+
+$searchField.val(''); // Empty search field initally
 
 async function getSingleSite(siteName) {
   if (!siteName) {
@@ -29,10 +36,10 @@ async function getSingleSite(siteName) {
 }
 
 /**
- * C H E C K  Y O U R  S I T E
- */
+ * C H E C K   Y O U R   S I T E
+ ********************************/
 
-// helpers
+// helper fn
 function disableFormCheckSite(disable = true) {
   $('#form-check-site-input').prop("disabled", disable);
   $('#form-check-site-btn').prop("disabled", disable);
@@ -119,15 +126,53 @@ async function checkSite(event) {
   }
 }
 
-function searchSite(event) {
-  if (!event) return;
+/*
+ * F I L T E R   S I T E S
+ ****************************/
 
+/**
+ * Filters site results
+ * @param {event} event Keyboard key being released
+ */
+$searchField.on('keyup', debounce((event) => {
+  if (!event) return;
   event.preventDefault();
-  console.log("searching for", event.target.value);
-  // const resultSite = sitesArray.search(e.target.value) > -1;
-  // console.log(resultSite);
-  // return resultSite;
+
+  const inputVal = event.target.value.trim(),
+        regex = new RegExp(inputVal, 'gi');
+
+  listContainer.innerHTML = '';
+  const elementsToFilter = matchedElements.length
+    ? matchedElements
+    : htmlListElements;
+
+  elementsToFilter.forEach((listElement) => {
+    const siteNameOrAddress = listElement.children[0].children[0].children[0];
+    if (siteNameOrAddress.innerText.search(regex) > -1) {
+      matchedElements = [
+        ...matchedElements,
+        listElement
+      ];
+      listContainer.appendChild(listElement);
+    }
+  });
+}));
+
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  let timeout;
+  threshold = threshold || 100;
+  return function debounced() {
+    clearTimeout( timeout );
+    const args = arguments;
+    const _this = this;
+    function delayed() {
+      fn.apply( _this, args );
+    }
+    timeout = setTimeout( delayed, threshold );
+  };
 }
+
 
 $(function() {
 
@@ -164,8 +209,8 @@ $(function() {
   setActiveLinkClass();
 
   /**
-   *  M E N U
-   */
+   *   M E N U
+   ************/
   /* intercept the click event and don't propagate it: we'll toggle the classes instead or reloading */
   $("a[data-route]").on('click', function(e) {
       e.preventDefault();
@@ -184,5 +229,5 @@ $(function() {
     if (!routeId) return;
     return `#component-${routeId}`;
   }
-
 });
+
