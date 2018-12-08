@@ -44,10 +44,15 @@
       }
 
       &-item {
+        opacity: 1;
         padding-top: $global-padding / 2;
         padding-bottom: $global-padding / 2;
+        position: relative;
         transform: scale(1);
-        transition: transform .3s;
+        transition-property: opacity, transform;
+        transition-duration: .4s;
+        transition-delay: 0ms;
+        will-change: transform, opacity;
 
         @media 
           (max-width: 380px),
@@ -59,8 +64,11 @@
           border-bottom: $code-border;
         }
 
+        &.scale-down {
+          transform: scale(0.001);
+          opacity: 0;
+        }
         &.hidden {
-          transform: scale(0);
           position: absolute;
           left: -9999;
         }

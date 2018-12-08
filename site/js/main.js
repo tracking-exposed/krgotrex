@@ -5,8 +5,7 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
       singleCheckSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/monosite/';
 
 // vars
-let matchedElements = [],
-    listContainer = document.getElementById('sites-results-list'),
+let listContainer = document.getElementById('sites-results-list'),
     siteToCheck = '';
 const htmlListElements = listContainer.getElementsByClassName('site-results-item'),
       $searchField = $('#search-sites-input');
@@ -144,9 +143,13 @@ $searchField.on('keyup', debounce((event) => {
   for (let i = 0; i < htmlListElements.length; i++) {
     const siteNameOrAddress = htmlListElements[i].children[0].children[0].children[0];
     if (siteNameOrAddress.innerText.search(regex) > -1) {
+      htmlListElements[i].classList.remove('scale-down');
       htmlListElements[i].classList.remove('hidden');
     } else {
-      htmlListElements[i].classList.add('hidden');
+      htmlListElements[i].classList.add('scale-down');
+      window.setTimeout(function(){
+        htmlListElements[i].classList.add('hidden');
+      }, 400);
     }
   }
 }));
