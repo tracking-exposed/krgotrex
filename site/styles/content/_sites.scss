@@ -46,6 +46,8 @@
       &-item {
         padding-top: $global-padding / 2;
         padding-bottom: $global-padding / 2;
+        transform: scale(1);
+        transition: transform .3s;
 
         @media 
           (max-width: 380px),
@@ -55,6 +57,12 @@
 
         &:not(:last-child) {
           border-bottom: $code-border;
+        }
+
+        &.hidden {
+          transform: scale(0);
+          position: absolute;
+          left: -9999;
         }
       }
     }

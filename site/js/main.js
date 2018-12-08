@@ -8,8 +8,8 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
 let matchedElements = [],
     listContainer = document.getElementById('sites-results-list'),
     siteToCheck = '';
-const htmlListElements = Array.from(listContainer.children),
-    $searchField = $('#search-sites-input');
+const htmlListElements = listContainer.getElementsByClassName('site-results-item'),
+      $searchField = $('#search-sites-input');
 
 $searchField.val(''); // Empty search field initally
 
@@ -141,21 +141,14 @@ $searchField.on('keyup', debounce((event) => {
   const inputVal = event.target.value.trim(),
         regex = new RegExp(inputVal, 'gi');
 
-  listContainer.innerHTML = '';
-  const elementsToFilter = matchedElements.length
-    ? matchedElements
-    : htmlListElements;
-
-  elementsToFilter.forEach((listElement) => {
-    const siteNameOrAddress = listElement.children[0].children[0].children[0];
+  for (let i = 0; i < htmlListElements.length; i++) {
+    const siteNameOrAddress = htmlListElements[i].children[0].children[0].children[0];
     if (siteNameOrAddress.innerText.search(regex) > -1) {
-      matchedElements = [
-        ...matchedElements,
-        listElement
-      ];
-      listContainer.appendChild(listElement);
+      htmlListElements[i].classList.remove('hidden');
+    } else {
+      htmlListElements[i].classList.add('hidden');
     }
-  });
+  }
 }));
 
 // debounce so filtering doesn't happen every millisecond
