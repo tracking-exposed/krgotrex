@@ -7,7 +7,9 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
 // vars
 let listContainer = document.getElementById('sites-results-list'),
     siteToCheck = '';
-const htmlListElements = listContainer.getElementsByClassName('site-results-item'),
+const htmlListElements = listContainer
+      ? listContainer.getElementsByClassName('site-results-item')
+      : [],
       $searchField = $('#search-sites-input');
 
 $searchField.val(''); // Empty search field initally
