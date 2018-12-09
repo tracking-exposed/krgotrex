@@ -15,7 +15,7 @@ block sites
       for site in sites
         - const result = results.find(r => r.id === site.lastResultId)
           if result
-            li.small-12.medium-8.large-12.column.site-results-item
+            li.small-12.medium-8.large-12.column.site-results-item(id= site.id)
               .row.align-middle
                 .small-6.column.site-details.text-right
                   address

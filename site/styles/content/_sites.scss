@@ -74,6 +74,10 @@
           position: absolute;
           left: -9999px;
         }
+
+        &.selected {
+          background-color: $darkturquoise-color;
+        }
       }
     }
 
