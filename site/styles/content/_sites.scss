@@ -13,6 +13,7 @@
 
   #search-sites-input {
     margin-top: $global-margin / 2;
+    margin-bottom: $global-margin / 2;
     background-color: $darkturquoise-color;
     border: none;
     color: $medium-gray;
@@ -21,13 +22,14 @@
   .site {
     &-titles {
       box-shadow: 0 2px 3px rgba($black, 0.6);
-      padding-top: $global-padding;
+      padding-top: $global-padding / 2;
       position: relative;
 
       h6 {
         font-weight: $global-weight-bold;
+        margin-top: $global-margin / 2;
+        margin-bottom: $global-margin / 1.5;
         text-transform: uppercase;
-        margin-bottom: 0;
       }
     }
 
@@ -70,7 +72,7 @@
         }
         &.hidden {
           position: absolute;
-          left: -9999;
+          left: -9999px;
         }
       }
     }

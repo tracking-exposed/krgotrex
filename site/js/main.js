@@ -134,22 +134,22 @@ async function checkSite(event) {
  * @param {event} event Keyboard key being released
  */
 $searchField.on('keyup', debounce((event) => {
-  if (!event) return;
-  event.preventDefault();
-
   const inputVal = event.target.value.trim(),
         regex = new RegExp(inputVal, 'gi');
 
   for (let i = 0; i < htmlListElements.length; i++) {
-    const siteNameOrAddress = htmlListElements[i].children[0].children[0].children[0];
+    const elem = htmlListElements[i],
+          siteNameOrAddress = elem.children[0].children[0].children[0];
     if (siteNameOrAddress.innerText.search(regex) > -1) {
-      htmlListElements[i].classList.remove('scale-down');
-      htmlListElements[i].classList.remove('hidden');
+      elem.classList.remove('hidden');
+      elem.classList.remove('scale-down');
     } else {
-      htmlListElements[i].classList.add('scale-down');
-      window.setTimeout(function(){
-        htmlListElements[i].classList.add('hidden');
-      }, 400);
+      elem.classList.add('scale-down');
+      elem.ontransitionend = (event) => {
+        if (elem.classList.contains('scale-down')) {
+          elem.classList.add('hidden');
+        }
+      }
     }
   }
 }));

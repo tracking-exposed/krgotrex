@@ -1,19 +1,18 @@
 block sites
   #sites
     .row.align-middle.site-titles
-      .small-6.column.text-right
-        h6 #{i18n.__("sitesListSitenameTitle")}
-      .small-6.column
-        h6 #{i18n.__("sitesListResultsTitle")}
       .small-12.column
         input(
           id="search-sites-input"
           type="text"
           placeholder!=i18n.__('formSearchSitesPlaceholder')
         )
+      .small-6.column.text-right
+        h6 #{i18n.__("sitesListSitenameTitle")}
+      .small-6.column
+        h6 #{i18n.__("sitesListResultsTitle")}
     ul.row.align-center.align-middle.site-results-list#sites-results-list
       for site in sites
-        // Map each site with its corresponding results
         - const result = results.find(r => r.id === site.lastResultId)
           if result
             li.small-12.medium-8.large-12.column.site-results-item
