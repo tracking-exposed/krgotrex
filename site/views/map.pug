@@ -5,34 +5,34 @@ section.component#component-map
     * Leaflet Map
     */
     // Create markers and geodata
-    const mapCenter = [13.429, 52.494]; // Umspannwerk Kreuzberg
-    const sites = !{JSON.stringify(sites)};
-    const results = !{JSON.stringify(results)};
-    const features = sites.map(site => {
-      const isInfiltrated = results.find((result) => {
-        return result.id === site.lastResultId && Object.keys(result.googles).length > 0;
-      });
+    const mapCenter = [13.429, 52.494], // Umspannwerk Kreuzberg
+          sites = !{JSON.stringify(sites)},
+          results = !{JSON.stringify(results)},
+          features = sites.map(site => {
+            const isInfiltrated = results.find((result) => {
+              return result.id === site.lastResultId && Object.keys(result.googles).length > 0;
+            });
 
-      return {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [ Number(site.longitude), Number(site.latitude) ]
-        },
-        "properties": {
-          "id": site.id,
-          "name": site.name,
-          "address": site.address,
-          "url": site.href,
-          "tags": site.tags,
-          "icon": new ol.style.Icon({
-            anchor: [0.5, 1],
-            src: isInfiltrated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',
-            scale: 0.75
-          })
-        }
-      }
-    });
+            return {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [ Number(site.longitude), Number(site.latitude) ]
+              },
+              "properties": {
+                "id": site.id,
+                "name": site.name,
+                "address": site.address,
+                "url": site.href,
+                "tags": site.tags,
+                "icon": new ol.style.Icon({
+                  anchor: [0.5, 1],
+                  src: isInfiltrated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',
+                  scale: 0.75
+                })
+              }
+            }
+          });
 
     let styles = {};
     const styleFunction = function(feature) {
@@ -54,9 +54,6 @@ section.component#component-map
         featureProjection: "EPSG:3857"
       })
     });
-
-
-    //- vectorSource.addFeature(new ol.Feature(new ol.style.Circle([5e6, 7e6], 1e6)));
 
     const vectorLayer = new ol.layer.Vector({
       source: vectorSource,
@@ -84,9 +81,18 @@ section.component#component-map
     map.addInteraction(select);
     select.on('select', (e) => {
       if (e.selected.length) {
-        const selectedMarkerId = e.selected[0].values_.id || null;
-        const correspondingSiteResult = document.getElementById(selectedMarkerId);
-        correspondingSiteResult.classList.toggle('selected');
+        const selectedMarkerId = e.selected[0].values_.id || null,
+              correspondingSiteResult = selectedMarkerId
+                ? document.getElementById(selectedMarkerId)
+                : null;
+        if (correspondingSiteResult) {
+          selectElement(correspondingSiteResult);
+        } else {
+          clearViewClasses();
+        }
+      } else {
+        showSitesFilter();
+        clearViewClasses();
       }
     });
 

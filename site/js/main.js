@@ -6,7 +6,8 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
 
 // vars
 let listContainer = document.getElementById('sites-results-list'),
-    siteToCheck = '';
+    siteToCheck = '',
+    listItemSelected = null;
 const htmlListElements = listContainer
       ? listContainer.getElementsByClassName('site-results-item')
       : [],
@@ -127,53 +128,97 @@ async function checkSite(event) {
   }
 }
 
-/*
- * F I L T E R   S I T E S
- ****************************/
+/***********************************************
+ *                                             *
+ *          F I L T E R   S I T E S            *
+ *                                             *
+ **********************************************/
 
 /**
  * Filters site results
  * @param {event} event Keyboard key being released
  */
-$searchField.on('keyup', debounce((event) => {
+$searchField.on('keyup', (event) => {
+// When user clicks in input field to filter sites
+// let's reset the view
+  resetMapSitesView();
+
   const inputVal = event.target.value.trim(),
         regex = new RegExp(inputVal, 'gi');
 
   for (let i = 0; i < htmlListElements.length; i++) {
     const elem = htmlListElements[i],
           siteNameOrAddress = elem.children[0].children[0].children[0];
-    if (siteNameOrAddress.innerText.search(regex) > -1) {
-      elem.classList.remove('hidden');
-      elem.classList.remove('scale-down');
+    if (siteNameOrAddress.innerText.search(regex) === -1) {
+      hideElement(elem);
     } else {
-      elem.classList.add('scale-down');
-      elem.ontransitionend = (event) => {
-        if (elem.classList.contains('scale-down')) {
-          elem.classList.add('hidden');
-        }
-      }
+      clearViewClasses(elem);
     }
   }
-}));
+});
 
-// debounce so filtering doesn't happen every millisecond
-function debounce( fn, threshold ) {
-  let timeout;
-  threshold = threshold || 100;
-  return function debounced() {
-    clearTimeout( timeout );
-    const args = arguments;
-    const _this = this;
-    function delayed() {
-      fn.apply( _this, args );
+/**
+ *  H E L P E R S
+ *****************/
+function hideElement(elem) {
+  if (!elem) return;
+  elem.classList.add('scale-down');
+  elem.ontransitionend = (event) => {
+    if (elem.classList.contains('scale-down')) {
+      elem.classList.add('hidden');
     }
-    timeout = setTimeout( delayed, threshold );
-  };
+  }
+}
+
+function selectElement(elem) {
+  if (!elem || elem.classList.contains('selected')) return;
+
+  // Remove selected class from former selected item
+  if (listItemSelected) {
+    clearViewClasses(listItemSelected);
+  }
+
+  listItemSelected = elem;
+  listItemSelected.classList.add('selected');
+  listItemSelected.scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+function clearViewClasses(elem) {
+  let el;
+  if (!elem) {
+    if (listItemSelected) {
+      el = listItemSelected;
+    } else {
+      return;
+    }
+  } else {
+    el = elem;
+  }
+  el.classList.remove('hidden');
+  el.classList.remove('scale-down');
+  el.classList.remove('selected');
+}
+
+function showSitesFilter() {
+  const sitesHeader = document.getElementsByClassName('site-titles')[0];
+  if (sitesHeader && listItemSelected) {
+    sitesHeader.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+}
+
+function resetMapSitesView() {
+  if (select) {
+    select.getFeatures().clear();
+  }
+  clearViewClasses();
 }
 
 
 $(function() {
-
   function setActiveLinkClass() {
     if (!window) {
       console.log('No window (yet) in setActiveClass()');

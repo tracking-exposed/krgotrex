@@ -9,6 +9,20 @@
     right: 0;
     bottom: 0;
     width: 33%;
+    height: 67%;
+    height: 67vh;
+    max-height: 300px;
+
+    @include breakpoint(medium) {
+      height: 75%;
+      height: 75vh;
+      max-height: 500px;
+    }
+
+    @include breakpoint(large) {
+      min-height: 600px;
+      max-height: unset;
+    }
   }
 
   #search-sites-input {
@@ -21,9 +35,11 @@
 
   .site {
     &-titles {
+      background: $mediumturquoise-color;
       box-shadow: 0 2px 3px rgba($black, 0.6);
       padding-top: $global-padding / 2;
       position: relative;
+      z-index: 1;
 
       h6 {
         font-weight: $global-weight-bold;
@@ -51,10 +67,10 @@
         padding-bottom: $global-padding / 2;
         position: relative;
         transform: scale(1);
-        transition-property: opacity, transform;
-        transition-duration: .4s;
+        transition-property: background-color, opacity, transform;
+        transition-duration: $transition-duration;
         transition-delay: 0ms;
-        will-change: transform, opacity;
+        will-change: background-color, opacity, transform;
 
         @media 
           (max-width: 380px),
@@ -77,6 +93,10 @@
 
         &.selected {
           background-color: $darkturquoise-color;
+
+          .tag {
+              background: $turquoise-color;
+          }
         }
       }
     }

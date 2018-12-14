@@ -7,6 +7,9 @@ $turquoise-color: get-color(turquoise);
 $mediumturquoise-color: get-color(mediumturquoise);
 $darkturquoise-color: get-color(darkturquoise);
 
+// Animation
+$transition-duration: .3s;
+
 body {
   background-color: $darkturquoise-color;
   background-attachment: fixed;
@@ -110,6 +113,7 @@ a {
   text-transform: uppercase;
   word-break: keep-all;
   white-space: nowrap;
+  transition: background-color .3s;
 
   & ~ & {
     margin-left: 4px;
