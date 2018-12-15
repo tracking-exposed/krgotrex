@@ -1,25 +1,37 @@
 block sites
   #sites
-    div(class="row align-middle site-titles" onmouseover="showSitesFilter()")
-      .small-12.column
-        input(
-          id="search-sites-input"
-          type="text"
-          placeholder!=i18n.__('formSearchSitesPlaceholder')
-        )
+    .row.align-middle.site-titles
       .small-6.column.text-right
         h6 #{i18n.__("sitesListSitenameTitle")}
       .small-6.column
         h6 #{i18n.__("sitesListResultsTitle")}
     ul.row.align-center.align-middle.site-results-list#sites-results-list
+      li.small-12.medium-8.large-12
+        input(
+          id="search-sites-input"
+          type="text"
+          placeholder!=i18n.__('formSearchSitesPlaceholder')
+        )
       for site in sites
         - const result = results.find(r => r.id === site.lastResultId)
           if result
             li.small-12.medium-8.large-12.column.site-results-item(id= site.id)
               .row.align-middle
-                .small-6.column.site-details.text-right
+                .small-2.medium-1
+                  img(
+                    onclick="centerMapToPin(this)"
+                    data-latitude= site.latitude
+                    data-longitude= site.longitude
+                    src="/assets/img/pin-on-map--primary.svg"
+                    alt="pin on map"
+                    class="icon-map")
+                .small-10.medium-6.column.site-details
                   address
-                    strong= site.name
+                    if (site.href)
+                      strong
+                        a(href=site.href target="_blank" class="site-details__link")= site.name
+                    else
+                      strong= site.name
                     if (site.address)
                       br
                       span.site-details__address= site.address
@@ -28,7 +40,7 @@ block sites
                       .column
                         for tag in site.tags
                           span.tag= tag
-                .small-6.column
+                .small-12.medium-5.column
                   ul.site-googles
                     each val, index in result.googles
                       li.row.align-middle.alert

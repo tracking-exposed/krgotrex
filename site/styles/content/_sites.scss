@@ -26,8 +26,8 @@
   }
 
   #search-sites-input {
-    margin-top: $global-margin / 2;
-    margin-bottom: $global-margin / 2;
+    margin-top: $global-margin;
+    margin-bottom: $global-margin;
     background-color: $darkturquoise-color;
     border: none;
     color: $medium-gray;
@@ -98,16 +98,62 @@
               background: $turquoise-color;
           }
         }
+
+        img.icon-map {
+          background-color: transparent;
+          border-radius: 50%;
+          cursor: pointer;
+          max-width: unset;
+          width: 50px;
+          transition-property: transform;
+          transition-duration: $transition-duration;
+          will-change: transform;
+
+          &:hover {
+            background-color: $turquoise-color;
+            transform: scale(1.3);
+          }
+        }
       }
     }
 
     &-details {
       color: $medium-gray;
+      text-align: left;
+
+      @include breakpoint(medium) {
+        text-align: right;
+      }
 
       strong {
         font-style: normal;
         line-height: 1;
         margin-bottom: 4px;
+      }
+
+      &__link {
+        position: relative;
+        display: inline;
+
+        &::before {
+          content: '☛';
+          position: absolute;
+          top: .02em;
+          left: $global-margin / -2;
+          opacity: 0;
+          transform: rotate(-33deg);
+          transition-property: left, opacity;
+          transition-duration: $transition-duration;
+          will-change: left, opacity;
+        }
+
+        &:hover {
+          &::before {
+            left: $global-margin * -1.15;
+            opacity: 1;
+            text-decoration: none;
+          }
+        }
       }
 
       &__address {

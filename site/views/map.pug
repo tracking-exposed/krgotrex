@@ -27,7 +27,9 @@ section.component#component-map
                 "tags": site.tags,
                 "icon": new ol.style.Icon({
                   anchor: [0.5, 1],
-                  src: isInfiltrated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',
+                  src: isInfiltrated
+                    ? '/assets/img/radioactive-pin--alert.png'
+                    : '/assets/img/fist-pin--success.png',
                   scale: 0.75
                 })
               }
@@ -60,6 +62,11 @@ section.component#component-map
       style: styleFunction
     });
 
+    const view = new ol.View({
+      center: ol.proj.fromLonLat(mapCenter),
+      zoom: 17,
+    });
+
     const map = new ol.Map({
       layers: [
         new ol.layer.Tile({
@@ -68,10 +75,7 @@ section.component#component-map
         vectorLayer
       ],
       target: "map",
-      view: new ol.View({
-        center: ol.proj.fromLonLat(mapCenter),
-        zoom: 17,
-      }),
+      view,
       interactions: ol.interaction.defaults({mouseWheelZoom:false}),
     });
 
@@ -91,7 +95,6 @@ section.component#component-map
           clearViewClasses();
         }
       } else {
-        showSitesFilter();
         clearViewClasses();
       }
     });

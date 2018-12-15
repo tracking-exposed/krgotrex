@@ -11,7 +11,12 @@ let listContainer = document.getElementById('sites-results-list'),
 const htmlListElements = listContainer
       ? listContainer.getElementsByClassName('site-results-item')
       : [],
-      $searchField = $('#search-sites-input');
+      $searchField = $('#search-sites-input'),
+      // Responsive helpers
+      breakPointSmall = 0,
+      breakPointMedium = 640,
+      breakpointLarge = 1024,
+      vpWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 $searchField.val(''); // Empty search field initally
 
@@ -148,7 +153,7 @@ $searchField.on('keyup', (event) => {
 
   for (let i = 0; i < htmlListElements.length; i++) {
     const elem = htmlListElements[i],
-          siteNameOrAddress = elem.children[0].children[0].children[0];
+          siteNameOrAddress = elem.children[0].children[1].children[0];
     if (siteNameOrAddress.innerText.search(regex) === -1) {
       hideElement(elem);
     } else {
@@ -201,21 +206,29 @@ function clearViewClasses(elem) {
   el.classList.remove('selected');
 }
 
-function showSitesFilter() {
-  const sitesHeader = document.getElementsByClassName('site-titles')[0];
-  if (sitesHeader && listItemSelected) {
-    sitesHeader.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }
-}
-
 function resetMapSitesView() {
   if (select) {
     select.getFeatures().clear();
   }
   clearViewClasses();
 }
+
+function centerMapToPin(elem) {
+  const lat = Number(elem.dataset.latitude),
+        lon = Number(elem.dataset.longitude),
+        newCenter = ol.proj.fromLonLat([lon, lat]);
+  if (view) {
+    view.setCenter(newCenter);
+    view.setZoom(19);
+  }
+  if (vpWidth < breakpointLarge) {
+    const mapContainer = document.getElementById('map');
+    mapContainer.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+}
+
 
 
 $(function() {
