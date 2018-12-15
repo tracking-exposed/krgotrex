@@ -214,6 +214,7 @@ function resetMapSitesView() {
 }
 
 function centerMapToPin(elem) {
+  resetMapSitesView();
   const lat = Number(elem.dataset.latitude),
         lon = Number(elem.dataset.longitude),
         newCenter = ol.proj.fromLonLat([lon, lat]);
@@ -228,7 +229,6 @@ function centerMapToPin(elem) {
     });
   }
 }
-
 
 
 $(function() {
