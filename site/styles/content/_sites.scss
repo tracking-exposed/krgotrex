@@ -99,7 +99,7 @@
           }
         }
 
-        img.icon-map {
+        .icon-map {
           background-color: transparent;
           border-radius: 50%;
           cursor: pointer;
@@ -111,7 +111,7 @@
 
           &:hover {
             background-color: $turquoise-color;
-            transform: scale(1.3);
+            transform: scale(1.2);
           }
         }
       }
@@ -139,7 +139,7 @@
           content: '☛';
           position: absolute;
           top: .02em;
-          left: $global-margin / -2;
+          left: $global-margin * -1.75;
           opacity: 0;
           transform: rotate(-33deg);
           transition-property: left, opacity;
