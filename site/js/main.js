@@ -175,7 +175,7 @@ function hideElement(elem) {
   }
 }
 
-function selectElement(elem) {
+function selectElement(elem, focusElem = true) {
   if (!elem || elem.classList.contains('selected')) return;
 
   // Remove selected class from former selected item
@@ -185,9 +185,12 @@ function selectElement(elem) {
 
   listItemSelected = elem;
   listItemSelected.classList.add('selected');
-  listItemSelected.scrollIntoView({
-    behavior: 'smooth'
-  });
+
+  if (focusElem) {
+    listItemSelected.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
 }
 
 function clearViewClasses(elem) {
@@ -217,11 +220,16 @@ function centerMapToPin(elem) {
   resetMapSitesView();
   const lat = Number(elem.dataset.latitude),
         lon = Number(elem.dataset.longitude),
+        siteId = elem.dataset.site,
         newCenter = ol.proj.fromLonLat([lon, lat]);
   if (view) {
     view.setCenter(newCenter);
     view.setZoom(19);
   }
+
+  const siteItem = document.getElementById(siteId);
+  selectElement(siteItem, false);
+
   if (vpWidth < breakpointLarge) {
     const mapContainer = document.getElementById('map');
     mapContainer.scrollIntoView({

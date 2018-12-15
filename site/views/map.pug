@@ -37,7 +37,7 @@ section.component#component-map
           });
 
     let styles = {};
-    const styleFunction = function(feature) {
+    const styleFunction = (feature) => {
       styles = {
         "Point": new ol.style.Style({
           "image": feature.get('icon')
@@ -70,6 +70,7 @@ section.component#component-map
     const map = new ol.Map({
       layers: [
         new ol.layer.Tile({
+          preload: Infinity,
           source: new ol.source.OSM()
         }),
         vectorLayer
@@ -82,7 +83,7 @@ section.component#component-map
     let selectStyle = {};
     const select = new ol.interaction.Select({
       condition: ol.events.condition.click,
-      style: function(feature) {
+      style: (feature) => {
         return new ol.style.Style({
           "image": new ol.style.Icon({
             anchor: [0.5, 1],
@@ -94,9 +95,9 @@ section.component#component-map
     });
     map.addInteraction(select);
 
-    select.on('select', (e) => {
-      if (e.selected.length) {
-        const selectedMarkerId = e.selected[0].values_.id || null,
+    select.on('select', (event) => {
+      if (event.selected.length) {
+        const selectedMarkerId = event.selected[0].get('id'),
               correspondingSiteResult = selectedMarkerId
                 ? document.getElementById(selectedMarkerId)
                 : null;
