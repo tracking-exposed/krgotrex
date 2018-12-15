@@ -21,6 +21,9 @@ header {
   .header {
     &-logo {
       font-size: 130%;
+      @include breakpoint(small only) {
+        word-break: break-all;
+      }
     }
 
     &-link:not(.header-logo) {
