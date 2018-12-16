@@ -150,14 +150,16 @@ searchField.addEventListener('keyup', (event) => {
 // When user clicks in input field to filter sites
 // let's reset the view
   resetMapSitesView();
-
-  const inputVal = event.target.value.trim(),
-        regex = new RegExp(inputVal, 'gi');
+  const inputVal = encodeURI(event.target.value.replace(' ', '')),
+        compareRegex = new RegExp(inputVal, 'gim'),
+        trimWhiteSpaceRegex = new RegExp(/\s/, 'gim');
 
   for (let i = 0; i < htmlListElements.length; i++) {
     const elem = htmlListElements[i],
-          siteNameOrAddress = elem.children[0].children[1].children[0];
-    if (siteNameOrAddress.innerText.search(regex) === -1) {
+          siteNameOrAddress = elem.children[0].children[1].children[0],
+          referenceString = siteNameOrAddress.innerText.replace(trimWhiteSpaceRegex, '');
+
+    if (referenceString.search(compareRegex) === -1) {
       hideElement(elem);
     } else {
       clearViewClasses(elem);
@@ -248,16 +250,12 @@ function scrollToTop(smoothScrolling = true) {
       behavior: smoothScrolling ? 'smooth' : 'auto'
     });
   } else {
+    // Fallbacks
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 }
 
-/**
- * Toggle back-to-top-button's visibility class
- * 
- * @param {object} scrollEvent
- */
 function toggleBackToTopBtn(scrollEvent) {
   const currentScrollPos = scrollEvent.target instanceof HTMLUListElement
           ? scrollEvent.currentTarget.scrollTop
