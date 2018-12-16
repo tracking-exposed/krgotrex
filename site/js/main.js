@@ -5,20 +5,23 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
       singleCheckSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/monosite/';
 
 // vars
-let listContainer = document.getElementById('sites-results-list'),
-    siteToCheck = '',
-    listItemSelected = null;
-const htmlListElements = listContainer
-      ? listContainer.getElementsByClassName('site-results-item')
-      : [],
-      $searchField = $('#search-sites-input'),
+let siteToCheck = '',
+    listItemSelected = null,
+    vpWidth = getViewportWidth();
+const header = document.getElementById('main-header'),
+      listContainer = document.getElementById('sites-results-list'),
+      htmlListElements = listContainer
+        ? listContainer.getElementsByClassName('site-results-item')
+        : [],
+      backToTopBtn = document.getElementById('btn-sites-results-top'),
+      searchFieldContainer = document.getElementById('search-sites-container'),
+      searchField = document.getElementById('search-sites-input'),
       // Responsive helpers
       breakPointSmall = 0,
       breakPointMedium = 640,
-      breakpointLarge = 1024,
-      vpWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      breakpointLarge = 1024;
 
-$searchField.val(''); // Empty search field initally
+searchField.value = ''; // Empty search field initally
 
 async function getSingleSite(siteName) {
   if (!siteName) {
@@ -143,7 +146,7 @@ async function checkSite(event) {
  * Filters site results
  * @param {event} event Keyboard key being released
  */
-$searchField.on('keyup', (event) => {
+searchField.addEventListener('keyup', (event) => {
 // When user clicks in input field to filter sites
 // let's reset the view
   resetMapSitesView();
@@ -238,6 +241,58 @@ function centerMapToPin(elem) {
   }
 }
 
+function scrollToTop(smoothScrolling = true) {
+  const elementToShow = vpWidth < breakpointLarge ? header : searchFieldContainer;
+  if (typeof elementToShow.scrollIntoView === 'function') {
+    elementToShow.scrollIntoView({
+      behavior: smoothScrolling ? 'smooth' : 'auto'
+    });
+  } else {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+}
+
+/**
+ * Toggle back-to-top-button's visibility class
+ * 
+ * @param {object} scrollEvent
+ */
+function toggleBackToTopBtn(scrollEvent) {
+  const currentScrollPos = scrollEvent.target instanceof HTMLUListElement
+          ? scrollEvent.currentTarget.scrollTop
+          : scrollEvent.currentTarget.pageYOffset;
+
+  if (currentScrollPos > 20) {
+    if (!backToTopBtn.classList.contains('visible')) {
+      backToTopBtn.classList.add('visible');
+    }
+  } else {
+    if (backToTopBtn.classList.contains('visible')) {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+}
+
+function getViewportWidth() {
+  return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+}
+
+// Debounce so scroll detection doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  let timeout;
+  threshold = threshold || 100;
+  return function debounced() {
+    clearTimeout( timeout );
+    const args = arguments;
+    const _this = this;
+    function delayed() {
+      fn.apply( _this, args );
+    }
+    timeout = setTimeout( delayed, threshold );
+  };
+}
+
 
 $(function() {
   function setActiveLinkClass() {
@@ -263,6 +318,8 @@ $(function() {
     $('body').ready(() => {
       $('#loader').hide();
       $(getElementToShow(page)).show();
+
+      vpWidth = getViewportWidth();
     });
 
 
@@ -294,4 +351,19 @@ $(function() {
     return `#component-${routeId}`;
   }
 });
+
+$(window).on('resize', debounce((event) => {
+  vpWidth = getViewportWidth();
+
+  if (vpWidth < breakpointLarge) {
+    $(window).on('scroll', debounce((event) => {
+      toggleBackToTopBtn(event);
+    }));
+  } else {
+    // Show/Hide back to top button for sites results list
+    $('#sites-results-list').on('scroll', debounce((event) => {
+      toggleBackToTopBtn(event);
+    }));
+  }
+}));
 

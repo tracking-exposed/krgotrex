@@ -41,6 +41,14 @@
       position: relative;
       z-index: 1;
 
+      > *:first-child {
+        text-align: center;
+
+        @include breakpoint(large) {
+          text-align: right;
+        }
+      }
+
       h6 {
         font-weight: $global-weight-bold;
         margin-top: $global-margin / 2;
@@ -59,6 +67,46 @@
           max-height: 90%;
           overflow: scroll;
         }
+
+        #btn-sites-results-top {
+          background-color: $lightturquoise-color;
+          border: none;
+          border-radius: 50%;
+          box-shadow: 0 2px 3px rgba($black, 0.6);
+          color: $darkturquoise-color;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          height: 40px;
+          opacity: 0;
+          padding-left: 4px;
+          padding-right: 4px;
+          position: fixed;
+          bottom: 5%;
+          right: $global-padding;
+          transition-property: opacity, bottom, z-index;
+          transition-duration: $transition-duration;
+          user-select: none;
+          width: 40px;
+          z-index: -1px;
+
+          @include breakpoint(large) {
+            position: absolute;
+          }
+
+          &::before {
+            content: '⌅';
+          }
+
+          &.visible {
+            opacity: 1;
+            bottom: 5.5%;
+            z-index: 2;
+          }
+        }
+
       }
 
       &-item {
@@ -70,7 +118,6 @@
         transition-property: background-color, opacity, transform;
         transition-duration: $transition-duration;
         transition-delay: 0ms;
-        will-change: background-color, opacity, transform;
 
         @media 
           (max-width: 380px),
@@ -107,7 +154,6 @@
           width: 50px;
           transition-property: transform;
           transition-duration: $transition-duration;
-          will-change: transform;
 
           &:hover {
             background-color: $turquoise-color;
@@ -144,7 +190,6 @@
           transform: rotate(-33deg);
           transition-property: left, opacity;
           transition-duration: $transition-duration;
-          will-change: left, opacity;
         }
 
         &:hover {
@@ -158,12 +203,17 @@
 
       &__address {
         letter-spacing: 1px;
+        font-size: 80%;
       }
     }
 
     &-googles {
       margin-left: 0;
       text-align: left;
+
+      @include breakpoint(small only) {
+        margin-top: 4px;
+      }
 
       .alert {
         line-height: 1.3;
