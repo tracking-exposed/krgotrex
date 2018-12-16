@@ -69,10 +69,10 @@
         }
 
         #btn-sites-results-top {
-          background-color: $lightturquoise-color;
+          background-color: $dark-gray;
           border: none;
           border-radius: 50%;
-          box-shadow: 0 2px 3px rgba($black, 0.6);
+          box-shadow: 0 0 3px rgba($black, 0.6);
           color: $darkturquoise-color;
           cursor: pointer;
           display: flex;
@@ -84,9 +84,9 @@
           padding-left: 4px;
           padding-right: 4px;
           position: fixed;
-          bottom: 5%;
-          right: $global-padding;
-          transition-property: opacity, bottom, z-index;
+          bottom: 4.5%;
+          right: $global-padding * 2;
+          transition-property: background-color, opacity, bottom, z-index;
           transition-duration: $transition-duration;
           user-select: none;
           width: 40px;
@@ -98,6 +98,10 @@
 
           &::before {
             content: '⌅';
+          }
+
+          &:hover {
+            background-color: $lightturquoise-color;
           }
 
           &.visible {

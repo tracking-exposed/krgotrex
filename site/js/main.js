@@ -355,12 +355,12 @@ $(function() {
 $(window).on('resize', debounce((event) => {
   vpWidth = getViewportWidth();
 
+  // Bind event listeners to actual scroll agent
   if (vpWidth < breakpointLarge) {
     $(window).on('scroll', debounce((event) => {
       toggleBackToTopBtn(event);
     }));
   } else {
-    // Show/Hide back to top button for sites results list
     $('#sites-results-list').on('scroll', debounce((event) => {
       toggleBackToTopBtn(event);
     }));
