@@ -83,6 +83,7 @@ section.component#component-map
     let selectStyle = {};
     const select = new ol.interaction.Select({
       condition: ol.events.condition.click,
+      hitTolerance: 5,
       style: (feature) => {
         return new ol.style.Style({
           "image": new ol.style.Icon({
