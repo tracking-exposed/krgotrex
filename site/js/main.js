@@ -226,10 +226,13 @@ function centerMapToPin(elem) {
   const lat = Number(elem.dataset.latitude),
         lon = Number(elem.dataset.longitude),
         siteId = elem.dataset.site,
-        newCenter = ol.proj.fromLonLat([lon, lat]);
+        newCenter = ol.proj.fromLonLat([lon, lat]),
+        selectedFeatures = select.getFeatures(),
+        newSelectedFeature = vectorSource.getFeatureById(siteId);
+
   if (view) {
     view.setCenter(newCenter);
-    view.setZoom(19);
+    view.setZoom(18);
   }
 
   const siteItem = document.getElementById(siteId);
@@ -241,6 +244,11 @@ function centerMapToPin(elem) {
       behavior: 'smooth'
     });
   }
+
+  if (selectedFeatures.getArray().length) {
+    selectedFeatures.pop();
+  }
+  selectedFeatures.push(newSelectedFeature);
 }
 
 function scrollToTop(smoothScrolling = true) {
@@ -364,4 +372,3 @@ $(window).on('resize', debounce((event) => {
     }));
   }
 }));
-
