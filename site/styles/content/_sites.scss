@@ -184,6 +184,8 @@
       &__link {
         position: relative;
         display: inline;
+        transition-property: color;
+        transition-duration: $transition-duration;
 
         &::before {
           content: '☛';
@@ -197,6 +199,8 @@
         }
 
         &:hover {
+          color: $primary-color;
+
           &::before {
             left: $global-margin * -1.15;
             opacity: 1;
