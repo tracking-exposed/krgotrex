@@ -17,7 +17,7 @@ class Site {
     this.href = data['href'] || null;
     if (this.href) {
       // Remove unnecessary stuff for link display
-      const regex = new RegExp(/(http)?(\1s)?(:\/\/)?(www\.)?/, 'g');
+      const regex = new RegExp(/(http(s)?)?(:\/\/)?(www.)?(?=.)+(\/)?/, 'gi');
       const strippedHref = data['href'].replace(regex, '');
       this.linkText = strippedHref;
     }
