@@ -232,7 +232,6 @@ function centerMapToPin(elem) {
 
   if (view) {
     view.setCenter(newCenter);
-    view.setZoom(18);
   }
 
   const siteItem = document.getElementById(siteId);
