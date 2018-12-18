@@ -114,6 +114,16 @@ section.component#component-map
     });
     map.addInteraction(select);
 
+    function showPopup(coordinates, popupInfos) {
+      popContent.innerHTML = `
+        <h3>${popupInfos.name}</h3>
+        <address>
+          <span>${popupInfos.address ? popupInfos.address : ''}</span><br>
+          <a href="${popupInfos.url}" title="${popupInfos.name} Homepage">${popupInfos.linkText}</a>
+        </address>
+      `;
+      overlay.setPosition(coordinates);
+    }
 
     function closePopup() {
       overlay.setPosition(undefined);
@@ -134,15 +144,7 @@ section.component#component-map
                 ? document.getElementById(selectedMarkerId)
                 : null;
 
-        // Display popup
-        popContent.innerHTML = `
-          <h3>${popInfos.name}</h3>
-          <address>
-            <span>${popInfos.address ? popInfos.address : ''}</span><br>
-            <a href="${popInfos.url}" title="${popInfos.name} Homepage">${popInfos.linkText}</a>
-          </address>
-        `;
-        overlay.setPosition(coordinates);
+        showPopup(coordinates, popInfos);
 
         if (correspondingSiteResult) {
           // Select corresponding result in sidebar

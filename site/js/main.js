@@ -228,7 +228,8 @@ function centerMapToPin(elem) {
         siteId = elem.dataset.site,
         newCenter = ol.proj.fromLonLat([lon, lat]),
         selectedFeatures = select.getFeatures(),
-        newSelectedFeature = vectorSource.getFeatureById(siteId);
+        newSelectedFeature = vectorSource.getFeatureById(siteId),
+        newFeatureProps = newSelectedFeature.getProperties();
 
   if (view) {
     view.setCenter(newCenter);
@@ -248,6 +249,7 @@ function centerMapToPin(elem) {
     selectedFeatures.pop();
   }
   selectedFeatures.push(newSelectedFeature);
+  showPopup(newCenter, newFeatureProps);
 }
 
 function scrollToTop(smoothScrolling = true) {
