@@ -5,36 +5,41 @@ section.component#component-map
     * Leaflet Map
     */
     // Create markers and geodata
-    const mapCenter = [13.429, 52.494]; // Umspannwerk Kreuzberg
-    const sites = !{JSON.stringify(sites)};
-    const results = !{JSON.stringify(results)};
-    const features = sites.map(site => {
-      const isInfiltrated = results.find((result) => {
-        return result.id === site.lastResultId && Object.keys(result.googles).length > 0;
-      });
+    const mapCenter = [13.429, 52.494], // Umspannwerk Kreuzberg
+          sites = !{JSON.stringify(sites)},
+          results = !{JSON.stringify(results)},
+          features = sites.map(site => {
+            const isInfiltrated = results.find((result) => {
+              return result.id === site.lastResultId && Object.keys(result.googles).length > 0;
+            });
 
-      return {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [ Number(site.longitude), Number(site.latitude) ]
-        },
-        "properties": {
-          "name": site.name,
-          "address": site.address,
-          "url": site.href,
-          "tags": site.tags,
-          "icon": new ol.style.Icon({
-            anchor: [0.5, 1],
-            src: isInfiltrated ? '/assets/img/radioactive-pin.svg' : '/assets/img/fist-pin.svg',
-            scale: 0.75
-          })
-        }
-      }
-    });
+            return {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [ Number(site.longitude), Number(site.latitude) ]
+              },
+              "properties": {
+                "id": site.id,
+                "name": site.name,
+                "address": site.address,
+                "url": site.href,
+                "linkText": site.linkText,
+                "tags": site.tags,
+                "icon": new ol.style.Icon({
+                  anchor: [0.5, 1],
+                  src: isInfiltrated
+                    ? '/assets/img/fist-pin--alert.png'
+                    : '/assets/img/fist-pin--success.png',
+                  scale: 0.75
+                })
+              },
+              "id": site.id,
+            }
+          });
 
     let styles = {};
-    const styleFunction = function(feature) {
+    const styleFunction = (feature) => {
       styles = {
         "Point": new ol.style.Style({
           "image": feature.get('icon')
@@ -54,27 +59,103 @@ section.component#component-map
       })
     });
 
-
-    //- vectorSource.addFeature(new ol.Feature(new ol.style.Circle([5e6, 7e6], 1e6)));
-
     const vectorLayer = new ol.layer.Vector({
       source: vectorSource,
       style: styleFunction
     });
 
+    const view = new ol.View({
+      center: ol.proj.fromLonLat(mapCenter),
+      zoom: 17,
+    });
+
+    /**
+     * Popup preparations
+    */
+    const popup = document.getElementById('popup'),
+          popContent = document.getElementById('popup-content'),
+          popCloser = document.getElementById('popup-closer'),
+          overlay = new ol.Overlay({
+            element: popup,
+            autoPan: true,
+            autoPanAnimation: {
+              duration: 250
+            },
+            offset: [0, -60],
+            positioning: 'bottom-center'
+          });
     const map = new ol.Map({
       layers: [
         new ol.layer.Tile({
+          preload: Infinity,
           source: new ol.source.OSM()
         }),
         vectorLayer
       ],
       target: "map",
-      view: new ol.View({
-        center: ol.proj.fromLonLat(mapCenter),
-        zoom: 17,
-      }),
-      interactions: ol.interaction.defaults({mouseWheelZoom:false})
+      overlays: [overlay],
+      view,
+      interactions: ol.interaction.defaults({mouseWheelZoom:false}),
+    });
+
+    let selectStyle = {};
+    const select = new ol.interaction.Select({
+      condition: ol.events.condition.click,
+      hitTolerance: 5,
+      style: (feature) => {
+        return new ol.style.Style({
+          "image": new ol.style.Icon({
+            anchor: [0.5, 1],
+            src: '/assets/img/fist-pin--primary.png',
+            scale: 0.75
+          })
+        });
+      }
+    });
+    map.addInteraction(select);
+
+    function showPopup(coordinates, popupInfos) {
+      popContent.innerHTML = `
+        <h3>${popupInfos.name}</h3>
+        <address>
+          <span>${popupInfos.address ? popupInfos.address : ''}</span><br>
+          <a href="${popupInfos.url}" title="${popupInfos.name} Homepage">${popupInfos.linkText}</a>
+        </address>
+      `;
+      overlay.setPosition(coordinates);
+    }
+
+    function closePopup() {
+      overlay.setPosition(undefined);
+      popCloser.blur();
+      return false;
+    };
+    popCloser.onclick = closePopup;
+
+    /**
+     *  Clicking on a marker selects and opens popup
+    */
+    select.on('select', (event) => {
+      if (event.selected.length) {
+        const coordinates = event.selected[0].getGeometry().getCoordinates(),
+              popInfos = event.selected[0].getProperties(),
+              selectedMarkerId = event.selected[0].get('id'),
+              correspondingSiteResult = selectedMarkerId
+                ? document.getElementById(selectedMarkerId)
+                : null;
+
+        showPopup(coordinates, popInfos);
+
+        if (correspondingSiteResult) {
+          // Select corresponding result in sidebar
+          selectElement(correspondingSiteResult);
+        } else {
+          clearViewClasses();
+        }
+      } else {
+        clearViewClasses();
+        closePopup();
+      }
     });
 
     /**
@@ -84,5 +165,5 @@ section.component#component-map
       if ($('div.ol-viewport').length) {
         window.dispatchEvent(new Event('resize'));
         clearInterval(waitForMap);
-      }
-    }, 100);
+      };
+    }, 400);

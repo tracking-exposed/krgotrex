@@ -1,25 +1,39 @@
 block sites
   #sites
     .row.align-middle.site-titles
-      .small-12.column
+      .small-12.large-6.column
+        h6 #{i18n.__("sitesListSitenameTitle")}
+      .show-for-large.small-6.column
+        h6 #{i18n.__("sitesListResultsTitle")}
+    ul.row.align-center.align-middle.site-results-list#sites-results-list
+      button(id="btn-sites-results-top" onclick="scrollToTop()")
+      li#search-sites-container.small-12.medium-8.large-12
         input(
           id="search-sites-input"
           type="text"
           placeholder!=i18n.__('formSearchSitesPlaceholder')
         )
-      .small-6.column.text-right
-        h6 #{i18n.__("sitesListSitenameTitle")}
-      .small-6.column
-        h6 #{i18n.__("sitesListResultsTitle")}
-    ul.row.align-center.align-middle.site-results-list#sites-results-list
       for site in sites
         - const result = results.find(r => r.id === site.lastResultId)
           if result
-            li.small-12.medium-8.large-12.column.site-results-item
+            li.small-12.medium-8.large-12.column.site-results-item(id= site.id)
               .row.align-middle
-                .small-6.column.site-details.text-right
+                .small-2.medium-1
+                  img(
+                    onclick="centerMapToPin(this)"
+                    data-site= site.id
+                    data-latitude= site.latitude
+                    data-longitude= site.longitude
+                    src="/assets/img/pirate-map--primary.svg"
+                    alt="pin on map"
+                    class="icon-map")
+                .small-10.medium-6.column.site-details
                   address
-                    strong= site.name
+                    if (site.href)
+                      strong
+                        a(href=site.href target="_blank" class="site-details__link")= site.name
+                    else
+                      strong= site.name
                     if (site.address)
                       br
                       span.site-details__address= site.address
@@ -28,13 +42,14 @@ block sites
                       .column
                         for tag in site.tags
                           span.tag= tag
-                .small-6.column
+                .small-10.medium-5.column.small-offset-2.medium-offset-0
                   ul.site-googles
                     each val, index in result.googles
                       li.row.align-middle.alert
-                        .small-8.large-10.column= index
-                        .small-4.large-2.column= val
+                        .small-8.large-9.column= index
+                        .small-4.large-3.column.text-right= val
                     else
                       li.row
                         .column
                           b.success #{i18n.__("sitesListResultGoogleFree")}
+

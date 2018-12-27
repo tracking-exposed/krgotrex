@@ -5,12 +5,23 @@ const singleCachedSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/si
       singleCheckSiteUrl = 'https://kreuzberg.google.tracking.exposed/api/v1/monosite/';
 
 // vars
-let listContainer = document.getElementById('sites-results-list'),
-    siteToCheck = '';
-const htmlListElements = listContainer.getElementsByClassName('site-results-item'),
-      $searchField = $('#search-sites-input');
+let siteToCheck = '',
+    listItemSelected = null,
+    vpWidth = getViewportWidth();
+const header = document.getElementById('main-header'),
+      listContainer = document.getElementById('sites-results-list'),
+      htmlListElements = listContainer
+        ? listContainer.getElementsByClassName('site-results-item')
+        : [],
+      backToTopBtn = document.getElementById('btn-sites-results-top'),
+      searchFieldContainer = document.getElementById('search-sites-container'),
+      searchField = document.getElementById('search-sites-input'),
+      // Responsive helpers
+      breakPointSmall = 0,
+      breakPointMedium = 640,
+      breakpointLarge = 1024;
 
-$searchField.val(''); // Empty search field initally
+searchField.value = ''; // Empty search field initally
 
 async function getSingleSite(siteName) {
   if (!siteName) {
@@ -125,36 +136,156 @@ async function checkSite(event) {
   }
 }
 
-/*
- * F I L T E R   S I T E S
- ****************************/
+/***********************************************
+ *                                             *
+ *          F I L T E R   S I T E S            *
+ *                                             *
+ **********************************************/
 
 /**
  * Filters site results
  * @param {event} event Keyboard key being released
  */
-$searchField.on('keyup', debounce((event) => {
-  const inputVal = event.target.value.trim(),
-        regex = new RegExp(inputVal, 'gi');
+searchField.addEventListener('keyup', (event) => {
+// When user clicks in input field to filter sites
+// let's reset the view
+  resetMapSitesView();
+  const inputVal = encodeURI(event.target.value.replace(' ', '')),
+        compareRegex = new RegExp(inputVal, 'gim'),
+        trimWhiteSpaceRegex = new RegExp(/\s/, 'gim');
 
   for (let i = 0; i < htmlListElements.length; i++) {
     const elem = htmlListElements[i],
-          siteNameOrAddress = elem.children[0].children[0].children[0];
-    if (siteNameOrAddress.innerText.search(regex) > -1) {
-      elem.classList.remove('hidden');
-      elem.classList.remove('scale-down');
+          siteNameOrAddress = elem.children[0].children[1].children[0],
+          referenceString = siteNameOrAddress.innerText.replace(trimWhiteSpaceRegex, '');
+
+    if (referenceString.search(compareRegex) === -1) {
+      hideElement(elem);
     } else {
-      elem.classList.add('scale-down');
-      elem.ontransitionend = (event) => {
-        if (elem.classList.contains('scale-down')) {
-          elem.classList.add('hidden');
-        }
-      }
+      clearViewClasses(elem);
     }
   }
-}));
+});
 
-// debounce so filtering doesn't happen every millisecond
+/**
+ *  H E L P E R S
+ *****************/
+function hideElement(elem) {
+  if (!elem) return;
+  elem.classList.add('scale-down');
+  elem.ontransitionend = (event) => {
+    if (elem.classList.contains('scale-down')) {
+      elem.classList.add('hidden');
+    }
+  }
+}
+
+function selectElement(elem, focusElem = true) {
+  if (!elem || elem.classList.contains('selected')) return;
+
+  // Remove selected class from former selected item
+  if (listItemSelected) {
+    clearViewClasses(listItemSelected);
+  }
+
+  listItemSelected = elem;
+  listItemSelected.classList.add('selected');
+
+  if (focusElem) {
+    listItemSelected.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+}
+
+function clearViewClasses(elem) {
+  let el;
+  if (!elem) {
+    if (listItemSelected) {
+      el = listItemSelected;
+    } else {
+      return;
+    }
+  } else {
+    el = elem;
+  }
+  el.classList.remove('hidden');
+  el.classList.remove('scale-down');
+  el.classList.remove('selected');
+}
+
+function resetMapSitesView() {
+  if (select) {
+    select.getFeatures().clear();
+  }
+  clearViewClasses();
+}
+
+function centerMapToPin(elem) {
+  resetMapSitesView();
+  const lat = Number(elem.dataset.latitude),
+        lon = Number(elem.dataset.longitude),
+        siteId = elem.dataset.site,
+        newCenter = ol.proj.fromLonLat([lon, lat]),
+        selectedFeatures = select.getFeatures(),
+        newSelectedFeature = vectorSource.getFeatureById(siteId),
+        newFeatureProps = newSelectedFeature.getProperties();
+
+  if (view) {
+    view.setCenter(newCenter);
+  }
+
+  const siteItem = document.getElementById(siteId);
+  selectElement(siteItem, false);
+
+  if (vpWidth < breakpointLarge) {
+    const mapContainer = document.getElementById('map');
+    mapContainer.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
+  if (selectedFeatures.getArray().length) {
+    selectedFeatures.pop();
+  }
+  selectedFeatures.push(newSelectedFeature);
+  showPopup(newCenter, newFeatureProps);
+}
+
+function scrollToTop(smoothScrolling = true) {
+  const elementToShow = vpWidth < breakpointLarge ? header : searchFieldContainer;
+  if (typeof elementToShow.scrollIntoView === 'function') {
+    elementToShow.scrollIntoView({
+      behavior: smoothScrolling ? 'smooth' : 'auto'
+    });
+  } else {
+    // Fallbacks
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+}
+
+function toggleBackToTopBtn(scrollEvent) {
+  const currentScrollPos = scrollEvent.target instanceof HTMLUListElement
+          ? scrollEvent.currentTarget.scrollTop
+          : scrollEvent.currentTarget.pageYOffset;
+
+  if (currentScrollPos > 20) {
+    if (!backToTopBtn.classList.contains('visible')) {
+      backToTopBtn.classList.add('visible');
+    }
+  } else {
+    if (backToTopBtn.classList.contains('visible')) {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+}
+
+function getViewportWidth() {
+  return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+}
+
+// Debounce so scroll detection doesn't happen every millisecond
 function debounce( fn, threshold ) {
   let timeout;
   threshold = threshold || 100;
@@ -171,7 +302,6 @@ function debounce( fn, threshold ) {
 
 
 $(function() {
-
   function setActiveLinkClass() {
     if (!window) {
       console.log('No window (yet) in setActiveClass()');
@@ -195,6 +325,8 @@ $(function() {
     $('body').ready(() => {
       $('#loader').hide();
       $(getElementToShow(page)).show();
+
+      vpWidth = getViewportWidth();
     });
 
 
@@ -227,3 +359,17 @@ $(function() {
   }
 });
 
+$(window).on('resize', debounce((event) => {
+  vpWidth = getViewportWidth();
+
+  // Bind event listeners to actual scroll agent
+  if (vpWidth < breakpointLarge) {
+    $(window).on('scroll', debounce((event) => {
+      toggleBackToTopBtn(event);
+    }));
+  } else {
+    $('#sites-results-list').on('scroll', debounce((event) => {
+      toggleBackToTopBtn(event);
+    }));
+  }
+}));

@@ -11,11 +11,16 @@ class Site {
         return c;
       });
     }
-
     this.address = data['address'] || null;
     this.campaign = data['campaign'] || null;
     // this.frequency = data['frequency'] || null;
     this.href = data['href'] || null;
+    if (this.href) {
+      // Remove unnecessary stuff for link display
+      const regex = new RegExp(/(http(s)?)?(:\/\/)?(www.)?(?=.)+(\/)?/, 'gi');
+      const strippedHref = data['href'].replace(regex, '');
+      this.linkText = strippedHref;
+    }
     this.id = data['id'] || null;
     this.iteration = data['iteration'] || null;
     this.tags = tags.length ? tags : null;

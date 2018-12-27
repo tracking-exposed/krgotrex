@@ -9,11 +9,25 @@
     right: 0;
     bottom: 0;
     width: 33%;
+    height: 67%;
+    height: 67vh;
+    max-height: 300px;
+
+    @include breakpoint(medium) {
+      height: 75%;
+      height: 75vh;
+      max-height: 500px;
+    }
+
+    @include breakpoint(large) {
+      min-height: 600px;
+      max-height: unset;
+    }
   }
 
   #search-sites-input {
-    margin-top: $global-margin / 2;
-    margin-bottom: $global-margin / 2;
+    margin-top: $global-margin;
+    margin-bottom: $global-margin;
     background-color: $darkturquoise-color;
     border: none;
     color: $medium-gray;
@@ -21,9 +35,19 @@
 
   .site {
     &-titles {
+      background: $mediumturquoise-color;
       box-shadow: 0 2px 3px rgba($black, 0.6);
       padding-top: $global-padding / 2;
       position: relative;
+      z-index: 1;
+
+      > *:first-child {
+        text-align: center;
+
+        @include breakpoint(large) {
+          text-align: right;
+        }
+      }
 
       h6 {
         font-weight: $global-weight-bold;
@@ -43,6 +67,50 @@
           max-height: 90%;
           overflow: scroll;
         }
+
+        #btn-sites-results-top {
+          background-color: $dark-gray;
+          border: none;
+          border-radius: 50%;
+          box-shadow: 0 0 3px rgba($black, 0.6);
+          color: $darkturquoise-color;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          height: 40px;
+          opacity: 0;
+          padding-left: 4px;
+          padding-right: 4px;
+          position: fixed;
+          bottom: 4.5%;
+          right: $global-padding * 2;
+          transition-property: background-color, opacity, bottom, z-index;
+          transition-duration: $transition-duration;
+          user-select: none;
+          width: 40px;
+          z-index: -1px;
+
+          @include breakpoint(large) {
+            position: absolute;
+          }
+
+          &::before {
+            content: '⌅';
+          }
+
+          &:hover {
+            background-color: $lightturquoise-color;
+          }
+
+          &.visible {
+            opacity: 1;
+            bottom: 5.5%;
+            z-index: 2;
+          }
+        }
+
       }
 
       &-item {
@@ -51,10 +119,9 @@
         padding-bottom: $global-padding / 2;
         position: relative;
         transform: scale(1);
-        transition-property: opacity, transform;
-        transition-duration: .4s;
+        transition-property: background-color, opacity, transform;
+        transition-duration: $transition-duration;
         transition-delay: 0ms;
-        will-change: transform, opacity;
 
         @media 
           (max-width: 380px),
@@ -74,11 +141,39 @@
           position: absolute;
           left: -9999px;
         }
+
+        &.selected {
+          background-color: $darkturquoise-color;
+
+          .tag {
+              background: $turquoise-color;
+          }
+        }
+
+        .icon-map {
+          background-color: transparent;
+          border-radius: 50%;
+          cursor: pointer;
+          max-width: unset;
+          width: 50px;
+          transition-property: transform;
+          transition-duration: $transition-duration;
+
+          &:hover {
+            background-color: $turquoise-color;
+            transform: scale(1.2);
+          }
+        }
       }
     }
 
     &-details {
       color: $medium-gray;
+      text-align: left;
+
+      @include breakpoint(medium) {
+        text-align: right;
+      }
 
       strong {
         font-style: normal;
@@ -86,14 +181,47 @@
         margin-bottom: 4px;
       }
 
+      &__link {
+        position: relative;
+        display: inline;
+        transition-property: color;
+        transition-duration: $transition-duration;
+
+        &::before {
+          content: '☛';
+          position: absolute;
+          top: .02em;
+          left: $global-margin * -1.75;
+          opacity: 0;
+          transform: rotate(-33deg);
+          transition-property: left, opacity;
+          transition-duration: $transition-duration;
+        }
+
+        &:hover {
+          color: $primary-color;
+
+          &::before {
+            left: $global-margin * -1.15;
+            opacity: 1;
+            text-decoration: none;
+          }
+        }
+      }
+
       &__address {
         letter-spacing: 1px;
+        font-size: 80%;
       }
     }
 
     &-googles {
       margin-left: 0;
       text-align: left;
+
+      @include breakpoint(small only) {
+        margin-top: 4px;
+      }
 
       .alert {
         line-height: 1.3;
