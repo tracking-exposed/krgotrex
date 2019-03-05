@@ -7,10 +7,6 @@ button,
     color: $mediumturquoise-color;
   }
 
-  &:hover {
-    color: $white;
-  }
-
   &:disabled,
   &[disabled]
   &:disabled:hover,

@@ -1,5 +1,5 @@
 #sites {
-  background-color: $mediumturquoise-color;
+  background-color: $white;
   overflow: hidden;
 
   @include breakpoint(large) {
@@ -28,15 +28,15 @@
   #search-sites-input {
     margin-top: $global-margin;
     margin-bottom: $global-margin;
-    background-color: $darkturquoise-color;
+    background-color: $primary-color;
     border: none;
-    color: $medium-gray;
+    color: $light-gray;
   }
 
   .site {
     &-titles {
-      background: $mediumturquoise-color;
-      box-shadow: 0 2px 3px rgba($black, 0.6);
+      background: $light-gray;
+      box-shadow: 0 2px 3px rgba($black, 0.3);
       padding-top: $global-padding / 2;
       position: relative;
       z-index: 1;
@@ -69,11 +69,11 @@
         }
 
         #btn-sites-results-top {
-          background-color: $dark-gray;
+          background-color: $primary-color;
           border: none;
           border-radius: 50%;
-          box-shadow: 0 0 3px rgba($black, 0.6);
-          color: $darkturquoise-color;
+          box-shadow: 0 0 3px rgba($black, 0.3);
+          color: $white;
           cursor: pointer;
           display: flex;
           align-items: center;
@@ -101,7 +101,7 @@
           }
 
           &:hover {
-            background-color: $lightturquoise-color;
+            background-color: $dark-gray;
           }
 
           &.visible {
@@ -130,7 +130,7 @@
         }
 
         &:not(:last-child) {
-          border-bottom: $code-border;
+          border-bottom: $prototype-border-color;
         }
 
         &.scale-down {
@@ -143,10 +143,25 @@
         }
 
         &.selected {
-          background-color: $darkturquoise-color;
+          background-color: $light-gray;
+
+          .icon-map {
+            &:hover {
+              background-color: $white;
+            }
+          }
 
           .tag {
-              background: $turquoise-color;
+              background: $white;
+              color: $primary-color;
+          }
+
+          .site-googles {
+            .alert {
+              &:not(:last-child) {
+                border-bottom-color: $white;
+              }
+            }
           }
         }
 
@@ -156,11 +171,11 @@
           cursor: pointer;
           max-width: unset;
           width: 50px;
-          transition-property: transform;
+          transition-property: transform, background-color;
           transition-duration: $transition-duration;
 
           &:hover {
-            background-color: $turquoise-color;
+            background-color: $light-gray;
             transform: scale(1.2);
           }
         }
@@ -168,7 +183,7 @@
     }
 
     &-details {
-      color: $medium-gray;
+      color: $dark-gray;
       text-align: left;
 
       @include breakpoint(medium) {
@@ -229,7 +244,7 @@
         padding-bottom: 6px;
 
         &:not(:last-child) {
-          border-bottom: 1px dotted $darkturquoise-color;
+          border-bottom: 1px dotted $prototype-border-color;
         }
       }
 

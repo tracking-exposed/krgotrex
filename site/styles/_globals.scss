@@ -11,7 +11,6 @@ $darkturquoise-color: get-color(darkturquoise);
 $transition-duration: .3s;
 
 body {
-  background-color: $darkturquoise-color;
   background-attachment: fixed;
 }
 
@@ -103,9 +102,9 @@ a {
 }
 
 .tag {
-  background: $darkturquoise-color;
+  background: $primary-color;
+  color: $light-gray;
   border-radius: 500px;
-  color: $medium-gray;
   display: inline-block;
   font-size: 50%;
   letter-spacing: 1px;

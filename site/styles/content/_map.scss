@@ -34,12 +34,12 @@
 
 .ol-popup {
   position: absolute;
-  background-color: $mediumturquoise-color;
+  background-color: $white;
   box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-  color: $medium-gray;
+  color: $black;
   padding: $global-padding;
   border-radius: 10px;
-  border: 1px solid $darkturquoise-color;
+  border: 1px solid $white;
   bottom: 12px;
   left: -50px;
   min-width: 280px;
@@ -54,13 +54,13 @@
   pointer-events: none;
 }
 .ol-popup:after {
-  border-top-color: $mediumturquoise-color;
+  border-top-color: $white;
   border-width: 10px;
   left: 48px;
   margin-left: -10px;
 }
 .ol-popup:before {
-  border-top-color: $darkturquoise-color;
+  border-top-color: $white;
   border-width: 11px;
   left: 48px;
   margin-left: -11px;

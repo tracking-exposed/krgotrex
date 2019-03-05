@@ -1,5 +1,4 @@
 header {
-  background-color: $darkturquoise-color;
   padding-top: $global-padding / 2;
   padding-bottom: $global-padding / 2;
 
@@ -27,7 +26,7 @@ header {
     }
 
     &-link:not(.header-logo) {
-      color: $lightturquoise-color;
+      color: $primary-color;
 
       &::after {
         background-color: $anchor-color;
