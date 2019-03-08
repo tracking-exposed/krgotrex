@@ -11,5 +11,6 @@
         { "product": "BlogSpot", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_BlogSpot" },
         { "product": "CDN", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_CDN" },
         { "product": "Login", "url": "https://wiki.fuckoffgoogle.de/index.php?title=Replacement_Login" }
-    ]
+    ],
+    "path": "site/views/generated/"
 }
