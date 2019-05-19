@@ -3,7 +3,7 @@ const https = require('https');
 // Models
 const Site = require('../../models/site');
 const ExposureResult = require('../../models/exposureResult');
-const host = 'german.government.thirdparty.tracking.exposed';
+const host = 'kreuzberg.google.tracking.exposed';
 
 const analyzedSitesUrl = `https://${host}/api/v1/sites/krgotrex`,
       exposureResultsUrl = `https://${host}/api/v1/results/krgotrex`;
