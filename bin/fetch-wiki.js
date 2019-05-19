@@ -43,6 +43,7 @@ function scrapePage(product, body) {
         problem: problem[0].innerHTML
     };
 
+    debug("Looking for %d subsections in %s", sn, product);
     issue.replacements = _.times(sn, function(i) {
         var target = '.solution-' + (i + 1);
         var name = element.window.document.querySelectorAll(target)[0].innerHTML.replace(/.*">/, '').replace(/<.*/, '');
@@ -70,7 +71,7 @@ return Promises
     .map(function(contents) {
 
         debug("%s", JSON.stringify(contents, undefined, 2));
-        var path ="generated/site/views" + contents.product +'.pug';
+        var path = nconf.get('path') + contents.product +'.pug';
 
         return fs
             .writeFileAsync(path, convertToPUGSection(contents) )
