@@ -1,0 +1,98 @@
+[
+  {
+    "site": "http://qr.bvg.de/h212301",
+    "address": null,
+    "kind": null,
+    "name": "U Görlitzer Bahnhof",
+    "lat": "52.4992535",
+    "lon": "13.4276166"
+  },
+  {
+    "site": "http://www.toscanafraktion.de",
+    "address": "Lausitzer Platz",
+    "kind": "deli",
+    "name": "toscanafraktion",
+    "lat": "52.5006540",
+    "lon": "13.4295434"
+  },
+  {
+    "site": "http://www.einundzwanzigzwoelf.com",
+    "address": "Lausitzer Platz",
+    "kind": "art",
+    "name": "Einundzwanzigzwölf",
+    "lat": "52.5007130",
+    "lon": "13.4294946"
+  },
+  {
+    "site": "http://www.restaurantpanther.de",
+    "address": "Waldemarstraße",
+    "kind": "restaurant",
+    "name": "Panther",
+    "lat": "52.5008150",
+    "lon": "13.4299066"
+  },
+  {
+    "site": "http://qr.bvg.de/h212302",
+    "address": null,
+    "kind": null,
+    "name": "U Görlitzer Bahnhof",
+    "lat": "52.4992784",
+    "lon": "13.4284097"
+  },
+  {
+    "site": "https://foursquare.com/v/despresso/4d9b1b48674ca1432684ca43",
+    "address": "Manteuffelstraße",
+    "kind": "cafe",
+    "name": "D'Espresso",
+    "lat": "52.5012680",
+    "lon": "13.4282432"
+  },
+  {
+    "site": "http://qr.bvg.de/h104387",
+    "address": null,
+    "kind": null,
+    "name": "U Görlitzer Bahnhof",
+    "lat": "52.4991826",
+    "lon": "13.4281204"
+  },
+  {
+    "site": "http://www.bvg.de/index.php/de/3729/name/U-Bahnlinie+U1/area/89395.html",
+    "address": null,
+    "kind": null,
+    "name": "U Görlitzer Bahnhof",
+    "lat": "52.4992628",
+    "lon": "13.4280355"
+  },
+  {
+    "site": "https://vor-wien.de/",
+    "address": "Skalitzer Straße",
+    "kind": "bar",
+    "name": "vorWien",
+    "lat": "52.4991157",
+    "lon": "13.4287597"
+  },
+  {
+    "site": "http://heartofcode.org",
+    "address": "Skalitzer Straße",
+    "kind": null,
+    "name": "Heart of Code",
+    "lat": "52.4998992",
+    "lon": "13.4285287"
+  },
+  {
+    "site": "http://www.skala-berlin.com",
+    "address": "Skalitzer Straße",
+    "kind": "second_hand",
+    "name": "Skala Berlin",
+    "lat": "52.4991058",
+    "lon": "13.4292713"
+  },
+  {
+    "site": "http://lori-berlin.com",
+    "address": "Wiener Straße",
+    "kind": "cafe",
+    "name": "Lori",
+    "lat": "52.4990633",
+    "lon": "13.4280194"
+  }
+]

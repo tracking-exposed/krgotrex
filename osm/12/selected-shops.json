@@ -1,0 +1,50 @@
+[
+  {
+    "site": "http://www.reichenberger-apotheke.de",
+    "address": "Reichenberger Straße",
+    "kind": "pharmacy",
+    "name": "Reichenberger Apotheke",
+    "lat": "52.4941966",
+    "lon": "13.4356179"
+  },
+  {
+    "site": "http://www.weinstube-magnolia.de/",
+    "address": null,
+    "kind": "restaurant",
+    "name": "Weinstube Magnolia",
+    "lat": "52.4947112",
+    "lon": "13.4337246"
+  },
+  {
+    "site": "http://qr.bvg.de/h103217",
+    "address": null,
+    "kind": null,
+    "name": "Glogauer Straße",
+    "lat": "52.4935504",
+    "lon": "13.4371233"
+  },
+  {
+    "site": "http://qr.bvg.de/h103209",
+    "address": null,
+    "kind": null,
+    "name": "Glogauer Straße",
+    "lat": "52.4937405",
+    "lon": "13.4364398"
+  },
+  {
+    "site": "http://qr.bvg.de/h103219",
+    "address": null,
+    "kind": null,
+    "name": "Ohlauer Straße",
+    "lat": "52.4954672",
+    "lon": "13.4305877"
+  },
+  {
+    "site": "http://www.yelp.de/biz/trattoria-venezia-berlin",
+    "address": null,
+    "kind": "restaurant",
+    "name": "Trattoria Venezia",
+    "lat": "52.4933293",
+    "lon": "13.4347042"
+  }
+]

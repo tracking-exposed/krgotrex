@@ -1,0 +1,50 @@
+[
+  {
+    "site": "http://www.ammazza.de/",
+    "address": "Maybachufer",
+    "kind": "restaurant",
+    "name": "Ammazza che Pizza",
+    "lat": "52.4935693",
+    "lon": "13.4273747"
+  },
+  {
+    "site": "http://rusty-rusty.de/",
+    "address": "Sanderstraße",
+    "kind": "restaurant",
+    "name": "rusty",
+    "lat": "52.4927325",
+    "lon": "13.4278389"
+  },
+  {
+    "site": "http://www.velothek-berlin.de/",
+    "address": "Bürknerstraße",
+    "kind": "bicycle",
+    "name": "Velothek",
+    "lat": "52.4932952",
+    "lon": "13.4271180"
+  },
+  {
+    "site": "http://www.chicha-berlin.de/",
+    "address": "Friedelstraße",
+    "kind": "restaurant",
+    "name": "Chicha",
+    "lat": "52.4932092",
+    "lon": "13.4279080"
+  },
+  {
+    "site": "http://www.icke-berlin.de/",
+    "address": null,
+    "kind": "clothes",
+    "name": "icke",
+    "lat": "52.4927752",
+    "lon": "13.4278543"
+  },
+  {
+    "site": "http://www.buchhandlung-stadtlichter.de",
+    "address": "Bürknerstraße",
+    "kind": "books",
+    "name": "Buchhandlung Stadtlichter",
+    "lat": "52.4935128",
+    "lon": "13.4270153"
+  }
+]

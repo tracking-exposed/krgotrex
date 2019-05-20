@@ -1,0 +1,74 @@
+[
+  {
+    "site": "http://damensalon-berlin.blogspot.com/",
+    "address": "Reuterstraße",
+    "kind": "pub",
+    "name": "Damen-Salon",
+    "lat": "52.4909171",
+    "lon": "13.4292557"
+  },
+  {
+    "site": "http://katiesbluecat.de/",
+    "address": "Friedelstraße",
+    "kind": "cafe",
+    "name": "Katie’s Blue Cat",
+    "lat": "52.4929746",
+    "lon": "13.4282680"
+  },
+  {
+    "site": "http://www.goldberg-bar.de/",
+    "address": "Reuterstraße",
+    "kind": "restaurant",
+    "name": "Goldberg",
+    "lat": "52.4912204",
+    "lon": "13.4292981"
+  },
+  {
+    "site": "http://chez-dang.com/",
+    "address": "Friedelstraße",
+    "kind": "restaurant",
+    "name": "Chez Dang",
+    "lat": "52.4930321",
+    "lon": "13.4282753"
+  },
+  {
+    "site": "http://tischendorf-berlin.de",
+    "address": "Friedelstraße",
+    "kind": "cafe",
+    "name": "Tischendorf",
+    "lat": "52.4920765",
+    "lon": "13.4282321"
+  },
+  {
+    "site": "http://sdw-neukoelln.de",
+    "address": "Pflügerstraße",
+    "kind": null,
+    "name": "Siebdruckwerkstatt Neukölln",
+    "lat": "52.4912822",
+    "lon": "13.4281879"
+  },
+  {
+    "site": "https://www.lagerlagerberlin.de/",
+    "address": "Pflügerstraße",
+    "kind": "pub",
+    "name": "Lager Lager",
+    "lat": "52.4915360",
+    "lon": "13.4286219"
+  },
+  {
+    "site": "http://www.stadtentwicklung.berlin.de/verkehr/lenkung/vlb/de/radzaehlungen.shtml",
+    "address": null,
+    "kind": "Kontaktschleife der Fahrradzählstelle",
+    "name": "Zählstelle Maybachufer Richtung Osten / Westen",
+    "lat": "52.4929864",
+    "lon": "13.4296831"
+  },
+  {
+    "site": "http://okay-cafe.com",
+    "address": null,
+    "kind": "cafe",
+    "name": "Okay Cafe",
+    "lat": "52.4915653",
+    "lon": "13.4285501"
+  }
+]

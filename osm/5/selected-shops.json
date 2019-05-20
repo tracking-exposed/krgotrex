@@ -1,0 +1,42 @@
+[
+  {
+    "site": "https://www.getraenke-hoffmann.de/",
+    "address": null,
+    "kind": "beverages",
+    "name": "Getränke Hoffmann",
+    "lat": "52.4951738",
+    "lon": "13.4283467"
+  },
+  {
+    "site": "http://meute.blogsport.de/",
+    "address": "Reichenberger Straße",
+    "kind": "pub",
+    "name": "Meuterei",
+    "lat": "52.4958086",
+    "lon": "13.4287965"
+  },
+  {
+    "site": "http://filmkunstcafe.blogspot.de",
+    "address": "Reichenberger Straße",
+    "kind": "video",
+    "name": "Filmkunstbar Fitzcarraldo",
+    "lat": "52.4960774",
+    "lon": "13.4291002"
+  },
+  {
+    "site": "http://boulderklubkreuzberg.de",
+    "address": "Ohlauer Straße",
+    "kind": null,
+    "name": "Boulderklub Kreuzberg",
+    "lat": "52.4951361",
+    "lon": "13.4286533"
+  },
+  {
+    "site": "https://www.backbordvegan.com/",
+    "address": "Reichenberger Straße",
+    "kind": "fast_food",
+    "name": "Backword",
+    "lat": "52.4958517",
+    "lon": "13.4286337"
+  }
+]

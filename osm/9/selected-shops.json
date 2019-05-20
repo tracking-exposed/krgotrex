@@ -1,0 +1,98 @@
+[
+  {
+    "site": "http://www.wiener-blut.de/",
+    "address": "Wiener Straße",
+    "kind": "pub",
+    "name": "Wiener Blut",
+    "lat": "52.4983003",
+    "lon": "13.4287491"
+  },
+  {
+    "site": "http://www.spaetzleexpress.de/start2.html",
+    "address": "Wiener Straße",
+    "kind": "fast_food",
+    "name": "Spätzle Express",
+    "lat": "52.4984877",
+    "lon": "13.4281982"
+  },
+  {
+    "site": "http://pcfree.de/",
+    "address": "Lausitzer Straße",
+    "kind": "computer",
+    "name": "PC FREE & TOOLS",
+    "lat": "52.4979024",
+    "lon": "13.4291605"
+  },
+  {
+    "site": "http://kreuzberg-garage.de",
+    "address": null,
+    "kind": "car_parts",
+    "name": "Kreuzberg Garage",
+    "lat": "52.4981391",
+    "lon": "13.4292285"
+  },
+  {
+    "site": "http://www.freiraum-berlin.com/",
+    "address": "Wiener Straße",
+    "kind": null,
+    "name": "Frei Raum wohnagentur",
+    "lat": "52.4982734",
+    "lon": "13.4288307"
+  },
+  {
+    "site": "http://www.cafemori.de/",
+    "address": "Wiener Straße",
+    "kind": "cafe",
+    "name": "Café Mori",
+    "lat": "52.4983807",
+    "lon": "13.4285118"
+  },
+  {
+    "site": "http://www.dailybreadcycles.net",
+    "address": "Wiener Straße",
+    "kind": "bicycle",
+    "name": "Dailybread Cycles",
+    "lat": "52.4981096",
+    "lon": "13.4283643"
+  },
+  {
+    "site": "http://www.cutiepie-berlin.de",
+    "address": "Lausitzer Straße",
+    "kind": "cafe",
+    "name": "Cutie Pie",
+    "lat": "52.4975935",
+    "lon": "13.4288505"
+  },
+  {
+    "site": "http://umbruch-bildarchiv.de",
+    "address": "Lausitzer Straße",
+    "kind": "media platform;political work;anti-racism",
+    "name": "Umbruch-Bildarchiv",
+    "lat": "52.4973790",
+    "lon": "13.4285729"
+  },
+  {
+    "site": "http://qr.bvg.de/h102316",
+    "address": null,
+    "kind": null,
+    "name": "U Görlitzer Bahnhof",
+    "lat": "52.4988650",
+    "lon": "13.4279599"
+  },
+  {
+    "site": "https://www.bravo-bravko.de/",
+    "address": "Lausitzer Straße",
+    "kind": "cafe",
+    "name": "Bravo Bravko Kuchenwerkstatt",
+    "lat": "52.4976672",
+    "lon": "13.4294270"
+  },
+  {
+    "site": "https://www.yelp.de/biz/khartoum-berlin-2",
+    "address": "Wiener Straße",
+    "kind": "fast_food",
+    "name": "Khartoum",
+    "lat": "52.4989383",
+    "lon": "13.4283319"
+  }
+]

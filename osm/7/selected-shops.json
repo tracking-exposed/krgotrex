@@ -1,0 +1,42 @@
+[
+  {
+    "site": "http://www.fahrradsalon.com",
+    "address": "Bürknerstraße",
+    "kind": "bicycle",
+    "name": "Fahrradsalon",
+    "lat": "52.4930821",
+    "lon": "13.4247259"
+  },
+  {
+    "site": "http://www.riverside-lodge.de/",
+    "address": null,
+    "kind": null,
+    "name": "Riverside Lodge",
+    "lat": "52.4940295",
+    "lon": "13.4250288"
+  },
+  {
+    "site": "http://www.uteschellbach.de",
+    "address": null,
+    "kind": "clothes",
+    "name": "Ute Schellbach",
+    "lat": "52.4934098",
+    "lon": "13.4257365"
+  },
+  {
+    "site": "https://thebreadstation.wordpress.com/",
+    "address": "Maybachufer",
+    "kind": "bakery",
+    "name": "The Bread Station",
+    "lat": "52.4940633",
+    "lon": "13.4258828"
+  },
+  {
+    "site": "http://www.schinke13.de/",
+    "address": "Schinkestraße",
+    "kind": "bathroom_furnishing",
+    "name": "Drößler Sanitärfachhandel",
+    "lat": "52.4937294",
+    "lon": "13.4245538"
+  }
+]

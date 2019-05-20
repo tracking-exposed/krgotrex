@@ -1,0 +1,90 @@
+[
+  {
+    "site": "http://qr.bvg.de/h284102",
+    "address": null,
+    "kind": "U Schönleinstraße, Gleis 2",
+    "name": "U Schönleinstraße",
+    "lat": "52.4931022",
+    "lon": "13.4220998"
+  },
+  {
+    "site": "http://www.berliner-zimmer.de",
+    "address": "Schinkestraße",
+    "kind": null,
+    "name": "Schokoladenfabrik",
+    "lat": "52.4938371",
+    "lon": "13.4238183"
+  },
+  {
+    "site": "http://www.brammibalsdonuts.com",
+    "address": "Maybachufer",
+    "kind": "cafe",
+    "name": "Brammibal's Donuts",
+    "lat": "52.4950375",
+    "lon": "13.4230354"
+  },
+  {
+    "site": "http://www.kloetzeundschinken.de/",
+    "address": null,
+    "kind": "cafe",
+    "name": "Klötze und Schinken",
+    "lat": "52.4931374",
+    "lon": "13.4229134"
+  },
+  {
+    "site": "http://www.lescaves.de/",
+    "address": "Maybachufer",
+    "kind": "alcohol",
+    "name": "Les Caves Weine",
+    "lat": "52.4948593",
+    "lon": "13.4235828"
+  },
+  {
+    "site": "http://www.kollateralschaden.com/",
+    "address": "Bürknerstraße",
+    "kind": "clothes",
+    "name": "Kollateralschaden",
+    "lat": "52.4932082",
+    "lon": "13.4237013"
+  },
+  {
+    "site": "http://tingding.jimdo.com",
+    "address": "Bürknerstraße",
+    "kind": null,
+    "name": "TingDing",
+    "lat": "52.4932108",
+    "lon": "13.4237523"
+  },
+  {
+    "site": "http://qr.bvg.de/h102118",
+    "address": null,
+    "kind": null,
+    "name": "Hohenstaufenplatz",
+    "lat": "52.4908927",
+    "lon": "13.4234752"
+  },
+  {
+    "site": "http://qr.bvg.de/h102120",
+    "address": null,
+    "kind": null,
+    "name": "Kottbusser Brücke",
+    "lat": "52.4953857",
+    "lon": "13.4206449"
+  },
+  {
+    "site": "http://qr.bvg.de/h102119",
+    "address": null,
+    "kind": null,
+    "name": "U Schönleinstraße",
+    "lat": "52.4925567",
+    "lon": "13.4224660"
+  },
+  {
+    "site": "http://spektrumberlin.de/",
+    "address": "Bürknerstraße",
+    "kind": "project_space",
+    "name": "Spektrum Project Space",
+    "lat": "52.4931790",
+    "lon": "13.4231127"
+  }
+]

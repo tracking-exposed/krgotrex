@@ -1,0 +1,50 @@
+[
+  {
+    "site": "http://www.tavernaodysseus.de/",
+    "address": "Friedelstraße",
+    "kind": "restaurant",
+    "name": "Taverna Odysseus",
+    "lat": "52.4924787",
+    "lon": "13.4277676"
+  },
+  {
+    "site": "http://chelany-restaurant.de/",
+    "address": "Friedelstraße",
+    "kind": "restaurant",
+    "name": "Chelany",
+    "lat": "52.4916550",
+    "lon": "13.4276621"
+  },
+  {
+    "site": "http://rusty-rusty.de/",
+    "address": "Sanderstraße",
+    "kind": "restaurant",
+    "name": "rusty",
+    "lat": "52.4927325",
+    "lon": "13.4278389"
+  },
+  {
+    "site": "http://www.chicha-berlin.de/",
+    "address": "Friedelstraße",
+    "kind": "restaurant",
+    "name": "Chicha",
+    "lat": "52.4932092",
+    "lon": "13.4279080"
+  },
+  {
+    "site": "http://www.icke-berlin.de/",
+    "address": null,
+    "kind": "clothes",
+    "name": "icke",
+    "lat": "52.4927752",
+    "lon": "13.4278543"
+  },
+  {
+    "site": "https://katulki.wordpress.com/",
+    "address": "Friedelstraße",
+    "kind": "cafe",
+    "name": "Café Katulki",
+    "lat": "52.4918742",
+    "lon": "13.4277401"
+  }
+]

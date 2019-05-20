@@ -1,0 +1,106 @@
+[
+  {
+    "site": "http://trippletwenty-lokal.de/",
+    "address": "Weserstraße",
+    "kind": "pub",
+    "name": "Rosel",
+    "lat": "52.4884324",
+    "lon": "13.4280770"
+  },
+  {
+    "site": "http://dollyneukoelln.de/",
+    "address": null,
+    "kind": "cafe",
+    "name": "Dolly",
+    "lat": "52.4872684",
+    "lon": "13.4291919"
+  },
+  {
+    "site": "http://www.ori-berlin.de/",
+    "address": "Friedelstraße",
+    "kind": "pub",
+    "name": "ORi",
+    "lat": "52.4885969",
+    "lon": "13.4280235"
+  },
+  {
+    "site": "http://www.schillingbar.de/",
+    "address": "Weserstraße",
+    "kind": "pub",
+    "name": "Schilling",
+    "lat": "52.4882443",
+    "lon": "13.4287764"
+  },
+  {
+    "site": "http://www.tranius.de",
+    "address": "Reuterstraße",
+    "kind": "hairdresser",
+    "name": "Tranius",
+    "lat": "52.4888067",
+    "lon": "13.4287633"
+  },
+  {
+    "site": "http://www.bullysbakery.com/",
+    "address": "Friedelstraße",
+    "kind": "cafe",
+    "name": "Bullys Bakery",
+    "lat": "52.4882123",
+    "lon": "13.4281276"
+  },
+  {
+    "site": "http://www.cosmetic-lounge-berlin.de/",
+    "address": null,
+    "kind": "beauty",
+    "name": "cosmetic lounge berlin",
+    "lat": "52.4889414",
+    "lon": "13.4287620"
+  },
+  {
+    "site": "http://www.kurz-klein.de/",
+    "address": null,
+    "kind": "kindergarten",
+    "name": "Kurz&Klein",
+    "lat": "52.4884122",
+    "lon": "13.4298633"
+  },
+  {
+    "site": "http://www.kultur-propaganda.de",
+    "address": "Reuterstraße",
+    "kind": "gift",
+    "name": "kultur propaganda",
+    "lat": "52.4873896",
+    "lon": "13.4287670"
+  },
+  {
+    "site": "http://www.photoautomat.de/",
+    "address": "Weserstraße",
+    "kind": "photo_booth",
+    "name": "photo_booth",
+    "lat": "52.4882538",
+    "lon": "13.4283891"
+  },
+  {
+    "site": "http://barettino.com",
+    "address": "Reuterstraße",
+    "kind": "cafe",
+    "name": "Barettino",
+    "lat": "52.4877729",
+    "lon": "13.4287633"
+  },
+  {
+    "site": "http://shiatsu-tcm-praxis.de",
+    "address": "Friedelstraße",
+    "kind": "therapist",
+    "name": "Friedelpraxis",
+    "lat": "52.4874509",
+    "lon": "13.4281621"
+  },
+  {
+    "site": "http://fahrbar-berlin.de",
+    "address": null,
+    "kind": "bicycle",
+    "name": "Fahrbar",
+    "lat": "52.4872130",
+    "lon": "13.4287328"
+  }
+]

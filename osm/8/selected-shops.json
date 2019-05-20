@@ -1,0 +1,50 @@
+[
+  {
+    "site": "http://www.weinstube-magnolia.de/",
+    "address": null,
+    "kind": "restaurant",
+    "name": "Weinstube Magnolia",
+    "lat": "52.4947112",
+    "lon": "13.4337246"
+  },
+  {
+    "site": "http://www.l-18.de",
+    "address": null,
+    "kind": "cafe",
+    "name": "L 18",
+    "lat": "52.4931566",
+    "lon": "13.4339937"
+  },
+  {
+    "site": "http://checkthis.com/martinello",
+    "address": "Reichenberger Straße",
+    "kind": "restaurant",
+    "name": "Martinello",
+    "lat": "52.4943295",
+    "lon": "13.4338186"
+  },
+  {
+    "site": "http://qr.bvg.de/h103217",
+    "address": null,
+    "kind": null,
+    "name": "Glogauer Straße",
+    "lat": "52.4935504",
+    "lon": "13.4371233"
+  },
+  {
+    "site": "http://qr.bvg.de/h103209",
+    "address": null,
+    "kind": null,
+    "name": "Glogauer Straße",
+    "lat": "52.4937405",
+    "lon": "13.4364398"
+  },
+  {
+    "site": "http://qr.bvg.de/h103219",
+    "address": null,
+    "kind": null,
+    "name": "Ohlauer Straße",
+    "lat": "52.4954672",
+    "lon": "13.4305877"
+  }
+]

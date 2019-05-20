@@ -1,0 +1,74 @@
+[
+  {
+    "site": "http://www.la-raclette.de",
+    "address": "Lausitzer Straße",
+    "kind": "restaurant",
+    "name": "La Raclette",
+    "lat": "52.4955306",
+    "lon": "13.4273449"
+  },
+  {
+    "site": "http://www.regenbogenfabrik.de/cafe.html",
+    "address": "Lausitzer Straße",
+    "kind": "cafe",
+    "name": "Regenbogencafe & Kreuzberger Kuchenbäckerei",
+    "lat": "52.4956287",
+    "lon": "13.4268245"
+  },
+  {
+    "site": "http://www.regenbogenfabrik.de/",
+    "address": "Lausitzer Straße",
+    "kind": null,
+    "name": "Regenbogenhostel",
+    "lat": "52.4962091",
+    "lon": "13.4262102"
+  },
+  {
+    "site": "http://www.regenbogenfabrik.de/",
+    "address": "Lausitzer Straße",
+    "kind": "cinema",
+    "name": "Kino",
+    "lat": "52.4959201",
+    "lon": "13.4261779"
+  },
+  {
+    "site": "http://www.regenbogenfabrik.de/Projekte/Kuchenbaeckerinnen.htm",
+    "address": "Lausitzer Straße",
+    "kind": "pastry",
+    "name": "Kreuzberger Kuchenbäckerei",
+    "lat": "52.4956286",
+    "lon": "13.4267173"
+  },
+  {
+    "site": "http://www.regenbogenfabrik.de/fahrrad.html",
+    "address": "Lausitzer Straße",
+    "kind": "bicycle_rental",
+    "name": "Regenbogenfabrik Fahrrad-Selbsthilfe-Werkstatt",
+    "lat": "52.4959768",
+    "lon": "13.4260577"
+  },
+  {
+    "site": "http://www.regenbogenfabrik.de/",
+    "address": null,
+    "kind": "doityourself",
+    "name": "Holzwerkstatt",
+    "lat": "52.4958939",
+    "lon": "13.4263791"
+  },
+  {
+    "site": "http://www.regenbogenfabrik.de/",
+    "address": "Lausitzer Straße",
+    "kind": "restaurant",
+    "name": "Kantine",
+    "lat": "52.4961232",
+    "lon": "13.4261160"
+  },
+  {
+    "site": "https://www.yogaflow.de/",
+    "address": "Paul-Lincke-Ufer",
+    "kind": null,
+    "name": "Zentrum für Yoga und Stimme",
+    "lat": "52.4955816",
+    "lon": "13.4260960"
+  }
+]

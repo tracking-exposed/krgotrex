@@ -1,0 +1,50 @@
+[
+  {
+    "site": "http://www.stadtentwicklung.berlin.de/bauen/brunnen/de/neu/01.shtml",
+    "address": null,
+    "kind": "fountain",
+    "name": "Fritz-Reuter-Brunnen",
+    "lat": "52.4892715",
+    "lon": "13.4298862"
+  },
+  {
+    "site": "http://damensalon-berlin.blogspot.com/",
+    "address": "Reuterstraße",
+    "kind": "pub",
+    "name": "Damen-Salon",
+    "lat": "52.4909171",
+    "lon": "13.4292557"
+  },
+  {
+    "site": "http://www.kauzundkiebitz.de",
+    "address": "Reuterstraße",
+    "kind": "pub",
+    "name": "Kauz & Kiebitz",
+    "lat": "52.4901129",
+    "lon": "13.4287911"
+  },
+  {
+    "site": "http://www.goldberg-bar.de/",
+    "address": "Reuterstraße",
+    "kind": "restaurant",
+    "name": "Goldberg",
+    "lat": "52.4912204",
+    "lon": "13.4292981"
+  },
+  {
+    "site": "http://www.crop-cosecha.de/",
+    "address": null,
+    "kind": "clothes",
+    "name": "Crop Cosecha",
+    "lat": "52.4891760",
+    "lon": "13.4287692"
+  },
+  {
+    "site": "http://www.standard-saubere-sachen.de/",
+    "address": "Reuterstraße",
+    "kind": "clothes",
+    "name": "standard saubere sachen",
+    "lat": "52.4890283",
+    "lon": "13.4287559"
+  }
+]

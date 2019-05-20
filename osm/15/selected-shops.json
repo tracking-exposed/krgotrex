@@ -1,0 +1,34 @@
+[
+  {
+    "site": "https://kiezgourmet.de",
+    "address": "Manitiusstraße",
+    "kind": "company",
+    "name": "Kiez Gourmet Catering",
+    "lat": "52.4917037",
+    "lon": "13.4314772"
+  },
+  {
+    "site": "http://www.nowkoelln.de/",
+    "address": null,
+    "kind": "marketplace",
+    "name": "Flohmarkt Nowkoelln Flowmarkt",
+    "lat": "52.4924870",
+    "lon": "13.4313042"
+  },
+  {
+    "site": "http://www.stadtentwicklung.berlin.de/verkehr/lenkung/vlb/de/radzaehlungen.shtml",
+    "address": null,
+    "kind": "Kontaktschleife der Fahrradzählstelle",
+    "name": "Zählstelle Maybachufer Richtung Osten / Westen",
+    "lat": "52.4929864",
+    "lon": "13.4296831"
+  },
+  {
+    "site": "http://www.yoga-barrierefrei.de",
+    "address": null,
+    "kind": null,
+    "name": "Yen-Nien Daoguan",
+    "lat": "52.4916083",
+    "lon": "13.4317629"
+  }
+]

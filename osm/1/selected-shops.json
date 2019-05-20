@@ -1,0 +1,98 @@
+[
+  {
+    "site": "http://www.umspannwerk-kreuzberg.de/",
+    "address": null,
+    "kind": "arts_centre",
+    "name": "Umspannwerk",
+    "lat": "52.4940425",
+    "lon": "13.4291868"
+  },
+  {
+    "site": "http://www.aapka.de/maybachufer-berlin.htm",
+    "address": null,
+    "kind": "restaurant",
+    "name": "Aapka",
+    "lat": "52.4932046",
+    "lon": "13.4284162"
+  },
+  {
+    "site": "http://katiesbluecat.de/",
+    "address": "Friedelstraße",
+    "kind": "cafe",
+    "name": "Katie’s Blue Cat",
+    "lat": "52.4929746",
+    "lon": "13.4282680"
+  },
+  {
+    "site": "http://chez-dang.com/",
+    "address": "Friedelstraße",
+    "kind": "restaurant",
+    "name": "Chez Dang",
+    "lat": "52.4930321",
+    "lon": "13.4282753"
+  },
+  {
+    "site": "https://www.lilalaemmchen-shop.de",
+    "address": null,
+    "kind": "clothes",
+    "name": "Lila Lämmchen",
+    "lat": "52.4931878",
+    "lon": "13.4286675"
+  },
+  {
+    "site": "http://www.sofabar-kreuzberg.de/",
+    "address": null,
+    "kind": "pub",
+    "name": "Sofabar",
+    "lat": "52.4944211",
+    "lon": "13.4289064"
+  },
+  {
+    "site": "http://www.leseglueck-berlin.de",
+    "address": "Ohlauer Straße",
+    "kind": "cafe",
+    "name": "Café LeseGlück",
+    "lat": "52.4946142",
+    "lon": "13.4296503"
+  },
+  {
+    "site": "http://www.innoq.com",
+    "address": null,
+    "kind": "company",
+    "name": "innoQ Deutschland GmbH",
+    "lat": "52.4940875",
+    "lon": "13.4294332"
+  },
+  {
+    "site": "http://schuchmanns.com/",
+    "address": null,
+    "kind": "cafe",
+    "name": "Wagner",
+    "lat": "52.4939486",
+    "lon": "13.4290907"
+  },
+  {
+    "site": "http://www.asquera.de",
+    "address": "Ohlauer Straße",
+    "kind": "company",
+    "name": "asquera GmbH",
+    "lat": "52.4941158",
+    "lon": "13.4291776"
+  },
+  {
+    "site": "http://www.stadtentwicklung.berlin.de/verkehr/lenkung/vlb/de/radzaehlungen.shtml",
+    "address": null,
+    "kind": "Kontaktschleife der Fahrradzählstelle",
+    "name": "Zählstelle Maybachufer Richtung Osten / Westen",
+    "lat": "52.4929864",
+    "lon": "13.4296831"
+  },
+  {
+    "site": "http://www.leseglueck-berlin.de",
+    "address": "Ohlauer Straße",
+    "kind": "books",
+    "name": "LeseGlück",
+    "lat": "52.4946842",
+    "lon": "13.4297075"
+  }
+]

@@ -5,7 +5,6 @@ node_modules
 package-lock.json
 page/package-lock.json
 .vscode
-osm/*
 
 site/assets/*.css*
 web-accessible/css/
